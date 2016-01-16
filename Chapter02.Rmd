@@ -57,7 +57,7 @@ istics can be found in the mosaic package vignettes (http://cran.r-project.org/w
 ```{r}
 library(mosaic); library(readr)
 options(digits=3)
-Titanic <- read_delim("chapter02/Titanic.txt", delim="\t")
+Titanic <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Titanic.txt", delim="\t")
 tally(~ Class, data=Titanic)
 tally(~ Class, format="percent", data=Titanic)
 barchart(tally(~ Class, data=Titanic))
