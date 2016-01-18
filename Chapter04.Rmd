@@ -1,7 +1,7 @@
 ---
-title: "SDM4 in R: Displaying and Describing Quantitative Data (Chapter 3)"
+title: "SDM4 in R: Displaying and Describing Quantitative Data (Chapter 4)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "January 16, 2016"
+date: "January 17, 2016"
 output: 
   pdf_document:
     fig_height: 4
@@ -49,63 +49,25 @@ file as well as the associated R Markdown reproducible analysis source file used
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory stat
 istics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
-## Chapter 3: Displaying and describing quantitative data
+## Chapter 4: Understanding and comparing distributions
 
-### Section 3.1: Displaying quantitative variables
+### Section 4.1: Comparing groups with histograms
 
 ```{r}
 library(mosaic); library(readr)
 options(digits=3)
-Tsunami <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tsunami_Earthquakes.txt", delim="\t")
-nrow(Tsunami)   
+AverageWind <- 
+read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tsunami_Earthquakes.txt", delim="\t")
+nrow(Average)   
 histogram(~ Magnitude, width=0.5, center=0.25, data=Tsunami)
 ```
 
-```{r}
-Pulse_rates <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Pulse_rates.txt", delim="\t")
-with(Pulse_rates, stem(Pulse))  # data don't exactly match
-dotPlot(~ Pulse, data=Pulse_rates)
-```
+### Section 4.2: Comparing groups with boxplots
 
-### Section 3.2: Shape
+### Section 4.3: Outliers
 
+### Section 4.4: Timeplots: Order, please!
 
-### Section 3.3: Center
+### Section 4.5: Re-expressing data: A first look
 
-```{r}
-recent <- filter(Tsunami, Year >= 1989, Year <= 2013)
-nrow(recent)   
-median(~ Magnitude, data=recent)
-```
-
-
-### Section 3.4: Spread
-
-```{r}
-favstats(~ Magnitude, data=recent)
-range(~ Magnitude, data=recent)
-diff(range(~ Magnitude, data=recent))
-IQR(~ Magnitude, data=recent)
-```
-
-### Section 3.5: Boxplots and 5-Number Summaries
-
-```{r}
-bwplot(~ Magnitude, data=recent)
-```
-
-### Section 3.6: The Center of Symmetric Distributions: The Mean
-
-```{r}
-mean(~ Magnitude, data=recent)
-median(~ Magnitude, data=recent)
-```
-
-### Section 3.7: The Spread of Symmetric Distributions: The Standard Deviation
-
-```{r}
-sd(~ Magnitude, data=recent)
-var(~ Magnitude, data=recent)
-sqrt(var(~ Magnitude, data=recent))
-```
 
