@@ -1,5 +1,5 @@
 ---
-title: "SDM4 in R: Stats Starts Here (Chapter 2)"
+title: "SDM4 in R: Stats Starts Here (Chapter 1)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
 date: "January 21, 2016"
 output: 
@@ -58,8 +58,10 @@ istics can be found in the mosaic package vignettes (http://cran.r-project.org/w
 ```{r}
 library(mosaic); library(readr)
 options(digits=3)
-Tour <- read.delim("data/Tour_de_France_2014.txt", sep="\t", stringsAsFactors=FALSE)
-# Tour <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tour_de_France_2014.txt", delim="\t")
+Tour <- read.delim("http://www.amherst.edu/~nhorton/sdm4/data/Tour_de_France_2014.txt", 
+    sep="\t", stringsAsFactors=FALSE)
+names(Tour)
+dim(Tour)
 head(Tour, 3)
 tail(Tour, 8)
 ```
@@ -80,4 +82,10 @@ filter(Tour, Winner=="Contador Alberto")
 ```{r}
 filter(Tour, Average.Speed==min(Average.Speed))
 filter(Tour, Average.Speed==max(Average.Speed))
+```
+
+#### What can we say about the Average Speeds?
+
+```{r}
+favstats(~ Average.Speed, data=Tour)
 ```
