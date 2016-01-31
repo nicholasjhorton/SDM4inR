@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Displaying and Describing Quantitative Data (Chapter 3)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "January 17, 2016"
+date: "January 22, 2016"
 output: 
   pdf_document:
     fig_height: 4
@@ -46,13 +46,13 @@ as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De 
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
 file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
 
-This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory stat
-istics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
 ## Chapter 3: Displaying and describing quantitative data
 
 ### Section 3.1: Displaying quantitative variables
 
+See Figure 3.1 on page 46.
 ```{r}
 library(mosaic); library(readr)
 options(digits=3)
@@ -60,6 +60,8 @@ Tsunami <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tsunami_Earthqu
 nrow(Tsunami)   
 histogram(~ Magnitude, width=0.5, center=0.25, data=Tsunami)
 ```
+
+See display on page 48.
 
 ```{r}
 Pulse_rates <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Pulse_rates.txt", delim="\t")
@@ -72,6 +74,7 @@ dotPlot(~ Pulse, data=Pulse_rates)
 
 ### Section 3.3: Center
 
+See calculation on page 53.
 ```{r}
 recent <- filter(Tsunami, Year >= 1989, Year <= 2013)
 nrow(recent)   
@@ -80,6 +83,8 @@ median(~ Magnitude, data=recent)
 
 
 ### Section 3.4: Spread
+
+See statistics reported on pages 54-55.
 
 ```{r}
 favstats(~ Magnitude, data=recent)
@@ -90,11 +95,14 @@ IQR(~ Magnitude, data=recent)
 
 ### Section 3.5: Boxplots and 5-Number Summaries
 
+See display on page 57.
 ```{r}
 bwplot(~ Magnitude, data=recent)
 ```
 
 ### Section 3.6: The Center of Symmetric Distributions: The Mean
+
+See calculation on page 59.
 
 ```{r}
 mean(~ Magnitude, data=recent)
@@ -102,6 +110,7 @@ median(~ Magnitude, data=recent)
 ```
 
 ### Section 3.7: The Spread of Symmetric Distributions: The Standard Deviation
+
 
 ```{r}
 sd(~ Magnitude, data=recent)
