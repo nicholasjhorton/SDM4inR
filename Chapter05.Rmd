@@ -1,10 +1,10 @@
 ---
-title: "SDM4 in R: Displaying and Describing Quantitative Data (Chapter 4)"
+title: "SDM4 in R: The Standard Deviation as a Ruler and the Normal Model (Chapter 5)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
 date: "January 31, 2016"
 output: 
   pdf_document:
-    fig_height: 4
+    fig_height: 3
     fig_width: 6
   html_document:
     fig_height: 3
@@ -48,27 +48,77 @@ file as well as the associated R Markdown reproducible analysis source file used
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
-## Chapter 4: Understanding and comparing distributions
+## Chapter 5: The standard deviation as a ruler and the normal model
 
-### Section 4.1: Comparing groups with histograms
+### Section 5.1: Standardizing with z-scores
 
-See display on page XX
 
 ```{r}
 library(mosaic); library(readr)
+options(na.rm=TRUE)
 options(digits=3)
-AverageWind <- 
-read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tsunami_Earthquakes.txt", delim="\t")
-nrow(Average)   
-histogram(~ Magnitude, width=0.5, center=0.25, data=Tsunami)
+(6.54 - 5.91)/0.56  # should be 1.1 sd better, see page 112
 ```
 
-### Section 4.2: Comparing groups with boxplots
+```{r}
+Heptathlon <- 
+read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Womens_Heptathlon_2012.txt",
+  delim="\t")
+nrow(Heptathlon)  
+filter(Heptathlon, LJ >= max(LJ, na.rm=TRUE)) %>% data.frame()
+favstats(~ LJ, data=Heptathlon)
+(6.54 - mean(~ LJ, data=Heptathlon))/sd(~ LJ, data=Heptathlon)
+```
 
-### Section 4.3: Outliers
+### Section 5.2: Shifting and scaling
 
-### Section 4.4: Timeplots: Order, please!
+### Section 5.3: Normal models
 
-### Section 4.5: Re-expressing data: A first look
+The 68-95-99.7 rule
 
+```{r, message=FALSE, warning=FALSE}
+xpnorm(c(-3, -1.96, -1, 1, 1.96, 3), mean=0, sd=1, verbose=FALSE)
+xpnorm(c(-3, -1.96, 1.96, 3), mean=0, sd=1, verbose=FALSE)
+xpnorm(c(-3, 3), mean=0, sd=1, verbose=FALSE)
+```
 
+Step-by-step (page 122)
+
+```{r}
+xpnorm(600, mean=500, sd=100)
+```
+
+### Section 5.4: Finding normal percentiles
+
+as on page 123
+
+```{r}
+xpnorm(680, mean=500, sd=100)
+qnorm(0.964, mean=500, sd=100)   # inverse of pnorm()
+qnorm(0.964, mean=0, sd=1)   # what is the z-score?
+```
+
+or on page 124
+
+```{r}
+xpnorm(450, mean=500, sd=100)
+```
+
+and page 125
+
+```{r}
+qnorm(.9, mean=500, sd=100)
+qnorm(.9, mean=0, sd=1)   # or as a Z-score
+```
+
+### Section 5.5: Normal probability plots
+
+See Figure 5.8 on page 129
+
+```{r}
+Nissan <- 
+read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Nissan.txt",
+  delim="\t")
+histogram(~ mpg, width=1, center=0.5, data=Nissan)
+qqmath(~ mpg, data=Nissan)
+```
