@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Displaying and Describing Quantitative Data (Chapter 3)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "January 22, 2016"
+date: "January 31, 2016"
 output: 
   pdf_document:
     fig_height: 4
@@ -56,7 +56,8 @@ See Figure 3.1 on page 46.
 ```{r}
 library(mosaic); library(readr)
 options(digits=3)
-Tsunami <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tsunami_Earthquakes.txt", delim="\t")
+Tsunami <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tsunami_Earthquakes.txt", 
+  delim="\t")
 nrow(Tsunami)   
 histogram(~ Magnitude, width=0.5, center=0.25, data=Tsunami)
 ```
@@ -64,9 +65,16 @@ histogram(~ Magnitude, width=0.5, center=0.25, data=Tsunami)
 See display on page 48.
 
 ```{r}
-Pulse_rates <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Pulse_rates.txt", delim="\t")
-with(Pulse_rates, stem(Pulse))  # data don't exactly match
+Pulse_rates <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Pulse_rates.txt",
+  delim="\t")
+with(Pulse_rates, stem(Pulse))
 dotPlot(~ Pulse, data=Pulse_rates)
+```
+
+Or on page 49
+
+```{r}
+with(Pulse_rates, stem(Pulse, scale=2))
 ```
 
 ### Section 3.2: Shape
