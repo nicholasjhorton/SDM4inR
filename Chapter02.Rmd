@@ -46,12 +46,13 @@ as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De 
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
 file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
 
-This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory stat
-istics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
 ## Chapter 2: Displaying and describing categorical data
 
 ### Section 2.1: Summarizing and displaying a single categorical variable
+
+See displays on page 19-20.
 
 ```{r}
 library(mosaic); library(readr)
@@ -64,11 +65,14 @@ barchart(tally(~ Class, data=Titanic))
 
 ### Section 2.2: Exploring the relationship between two categorical variables
 
+See display on page 21.
+
 ```{r}
 tally(~ Survived + Class, margin=TRUE, data=Titanic)
 tally(~ Survived | Class, format="percent", data=Titanic)
 ```
 
+See display on page 24.
 ```{r}
 barplot(tally(~ Survived + Class, data=Titanic), beside=TRUE)
 mosaicplot(tally(~ Survived + Class, data=Titanic), 
