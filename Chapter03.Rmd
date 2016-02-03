@@ -56,10 +56,15 @@ istics can be found in the mosaic package vignettes (http://cran.r-project.org/w
 ```{r}
 library(mosaic); library(readr)
 options(digits=3)
-Tsunami <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tsunami_Earthquakes.txt", delim="\t")
+Tsunami <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tsunami_Earthquakes.txt", 
+  delim="\t")
 nrow(Tsunami)   
+histogram(~ Magnitude, width=0.5, center=0.25, type="count", data=Tsunami)
+histogram(~ Magnitude, width=0.5, center=0.25, type="percent", data=Tsunami)
 histogram(~ Magnitude, width=0.5, center=0.25, data=Tsunami)
 ```
+
+Note that Figure 3.3 on page 45 displays the second of these histograms (with the y-axis measured by percent in each bar).  The first histogram displays the count and the last the density (where the total area of the bars sums to 1).
 
 ```{r}
 Pulse_rates <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Pulse_rates.txt", delim="\t")
@@ -94,6 +99,8 @@ IQR(~ Magnitude, data=recent)
 bwplot(~ Magnitude, data=recent)
 ```
 
+Note that boxplots of a single distribution aren't usually very interesting (more useful displays will be seen in Chapter 4 when we start comparing groups).
+
 ### Section 3.6: The Center of Symmetric Distributions: The Mean
 
 ```{r}
@@ -107,5 +114,6 @@ median(~ Magnitude, data=recent)
 sd(~ Magnitude, data=recent)
 var(~ Magnitude, data=recent)
 sqrt(var(~ Magnitude, data=recent))
+0.702^2
 ```
 
