@@ -1,10 +1,10 @@
 ---
-title: "SDM4 in R: Displaying and Describing Quantitative Data (Chapter 4)"
+title: "SDM4 in R: Understanding and Comparing Distributions (Chapter 4)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
 date: "January 31, 2016"
 output: 
   pdf_document:
-    fig_height: 4
+    fig_height: 3.3
     fig_width: 6
   html_document:
     fig_height: 3
@@ -52,23 +52,73 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 
 ### Section 4.1: Comparing groups with histograms
 
-See display on page XX
+See Figure 4.1 on page 85
 
 ```{r}
 library(mosaic); library(readr)
 options(digits=3)
-AverageWind <- 
-read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tsunami_Earthquakes.txt", delim="\t")
-nrow(Average)   
-histogram(~ Magnitude, width=0.5, center=0.25, data=Tsunami)
+Hopkins <- 
+read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Hopkins_Forest_2011.txt", delim="\t")
+names(Hopkins)   
+histogram(~ AvgWindSpeed, width=0.5, center=0.24, 
+          xlab="Average wind speed (mph)", data=Hopkins)
+```
+
+Here we reproduce Figure 4.2 on page 85
+
+```{r}
+Hopkins <- mutate(Hopkins,
+  Summer = Month >= 4 & Month <= 9,
+  Winter = !Summer
+)
+histogram(~ AvgWindSpeed, width=0.5, center=0.24, 
+          xlab="Average summer wind speed (mph)", data=filter(Hopkins, Summer==TRUE))
+favstats(~ AvgWindSpeed, data=filter(Hopkins, Summer==TRUE))
+histogram(~ AvgWindSpeed, width=0.5, center=0.24, 
+          xlab="Average winter wind speed (mph)", data=filter(Hopkins, Winter==TRUE))
+favstats(~ AvgWindSpeed, data=filter(Hopkins, Winter==TRUE))
+
 ```
 
 ### Section 4.2: Comparing groups with boxplots
 
+Here we reproduce Figure 4.3 on page 87
+
+```{r}
+bwplot(AvgWindSpeed ~ as.factor(Month), data=Hopkins)
+```
+
 ### Section 4.3: Outliers
+
+```{r}
+filter(Hopkins, Month==2, AvgWindSpeed > 6)   # in February
+filter(Hopkins, Month==6, AvgWindSpeed > 3.9) # in June
+```
 
 ### Section 4.4: Timeplots: Order, please!
 
+See Figures 4.4 through 4.6 starting on page 92
+```{r}
+xyplot(AvgWindSpeed ~ DayofYear, data=Hopkins)
+xyplot(AvgWindSpeed ~ DayofYear, type="l", data=Hopkins)
+xyplot(AvgWindSpeed ~ DayofYear, type=c("p", "smooth"), lwd=3, data=Hopkins)
+```
+
+
 ### Section 4.5: Re-expressing data: A first look
 
+See Figure 4.7 on page 94
+```{r}
+CEO <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/CEO_Salary_2012.txt", delim="\t")
+favstats(~ One_Year_Pay, data=CEO)
+histogram(~ One_Year_Pay, width=2.5, center=1.24, data=CEO)
+```
 
+Figure 4.8 on page 95
+```{r}
+nrow(CEO)   # let's get rid of the CEO's with 0 salaries...
+CEO <- filter(CEO, One_Year_Pay > 0)
+nrow(CEO)
+CEO <- mutate(CEO, log10salary = log10(One_Year_Pay*1000000))
+histogram(~ log10salary, width=.25, center=.124, data=CEO)
+```

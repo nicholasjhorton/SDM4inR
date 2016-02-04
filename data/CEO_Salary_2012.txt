@@ -1,4 +1,4 @@
-Rank	Name	Company	1-Year Pay ($mil)	5 Year Pay ($mil)	Shares Owned ($mil)	Age	Efficiency	Log Pay
+Rank	Name	Company	One_Year_Pay	Five_Year_Pay	Shares_Owned	Age	Efficiency	Log_Pay
 1	John H Hammergren	McKesson	131.19	285.02	51.9	53	121	8.1179007321
 2	Ralph Lauren	Ralph Lauren	66.65	204.06	5010.4	72	84	7.8238001537
 3	Michael D Fascitelli	Vornado Realty	64.405		171.7	55		7.8089195846

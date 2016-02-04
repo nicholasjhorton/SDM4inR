@@ -1,4 +1,4 @@
-Season	Avg Wind Speed mph)	Month	Day	Day of Year	Avg Temp(deg C)	Avg Temp(deg F)	Max Wind Speed(mph)	Avg Barom(mb)	Precip(in)
+Season	AvgWindSpeed	Month	Day	DayofYear	AvgTempC	AvgTempF	MaxWindSpeed	AvgBarom	Precip
 Winter	0.53	1	1	1	5.21	41.38	8.55	1011.47	0
 Winter	2.13	1	2	2	2.53	36.55	27.4	1008.17	0.07
 Winter	4.43	1	3	3	-4.17	24.5	26.74	1011.17	0
