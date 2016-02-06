@@ -93,7 +93,7 @@ Figure 7.5 (page 193) displays the scatterplot of residuals as a function of the
 The `summary` function generates a lot of output (much of which won't be familiar).
 ```{r}
 xyplot(resid(BKmod) ~ Protein, type=c("p", "r"), data=BK)
-summary(BKmod)
+msummary(BKmod)
 ```
 
 The residual standard error of 10.6 grams matches the value reported on page 194.

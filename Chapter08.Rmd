@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Regression Wisdom (Chapter 8)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "January 31, 2016"
+date: "February 6, 2016"
 output: 
   pdf_document:
     fig_height: 3
@@ -49,22 +49,57 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 ### Section 8.1: Examining residuals
 
 
-```{r}
-library(mosaic); library(readr)
-options(na.rm=TRUE)
-options(digits=3)
-(6.54 - 5.91)/0.56  # should be 1.1 sd better, see page 112
-```
+Figure 8.1 (page 220) displays the scatterplot of heart rate vs duration for the Penguins dataset (along with a superimposed regression line and a smoother).
 
 ```{r}
-Heptathlon <- 
-read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Womens_Heptathlon_2012.txt",
-  delim="\t")
-nrow(Heptathlon)  
-filter(Heptathlon, LJ >= max(LJ, na.rm=TRUE)) %>% data.frame()
-favstats(~ LJ, data=Heptathlon)
-(6.54 - mean(~ LJ, data=Heptathlon))/sd(~ LJ, data=Heptathlon)
+library(mosaic); library(readr)
+options(digits=3)
+Penguins <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Penguins.csv")
+xyplot(DiveHeartRate ~ Duration, ylab="Dive Heart Rate (bpm)", 
+       xlab="Duration (mins)", type=c("p", "r", "smooth"), data=Penguins)
 ```
+
+Figure 8.2 (page 220) displays the residuals from a linear regression model as a function of duration.
+
+```{r}
+Penguinmod <- lm(DiveHeartRate ~ Duration, data=Penguins)
+xyplot(resid(Penguinmod) ~ Duration, type=c("p", "r", "smooth"), data=Penguins)
+```
+
+Figure 8.3 (page 221) displays the histogram of residuals for the cereal data from Chapter 7.
+
+```{r}
+Cereals <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Cereals.csv")
+Cerealmod <- lm(calories ~ sugars, data=Cereals)
+histogram(~ resid(Cerealmod), width=7.5, center=3.75)
+```
+
+Figure 8.4 (page 221) displays a scatterplot of the residuals vs predicted values.  Without jittering, the display has an odd pattern.
+
+```{r}
+xyplot(resid(Cerealmod) ~ fitted(Cerealmod))
+```
+
+By adding some random noise we can more easily observe values that are shared by more than one cereal.
+
+```{r}
+xyplot(jitter(resid(Cerealmod)) ~ jitter(fitted(Cerealmod)))
+```
+
+Figure 8.5 (page 222) displays the scatterplot stratified by what shelf it is displayed on at the store.
+
+```{r}
+tally(~ shelf, data=Cereals)
+Cereals <- mutate(Cereals, shelfgrp = derivedFactor(
+  bottomshelf = shelf==1,
+  middleshelf = shelf==2,
+  topshelf = shelf==3
+))
+tally(~ shelfgrp, data=Cereals)
+xyplot(calories ~ sugars, group=shelfgrp, auto.key=TRUE, 
+  lwd=2, type=c("p", "r"), data=Cereals)
+```
+
 
 ### Section 8.2: Extrapolation and reaching beyond the data
 

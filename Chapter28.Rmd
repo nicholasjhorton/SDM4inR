@@ -49,28 +49,82 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 ### Section 28.1: What is multiple regression?
 
 
-```{r}
-library(mosaic); library(readr)
-options(na.rm=TRUE)
-options(digits=3)
-(6.54 - 5.91)/0.56  # should be 1.1 sd better, see page 112
-```
+The table on page 818 displays the results from the multiple regression model.
 
 ```{r}
-Heptathlon <- 
-read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Womens_Heptathlon_2012.txt",
-  delim="\t")
-nrow(Heptathlon)  
-filter(Heptathlon, LJ >= max(LJ, na.rm=TRUE)) %>% data.frame()
-favstats(~ LJ, data=Heptathlon)
-(6.54 - mean(~ LJ, data=Heptathlon))/sd(~ LJ, data=Heptathlon)
+library(mosaic); library(readr)
+options(digits=3)
+BodyFat <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Body_fat_complete.csv")
+BodyFatmod <- lm(PctBF ~ waist + Height, data=BodyFat)
+msummary(BodyFatmod)
 ```
 
 ### Section 28.2: Interpreting multiple regression coefficients
 
+Figure 28.1 on page 819 displays the scatterplot of percent body fat against height.
+
+```{r}
+xyplot(PctBF ~ Height, type=c("p", "r"), data=BodyFat)
+```
+
+Figure 28.2 (page 820) displays the scatterplot for a subset of the data (men with waist sizes between 36 and 38 inches).
+
+```{r}
+xyplot(PctBF ~ Height, type=c("p", "r"), data=filter(BodyFat, waist > 36, waist < 38))
+```
+
+Figure 28.3 (page 820) displays the partial regression plot for weight.
+
+```{r}
+BodyFatwaist <- lm(PctBF ~ waist, data=BodyFat)
+BodyFatheight <- lm(Height ~ waist, data=BodyFat)
+
+xyplot(resid(BodyFatwaist) ~ resid(BodyFatheight), 
+       ylab="% body fat residuals", xlab="Height residuals", type=c("p", "r"))
+```
+
 ### Section 28.3: The multiple regression model (assumptions and conditions)
 
+Figure 28.4 (page 822) displays scatterplots of residuals vs. height and waist, respectively.
+
+```{r}
+xyplot(resid(BodyFatmod) ~ Height, type=c("p", "r"), data=BodyFat)
+xyplot(resid(BodyFatmod) ~ waist, type=c("p", "r"), data=BodyFat)
+```
+
+Figure 28.5 (page 823) displays histogram and qq plot of the residuals.
+
+```{r}
+histogram(~ resid(BodyFatmod), fit="normal")
+qqmath(~ resid(BodyFatmod))
+```
+
+ 
 ### Section 28.4: Multiple regression inference
 
+Figure 28.6 (page 829) displays the scatterplot matrix infant mortality data.  
+
+```{r, fig.height=6}
+InfantMortality <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Infant_Mortality.csv")
+splom(select(InfantMortality, -State))
+```
+
+In addition, we display a scatterplot matrix for the motivating example from the chapter (BodyFat) using the `GGally` package.
+```{r, fig.height=6}
+subsetBodyFat <- select(BodyFat, PctBF, Height, waist)
+library(GGally)
+ggpairs(subsetBodyFat)
+```
+
+ 
 ### Section 28.5: Comparing multiple regression models
 
+We may want to compare which of our models provides the most parsimonious fit to these data.
+
+```{r}
+msummary(BodyFatheight)
+msummary(BodyFatwaist)
+msummary(BodyFatmod)
+```
+
+The adjusted R-squared value of 0.711 is considerably higher for 
