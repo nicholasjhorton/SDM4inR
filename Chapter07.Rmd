@@ -48,33 +48,61 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 
 ### Section 7.1: Least squares: the line of best fit
 
+Figure 7.2 (page 183) displays a scatterplot of the Burger King data with a superimposed regression line.
 
 ```{r}
 library(mosaic); library(readr)
-options(na.rm=TRUE)
 options(digits=3)
-(6.54 - 5.91)/0.56  # should be 1.1 sd better, see page 112
+BK <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Burger_King_Items.csv")
+names(BK)  
+xyplot(Fat ~ Protein, ylab="Fat (gm)", xlab="Protein (gm)", type=c("p", "r"), data=BK)
 ```
 
+We can calculate the residual for a particular value with 31 grams of protein.
+
 ```{r}
-Heptathlon <- 
-read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Womens_Heptathlon_2012.txt",
-  delim="\t")
-nrow(Heptathlon)  
-filter(Heptathlon, LJ >= max(LJ, na.rm=TRUE)) %>% data.frame()
-favstats(~ LJ, data=Heptathlon)
-(6.54 - mean(~ LJ, data=Heptathlon))/sd(~ LJ, data=Heptathlon)
+BKmod <- lm(Fat ~ Protein, data=BK)
+BKfun <- makeFun(BKmod)
+BKfun(31)    # predicted value for a item with 31 grams of protein
 ```
 
 ### Section 7.2 The linear model
 
+```{r}
+coef(BKmod)
+BKfun(0)
+BKfun(32) - BKfun(31)
+
 ### Section 7.3 Finding the least squares line
+
+```{r}
+sx <- sd(~ Protein, data=BK); sx
+sy <- sd(~ Fat, data=BK); sy
+r <- cor(Protein ~ Fat, data=BK); r   # same as cor(Fat ~ Protein)!
+r*sy/sx
+coef(BKmod)[2]
+```
+
 
 ### Section 7.4 Regression to the mean
 
 ### Section 7.5 Examining the residuals
 
+Figure 7.5 (page 193) displays the scatterplot of residuals as a function of the amount of protein.
+
+The `summary` function generates a lot of output (much of which won't be familiar).
+```{r}
+xyplot(resid(BKmod) ~ Protein, type=c("p", "r"), data=BK)
+summary(BKmod)
+```
+
+The residual standard error of 10.6 grams matches the value reported on page 194.
+
 ### Section 7.6 R-squared: variation accounted for by the model
+
+```{r}
+rsquared(BKmod)
+```
 
 ### Section 7.7 Regression assumptions and conditions
 
