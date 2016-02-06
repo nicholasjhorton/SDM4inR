@@ -1,0 +1,80 @@
+---
+title: "SDM4 in R: Regression Wisdom (Chapter 8)"
+author: "Nicholas Horton (nhorton@amherst.edu)"
+date: "January 31, 2016"
+output: 
+  pdf_document:
+    fig_height: 3
+    fig_width: 6
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 4
+    fig_width: 6
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r, include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+
+```{r, include=FALSE}
+# Load additional packages here.  Uncomment the line below to use Project MOSAIC data sets.
+# require(mosaicData)   
+```
+
+## Introduction and background 
+
+This document is intended to help describe how to undertake analyses introduced 
+as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+
+## Chapter 8: Regression Wisdom
+
+### Section 8.1: Examining residuals
+
+
+```{r}
+library(mosaic); library(readr)
+options(na.rm=TRUE)
+options(digits=3)
+(6.54 - 5.91)/0.56  # should be 1.1 sd better, see page 112
+```
+
+```{r}
+Heptathlon <- 
+read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Womens_Heptathlon_2012.txt",
+  delim="\t")
+nrow(Heptathlon)  
+filter(Heptathlon, LJ >= max(LJ, na.rm=TRUE)) %>% data.frame()
+favstats(~ LJ, data=Heptathlon)
+(6.54 - mean(~ LJ, data=Heptathlon))/sd(~ LJ, data=Heptathlon)
+```
+
+### Section 8.2: Extrapolation and reaching beyond the data
+
+### Section 8.3: Outliers, leverage, and influence
+
+### Section 8.4: Lurking variables and causation
+
+### Section 8.5: Working with summary values
+
