@@ -33,10 +33,6 @@ opts_chunk$set(
   tidy=FALSE,     # display code as typed
   size="small"    # slightly smaller font for code
 )
-
-```{r, include=FALSE}
-# Load additional packages here.  Uncomment the line below to use Project MOSAIC data sets.
-# require(mosaicData)   
 ```
 
 ## Introduction and background 
