@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Displaying and Describing Quantitative Data (Chapter 3)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "January 31, 2016"
+date: "February 18, 2016"
 output: 
   pdf_document:
     fig_height: 4
@@ -55,12 +55,12 @@ options(digits=3)
 Tsunami <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Tsunami_Earthquakes.txt", 
   delim="\t")
 nrow(Tsunami)   
-histogram(~ Magnitude, width=0.5, center=0.25, type="count", data=Tsunami)
-histogram(~ Magnitude, width=0.5, center=0.25, type="percent", data=Tsunami)
-histogram(~ Magnitude, width=0.5, center=0.25, data=Tsunami)
+histogram(~ Magnitude, width=0.5, center=0.5/2, type="count", data=Tsunami)
+histogram(~ Magnitude, width=0.5, center=0.5/2, type="percent", data=Tsunami)
+histogram(~ Magnitude, width=0.5, center=0.5/2, data=Tsunami)
 ```
 
-Note that Figure 3.3 on page 45 displays the second of these histograms (with the y-axis measured by percent in each bar).  The first histogram displays the count and the last the density (where the total area of the bars sums to 1).
+Note that Figure 3.3 on page 45 displays the second of these histograms (with the y-axis measured by percent in each bar).  The first histogram displays the count and the last the density (where the total area of the bars adds up to 1).
 
 ```{r}
 Pulse_rates <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Pulse_rates.txt",
@@ -126,4 +126,6 @@ var(~ Magnitude, data=recent)
 sqrt(var(~ Magnitude, data=recent))
 0.702^2
 ```
+
+The standard deviation squared equals the variance.
 
