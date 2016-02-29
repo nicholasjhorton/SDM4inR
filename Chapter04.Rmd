@@ -118,3 +118,6 @@ nrow(CEO)
 CEO <- mutate(CEO, log10salary = log10(One_Year_Pay*1000000))
 histogram(~ log10salary, width=.25, center=.124, data=CEO)
 ```
+
+On the log 10 scale, we can roughly interpret the values as the number
+of digits in the CEO salary.
