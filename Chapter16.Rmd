@@ -55,7 +55,7 @@ library(mosaic); library(readr); options(digits=3)
 dbinom(0, size=1, prob=0.2)  # Probability that you don't get Hope's picture
 dbinom(1, size=1, prob=0.2)  # Probability that you do
 dgeom(1, prob=0.2)  # Probability that you get it on the second try P(X=1)
-# Note that the geometric doesn't include the final success!
+# Note that the geometric in R doesn't include the final success!
 ```
 
 ### Section 16.2: The Geometric model
@@ -64,7 +64,7 @@ We can replicatethe example from page 414:
 
 ```{r}
 p <- 0.09; p
-plotDist("geom", p, xlim=c(-1, 40), main="Geometric distribution")
+plotDist("geom", p, xlim=c(-1, 40), xlab="x", ylab="P(X=x)", main="Geometric distribution")
 1/p   # true expected value
 mean(~ rgeom(20000, prob=p)) #  simulation to check
 ```
@@ -87,7 +87,8 @@ Let's replicate the example on page 417:
 ```{r}
 p <- 0.2; p    # back to Hope Solo example
 n <- 5
-plotDist("binom", params=c(size=n, prob=p), xlim=c(-0.2, 5.2), main="Binomial distribution")
+plotDist("binom", params=c(size=n, prob=p), xlim=c(-0.2, 5.2), 
+         xlab="x", ylab="P(X=x)", main="Binomial distribution")
 n*p   # true expected value
 n*p*(1-p)  # true variance
 mysamp <- rbinom(20000, size=n, prob=p) #  simulation to check
@@ -109,11 +110,47 @@ Let's replicate the example on page 419:
 
 ```{r}
 p <- 0.06; n <- 32000
-plotDist("binom", params=list(n, p))
+plotDist("binom", params=list(n, p), xlab="x", ylab="P(X=x)")
 ex <- n*p; varx <- n*p*(1-p)
-plotDist("norm", params=list(ex, sqrt(varx)))
+plotDist("norm", params=list(ex, sqrt(varx)), xlab="x", ylab="f(x)")
 pbinom(1849, n, p)
 pnorm(1849, ex, sqrt(varx))
 ```
 
 Your parents had to use the normal approximation.  The good news is that you don't have to if you use R.
+
+### Section 16.5: The continuity correction
+
+Let's replicate the example on page 421 to demonstrate that we don't need the continuity correction if we calculate the exact distribution of the binomial.
+
+```{r}
+p <- 0.2; n <- 50
+dbinom(10, n, p)
+pnorm(10.5, n*p, sqrt(n*p*(1-p))) - pnorm(9.5, n*p, sqrt(n*p*(1-p)))  # continuity correction
+```
+
+### Section 16.6: The Poisson model
+
+Let's replicate the example on page 424:
+
+```{r}
+lambda <- 35000*0.00011
+plotDist("pois", lambda, xlab="x", ylab="P(X=x)")
+1 - ppois(7, lambda)
+```
+
+### Section 16.7: Uniform and exponential
+
+Let's replicate the example on page 426 for the uniform distribution:
+
+```{r}
+x <- runif(20000, min=0, max=20)
+mean(~ x)
+sd(~ x)
+```
+
+and on page 427 for the exponential distribution:
+```{r}
+plotDist("exp", 1, xlim=c(0, 5), xlab="x", ylab="f(x)")
+pexp(1/3, rate=4)   # rate is 1/E[X]
+```

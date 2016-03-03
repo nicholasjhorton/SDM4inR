@@ -81,7 +81,7 @@ sqrt(vard)
 
 ### Section 15.5: Continuous random variables
 
-Let's replicate FIgure 15.1 (page 400):
+Let's replicate Figure 15.1 (page 400):
 
 ```{r}
 xpnorm(c(-1, 1), mean=0, sd=1)
@@ -91,6 +91,7 @@ and the Think/Show/Tell/Think on pages 402 and 403:
 
 ```{r}
 sdval <- sqrt(4.50); sdval
+plotDist("norm", params=list(18, sdval), xlab="x", ylab="f(x)")
 xpnorm(20, mean=18, sd=sdval)  # note how exact value is different from the table!
 zval <- (20-18)/sdval; zval
 xpnorm(zval, mean=0, sd=1)    
