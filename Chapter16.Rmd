@@ -1,5 +1,5 @@
 ---
-title: "SDM4 in R: Randomness and Probability (Chapter 15)"
+title: "SDM4 in R: Probability Models (Chapter 16)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
 date: "March 3, 2016"
 output: 
@@ -44,55 +44,76 @@ file as well as the associated R Markdown reproducible analysis source file used
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
-## Chapter 15: Randomness and Probability
+## Chapter 16: Probability Models
 
-### Section 15.1: Center (the Expected Value)
+### Section 16.1: Bernoulli models
 
-We can replicate the calculation on page 390:
+We can replicate the calculation on page 413:
 
 ```{r}
 library(mosaic); library(readr); options(digits=3)
-x <- c(10000, 5000, 0)
-prob <- c(1/1000, 2/1000, 997/1000)
-sum(prob)   # sums to 1
-expect <- sum(x*prob); expect  # expected value
+dbinom(0, size=1, prob=0.2)  # Probability that you don't get Hope's picture
+dbinom(1, size=1, prob=0.2)  # Probability that you do
+dgeom(1, prob=0.2)  # Probability that you get it on the second try P(X=1)
+# Note that the geometric doesn't include the final success!
 ```
 
-### Section 15.2: Spread (The Standard Deviation)
+### Section 16.2: The Geometric model
 
-We can continue with the example from page 392:
+We can replicatethe example from page 414:
 
 ```{r}
-xminmu <- x - expect; xminmu
-myvar <- sum(xminmu^2*prob); myvar
-sd <- sqrt(myvar); sd
+p <- 0.09; p
+plotDist("geom", p, xlim=c(-1, 40), main="Geometric distribution")
+1/p   # true expected value
+mean(~ rgeom(20000, prob=p)) #  simulation to check
 ```
 
-### Section 15.3: Shifting and Combining Random Variables
-
-Let's replicate the values from the example on page 394:
+and the Think/Show/Tell on pages 415-416:
 
 ```{r}
-ex <- 5.83; varx <- 8.62^2
-ed <- ex+5; ed
-vard <- varx; vard
-sqrt(vard)
+p <- 0.06
+dgeom(0, prob=p)
+dgeom(1, prob=p)
+dgeom(2, prob=p)
+dgeom(3, prob=p)
+pgeom(3, prob=p)
 ```
 
-### Section 15.5: Continuous random variables
+### Section 16.3: The Binomial model
 
-Let's replicate FIgure 15.1 (page 400):
+Let's replicate the example on page 417:
 
 ```{r}
-xpnorm(c(-1, 1), mean=0, sd=1)
+p <- 0.2; p    # back to Hope Solo example
+n <- 5
+plotDist("binom", params=c(size=n, prob=p), xlim=c(-0.2, 5.2), main="Binomial distribution")
+n*p   # true expected value
+n*p*(1-p)  # true variance
+mysamp <- rbinom(20000, size=n, prob=p) #  simulation to check
+mean(~ mysamp)
+var(~ mysamp)
+dbinom(2, size=5, prob=p)
 ```
 
-and the Think/Show/Tell/Think on pages 402 and 403:
+or the SPAM example on page 418:
+```
+dbinom(1, size=25, prob=0.09)
+dbinom(2, size=25, prob=0.09)
+sum(dbinom(1:2, size=25, prob=0.09))
+```
+
+### Section 16.4: Normal approximation to the binomial
+
+Let's replicate the example on page 419:
 
 ```{r}
-sdval <- sqrt(4.50); sdval
-xpnorm(20, mean=18, sd=sdval)  # note how exact value is different from the table!
-zval <- (20-18)/sdval; zval
-xpnorm(zval, mean=0, sd=1)    
+p <- 0.06; n <- 32000
+plotDist("binom", params=list(n, p))
+ex <- n*p; varx <- n*p*(1-p)
+plotDist("norm", params=list(ex, sqrt(varx)))
+pbinom(1849, n, p)
+pnorm(1849, ex, sqrt(varx))
 ```
 
+Your parents had to use the normal approximation.  The good news is that you don't have to if you use R.
