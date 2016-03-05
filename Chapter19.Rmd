@@ -1,11 +1,11 @@
 ---
-title: "SDM4 in R: Confidence Intervals for Proportions (Chapter 18)"
+title: "SDM4 in R: Testing Hypotheses about Proportions (Chapter 19)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
 date: "March 5, 2016"
 output: 
   pdf_document:
     fig_height: 2.8
-    fig_width: 6
+    fig_width: 7
   html_document:
     fig_height: 3
     fig_width: 5
@@ -45,62 +45,33 @@ file as well as the associated R Markdown reproducible analysis source file used
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
-## Chapter 18: Confidence intervals for proportions
+## Chapter 19: Testing hypotheses for proportions
 
-### Section 18.1: A confidence interval
+### Section 19.1: Hypotheses
 
-The Facebook survey of 156 respondents yielded 48 who updated their status every day (or more often).
-
-```{r}
-n <- 156
-binom.test(48, n)    # exact binomial
-```
-
-Calculation on page 473
-```{r}
-phat <- 48/n; phat
-sep <- sqrt(phat*(1-phat)/n); sep    # matches value on page 473
-interval <- phat + c(-2, 2)*sep; interval
-```
-
-### Section 18.2: Interpreting confidence intervals
-
-```{r warning=FALSE}
-set.seed(1988)
-CIsim(n=100, samples=20)
-```
-
-We would expect 19 out of 20 of the intervals to cover the true (population) value, but here only 18 out of 20 actually covered that value (see Figure at top of page 476).
-
-### Section 18.3: Margin of error
-
-We can replicate the calculation for the "For Example: Finding the margin of error Take 1" (page 478)
+We can reproduce the calculation in Figure 19.1 (page 495).
 
 ```{r}
-sdp <- sqrt(.5*.5/1010); sdp   # worst case margin of error (based on p=0.5)
-me <- 2*sdp; me
+sdp <- sqrt(.2*.8/400); sdp
+xpnorm(0.17, mean=0.20, sd=sdp)
+zval <- (0.17 - 0.20)/sdp; zval
+pnorm(zval, mean=0, sd=1)
 ```
 
-We can replicate the calculation for the "For Example: Finding the margin of error Take 1" (pages 478-479)
+### Section 19.3: Reasoning of hypothesis testing
+
+The "For Example (page 499)" lays out how to find a p-value for the one proportion z-test.
 
 ```{r}
-qnorm(.95, mean=0, sd=1)   # z-star for 90% confidence interval
-sep <- sqrt(.4*.6/1010); sep
-me <- 1.6445*sep; me
+y <- 61; n <- 90; phat <- y/n; phat
+nullp <- 0.8
+sdp <- sqrt(nullp*(1-nullp)/n); sdp
+onesidep <- xpnorm(phat, mean=nullp, sd=sdp); onesidep
+twosidep <- 2*onesidep; twosidep
 ```
 
-### Section 18.4: Assumptions
-
-We can replicate the calculation for the "For Example: choosing a sample size" (page 482)
+or we can carry out the exact test (not described by the book):
 
 ```{r}
-zstar <- qnorm(.975, mean=0, sd=1); zstar
-me <- 0.02 # desired margin of error
-p <- 0.40
-n <- (zstar*sqrt(p*(1-p))/me)^2; n
+binom.test(y, n, p=nullp)
 ```
-
-We will need about 2305 subjects to yield a margin of error of 2% under these assumptions.
-
-
-
