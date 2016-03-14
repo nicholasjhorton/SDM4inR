@@ -1,5 +1,5 @@
 ---
-title: "SDM4 in R: Inferences about Means (Chapter 20)"
+title: "SDM4 in R: Comparing Groups (Chapter 22)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
 date: "March 14, 2016"
 output: 
@@ -45,53 +45,10 @@ file as well as the associated R Markdown reproducible analysis source file used
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
-## Chapter 20: Inferences about Means
+## Chapter 22: Comparing Groups
 
-### Section 20.1: The Central Limit Theorem
-
-Let's begin by reproducing the figure on the bottom of page 519.
+### Section 22.1: The standard deviation of a difference
 
 ```{r}
-mu <- 1309
-sd <- 15.7
-xpnorm(c(mu-3*sd, mu-2*sd, mu-sd, mu+sd, mu+2*sd, mu+3*sd), mean=mu, sd=sd)
+# XX
 ```
-
-### Section 20.2: Gosset's t
-
-Figure 20.1 (page 521) displays a normal curve (dashed green curve) and a t-model with 2 degrees of freedom (solid blue curve).
-
-```{r fig.keep="last"}
-plotDist("norm", lty=2, col="green", lwd=2)
-plotDist("t", params=2, lty=1, lwd=2, col="blue", add=TRUE)
-```
-
-We can reproduce the calculations for the Farmed salmon example (pages 523-524) using summary statistics:
-
-```{r}
-n <- 150; ybar <- 0.0913; s = 0.0495
-tstar <- qt(0.975, df=n-1); tstar
-ybar + c(-tstar, tstar)*s/sqrt(n)
-```
-
-or directly:
-
-```{r}
-Salmon <- read.csv("http://www.amherst.edu/~nhorton/sdm4/data/Farmed_Salmon.csv")
-favstats(~ Mirex, data=Salmon)
-histogram(~ Mirex, width=0.01, center=0.01/2, data=Salmon)
-t.test(~ Mirex, data=Salmon)
-```
-
-We note that the distribution of measurements is not particularly normal.
-
-#### Section 20.4: A hypothesis test for the mean
-
-We can carry out the one-sided test outlined on page 530:
-
-```{r}
-tval <- (.0913-0.08)/0.0040; tval
-1-xpt(tval, df=149)
-```
-
-
