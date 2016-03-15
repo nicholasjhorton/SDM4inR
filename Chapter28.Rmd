@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression (Chapter 28)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "February 6, 2016"
+date: "March 15, 2016"
 output: 
   pdf_document:
     fig_height: 3
@@ -110,7 +110,7 @@ splom(select(InfantMortality, -State))
 ```
 
 In addition, we display a scatterplot matrix for the motivating example from the chapter (BodyFat) using the `GGally` package.
-```{r, fig.height=6}
+```{r, message=FALSE, fig.height=6}
 subsetBodyFat <- select(BodyFat, PctBF, Height, waist)
 library(GGally)
 ggpairs(subsetBodyFat)
@@ -127,4 +127,5 @@ msummary(BodyFatwaist)
 msummary(BodyFatmod)
 ```
 
-The adjusted R-squared value of 0.711 is considerably higher for 
+The adjusted R-squared value of 0.711 is considerably higher for the model
+with both predictors (though the model with just waist has an adjusted R-squared value of 0.677).

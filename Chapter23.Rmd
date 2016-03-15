@@ -1,5 +1,5 @@
 ---
-title: "SDM4 in R: Comparing Groups (Chapter 22)"
+title: "SDM4 in R: Paired Samples (Chapter 23)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
 date: "March 15, 2016"
 output: 
@@ -45,9 +45,9 @@ file as well as the associated R Markdown reproducible analysis source file used
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
-## Chapter 22: Comparing Groups
+## Chapter 23: Paired Samples
 
-### Section 22.1: The standard deviation of a difference
+### Section 23.1: Paired data
 
 ```{r}
 # XX
