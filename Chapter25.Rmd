@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Inferences for Regression (Chapter 25)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "March 14, 2016"
+date: "March 28, 2016"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -103,13 +103,16 @@ Craters <- mutate(Craters,
                   logDiam = log(Diam.km.),
                   logAge = log(age..Ma.))
 Cratermod <- lm(logDiam ~ logAge, data=Craters)
-favstats(~ logAge, data=Craters)
+favstats(~ logAge, data=Craters)   # note example in book has n=39
 ```
 
-NEED TO FIGURE OUT HOW TO GET DOWN TO 39 obs!
-
-page 707: 
-I'm 95% confident that terrestrial craters 5 million years old average between 2.8 and 10 km in diameter.   (was 0.452 and 1.00 on original scale)
+```{r}
+confpred <- predict(Cratermod, interval="confidence")
+intpred <- predict(Cratermod, interval="prediction")
+select(Craters, -Name) %>% head(., 3)
+head(confpred, 3)
+head(intpred, 3)
+```
 
 #### Section 25.7: Logistic regression
 
@@ -118,6 +121,7 @@ The Pima Indian dataset example is given on pages 708-712.
 Diabetes <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Pima_Indians_Diabetes.csv")
 Diabetes <- filter(Diabetes, BMI>0)  # get rid of missing values for BMI
 xyplot(Diabetes ~ BMI, type=c("p", "r", "smooth"), data=Diabetes)
+bwplot(BMI ~ as.factor(Diabetes), data=Diabetes)
 ```
 
 ```{r}
