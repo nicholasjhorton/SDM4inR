@@ -1,0 +1,129 @@
+---
+title: "SDM4 in R: Multiple Regression Wisdom (Chapter 29)"
+author: "Nicholas Horton (nhorton@amherst.edu)"
+date: "April 3, 2016"
+output: 
+  pdf_document:
+    fig_height: 2.8
+    fig_width: 7
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 4
+    fig_width: 6
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+options(digits=3)
+```
+
+```{r, include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+```
+
+## Introduction and background 
+
+This document is intended to help describe how to undertake analyses introduced 
+as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+
+## Chapter 29: Multiple Regression Wisdom
+
+
+```{r}
+library(mosaic); library(readr)
+Coasters <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Roller_coasters_2014.csv")
+# Name,Park,Track,Speed,Height,Drop,Length,Duration,Inversions,Opened
+glimpse(Coasters)
+tally(~ Speed, data=Coasters)
+filter(Coasters, Speed=="*100" | Speed=="*56")
+```
+Note that two of the observations for speed have special characters in them.
+We first need to address these data irregularities:
+```{r}
+library(tidyr)
+Coasters <- mutate(Coasters, Speed = extract_numeric(Speed))
+```
+To match the output we need to remove these two coasters.
+
+```{r}
+dim(Coasters)
+Coasters <- filter(Coasters, 
+  !(Name %in% c("Tower of Terror", "Wild Beast")))
+dim(Coasters)
+```
+
+
+Figure 29.1 (page 860) displays the scatterplot of duration as a function
+of speed.
+
+```{r}
+xyplot(Duration ~ Speed, type=c("p", "r"), xlab="Speed (mph)",
+  ylab="Duration (sec)", data=Coasters)
+```
+
+We can also replicate the regression model (and regression diagnostics)
+on the bottom of page 860.
+
+```{r}
+mod1 <- lm(Duration ~ Speed, data=Coasters)
+msummary(mod1)
+xyplot(resid(mod1) ~ fitted(mod1), xlab="Predicted (sec)",
+  ylab="Residuals (sec)", type=c("p", "r"))
+```
+
+### Section 29.1: Indicators
+
+The model displayed on the bottom of page 861 is restricted to 
+roller coasters with no inversions.
+```{r}
+noinversion <- filter(Coasters, Inversions==0)  # 0 is No (or FALSE)
+mod2 <- lm(Duration ~ Speed, data=noinversion)
+msummary(mod2)
+```
+
+We can do the same for coasters with inversions:
+```{r}
+mod3 <- lm(Duration ~ Speed, data=filter(Coasters, Inversions==1))
+msummary(mod3)
+```
+
+The model at the top of page 862 adds the Inversion indicator to the
+model.
+
+```{r}
+mod4 <- lm(Duration ~ Speed + Inversions, data=Coasters)
+msummary(mod4)
+mod4fun <- makeFun(mod4)
+```
+
+We can generate predicted values from this model.
+```{r}
+mod4fun(Speed=55, Inversions==0)  # Hayabusa
+mod4fun(Speed=60.3, Inversions==1)  # Hangman
+```
+
+```{r}
+
+
+
+
+

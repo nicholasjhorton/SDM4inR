@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Inferences for Regression (Chapter 25)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "March 28, 2016"
+date: "April 3, 2016"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -75,17 +75,18 @@ confint(BodyFatmod)    # see page 700
 ```{r}
 # Figure 25.4 
 xyplot(PctBF ~ waist, xlab="Waist (in.)", 
-       type=c("p", "r", "smooth"), data=BodyFat)
+       type=c("p", "r", "smooth"), data=BodyFat)   # see smoothers on p.92-93
 # Figure 25.5
 xyplot(resid(BodyFatmod) ~ waist, xlab="Waist (in.)", 
-       type=c("p", "r", "smooth"), data=BodyFat)
+       type=c("p", "r", "smooth"), data=BodyFat)   
 # equiv of Figure 25.6   note that Figure 25.6 refers to the diamonds dataset
 xyplot(resid(BodyFatmod) ~ fitted(BodyFatmod), xlab="Predicted values", 
        ylab="Residuals",
        type=c("p", "r", "smooth"), data=BodyFat)
 # Figure on bottom of page 695
-qqmath(~ resid(BodyFatmod))
+xqqmath(~ resid(BodyFatmod))
 ```
+
 
 #### Section 25.6: Confidence intervals for predicted values
 
@@ -93,7 +94,7 @@ We can reproduce Figure 25.12 (page 707) using the `panel.lmbands()` function.
 
 ```{r}
 xyplot(PctBF ~ waist, xlab="Waist (in.)", 
-       panel=panel.lmbands, cex=0.2, data=BodyFat)
+       panel=panel.lmbands, lwd=2, cex=0.2, data=BodyFat)
 ```
 
 ```{r}
@@ -118,13 +119,15 @@ head(intpred, 3)
 
 The Pima Indian dataset example is given on pages 708-712.
 ```{r}
-Diabetes <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Pima_Indians_Diabetes.csv")
-Diabetes <- filter(Diabetes, BMI>0)  # get rid of missing values for BMI
-xyplot(Diabetes ~ BMI, type=c("p", "r", "smooth"), data=Diabetes)
-bwplot(BMI ~ as.factor(Diabetes), data=Diabetes)
+Pima <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Pima_Indians_Diabetes.csv")
+Diabetes <- filter(Pima, BMI>0)  # get rid of missing values for BMI
+bwplot(BMI ~ as.factor(Diabetes), data=Pima)
 ```
 
-```{r}
-pimamod <- glm(Diabetes ~ BMI, family="binomial", data=Diabetes)
+```{r fig.keep="last"}
+pimamod <- glm(Diabetes ~ BMI, family="binomial", data=Pima)
+f2 <- makeFun(pimamod)
+xyplot(Diabetes ~ BMI, data=Pima)
+plotFun(f2, add=TRUE)
 msummary(pimamod)
 ```
