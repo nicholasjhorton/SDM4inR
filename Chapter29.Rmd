@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression Wisdom (Chapter 29)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "April 3, 2016"
+date: "April 4, 2016"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -19,7 +19,7 @@ output:
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
-options(digits=3)
+options(digits=4)
 ```
 
 ```{r, include=FALSE}
@@ -117,11 +117,9 @@ mod4fun <- makeFun(mod4)
 
 We can generate predicted values from this model.
 ```{r}
-mod4fun(Speed=55, Inversions==0)  # Hayabusa
-mod4fun(Speed=60.3, Inversions==1)  # Hangman
+mod4fun(Speed=55, Inversions=0)  # Hayabusa
+mod4fun(Speed=60.3, Inversions=1)  # Hangman
 ```
-
-```{r}
 
 
 
