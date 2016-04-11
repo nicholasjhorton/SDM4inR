@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression Wisdom (Chapter 29)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "April 4, 2016"
+date: "April 9, 2016"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -121,7 +121,33 @@ mod4fun(Speed=55, Inversions=0)  # Hayabusa
 mod4fun(Speed=60.3, Inversions=1)  # Hangman
 ```
 
+On page 864 the Burger King example is introduced with a subset of items from
+the menu.
+```{r}
+BK <- read.csv("http://www.amherst.edu/~nhorton/sdm4/data/BK_items.csv", 
+               stringsAsFactors = FALSE)
+BKmod <- lm(Calories ~ Carbs.g. + Meat. + Carbs.g.*Meat., data=BK)
+msummary(BKmod)
+```
+The same predicted values can be calculated using this model.
 
+```{r}
+BKfun <- makeFun(BKmod)
+BKfun(Carbs.g=53, Meat="Y")
+BKfun(Carbs.g=43, Meat="N")
+```
 
+### Section 29.2: Diagnosing multiple regression models
 
-
+```{r}
+BK <- mutate(BK, resid = resid(BKmod), fitted=fitted(BKmod),
+             student=rstudent(BKmod), CooksD=cooks.distance(BKmod))
+mplot(BKmod, which=1)
+mplot(BKmod, which=2)
+mplot(BKmod, which=3)
+mplot(BKmod, which=4)
+favstats(~ CooksD, data=BK)
+BK[11,]   # or filter(BK, Carbs.g. > 0.486)
+mplot(BKmod, which=5)
+mplot(BKmod, which=6)
+```
