@@ -63,11 +63,11 @@ expect <- n*national
 cbind(ballplayer, expect)
 ```
 
-The Chi-Square p-values in the table on the bottom of page 658 can be verified using the `xqt()` function.
+The chi-square quantile values in the table on the bottom of page 658 can be verified using the `xqt()` function.
 ```{r}
 xqchisq(c(.90, .95, .975, .99, .995), df=1)
 ```
-This matches the first row.  Other values can be calculated by changing the
+These results match the first row: other values can be calculated by changing the
 `df` argument.
 
 The goodness of fit test on page 659 can be verified by calculating the
