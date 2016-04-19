@@ -95,7 +95,7 @@ model.tables(aovmod)
 The residual standard deviation can be calculated (page 759).
 
 ```{r}
-n <- 32; k <- 3
+n <- 32; k <- 4
 sp <- sqrt(sum(resid(aovmod)^2/(n-k))); sp
 sqrt(1410)
 ```
