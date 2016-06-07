@@ -80,13 +80,14 @@ with(Pulse_rates, stem(Pulse, scale=2))
 
 ### Section 3.3: Center
 
-See calculation on page 53.
+See calculation and Figure 3.11 on page 53.
+
 ```{r}
 recent <- filter(Tsunami, Year >= 1989, Year <= 2013)
 nrow(recent)   
 median(~ Magnitude, data=recent)
+histogram(~Magnitude,data=recent,width=0.2)
 ```
-
 
 ### Section 3.4: Spread
 
