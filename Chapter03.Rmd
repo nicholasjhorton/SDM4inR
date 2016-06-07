@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Displaying and Describing Quantitative Data (Chapter 3)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "February 18, 2016"
+date: "June 7, 2016"
 output: 
   pdf_document:
     fig_height: 4
@@ -86,7 +86,7 @@ See calculation and Figure 3.11 on page 53.
 recent <- filter(Tsunami, Year >= 1989, Year <= 2013)
 nrow(recent)   
 median(~ Magnitude, data=recent)
-histogram(~Magnitude,data=recent,width=0.2)
+histogram(~Magnitude, width=0.2, data=recent)
 ```
 
 ### Section 3.4: Spread
