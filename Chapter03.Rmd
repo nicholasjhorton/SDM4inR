@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Displaying and Describing Quantitative Data (Chapter 3)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "February 18, 2016"
+date: "June 7, 2016"
 output: 
   pdf_document:
     fig_height: 4
@@ -80,13 +80,14 @@ with(Pulse_rates, stem(Pulse, scale=2))
 
 ### Section 3.3: Center
 
-See calculation on page 53.
+See calculation and Figure 3.11 on page 53.
+
 ```{r}
 recent <- filter(Tsunami, Year >= 1989, Year <= 2013)
 nrow(recent)   
 median(~ Magnitude, data=recent)
+histogram(~Magnitude, width=0.2, data=recent)
 ```
-
 
 ### Section 3.4: Spread
 
