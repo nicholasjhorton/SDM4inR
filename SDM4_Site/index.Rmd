@@ -1,0 +1,7 @@
+---
+title: "Introduction"
+---
+
+These documents are intended to help describe how to undertake analyses introduced 
+as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.

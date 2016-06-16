@@ -1,0 +1,32 @@
+name: "SDM4-in-R"
+navbar:
+  title: "Stats Data & Models (version 4) in R"
+  type: inverse
+  left:
+
+    - text: "PDF and Rmd Files"
+      icon: fa-file
+      menu:
+        - text: "PDF and Rmd Files for Parts I-VII of SDM4"
+        - text: "Chapters 1-5 : Part I Exploring and Understanding Data"
+          href: partI.html
+        - text: "Chapters 6-9 : Part II Exploring Relationships Between Variables"
+          href: partII.html
+        - text: "Chapters 10-12 : Part III Gathering Data"
+          href: partIII.html
+        - text: "Chapters 13-16 : Part IV Randomness and Probability"
+          href: partIV.html
+        - text: "Chapters 17-21 : Part V From the Data at Hand to the World at Large"
+          href: partV.html
+        - text: "Chapters 22-25 : Part VI Accessing Associations Between Variables"
+          href: partVI.html
+        - text: "Chapters 26-29 : Part VII Inference When Variables are Related"
+          href: partVII.html
+
+    - text: "Other Resources"
+      icon: fa-lightbulb-o
+      href: other_resources.html
+  right:
+    - text: "About"
+      icon: fa-info
+      href: about.html

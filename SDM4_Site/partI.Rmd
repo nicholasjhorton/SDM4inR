@@ -1,0 +1,30 @@
+<h2>
+<center>
+"Part I Exploring and Understanding Data"
+</center>
+</h2>
+
+
+</br>
+<h4><right>.PDF Files</right></h4>
+</br>
+
+Title  | PDF File URL
+------------- | -------------
+Chapter 01 : Stats Starts Here | https://www3.amherst.edu/~nhorton/sdm4/Chapter01.pdf
+Chapter 02 : Displaying and Describing Categorical Data | https://www3.amherst.edu/~nhorton/sdm4/Chapter02.pdf
+Chapter 03 : Displaying and Summarizing Quantitative Data | https://www3.amherst.edu/~nhorton/sdm4/Chapter03.pdf
+Chapter 04 : Understanding and Comparing Distributions | https://www3.amherst.edu/~nhorton/sdm4/Chapter04.pdf
+Chapter 05 : The Standard Devitation as a Ruler and the Normal Model | https://www3.amherst.edu/~nhorton/sdm4/Chapter05.pdf
+
+</br>
+<h4><right>.Rmd Files</right></h4>
+</br>
+
+Title  | Rmd File URL
+------------- | -------------
+Chapter 01 : Stats Starts Here | https://www3.amherst.edu/~nhorton/sdm4/Chapter01.Rmd
+Chapter 02 : Displaying and Describing Categorical Data | https://www3.amherst.edu/~nhorton/sdm4/Chapter02.Rmd
+Chapter 03 : Displaying and Summarizing Quantitative Data | https://www3.amherst.edu/~nhorton/sdm4/Chapter03.Rmd
+Chapter 04 : Understanding and Comparing Distributions | https://www3.amherst.edu/~nhorton/sdm4/Chapter04.Rmd
+Chapter 05 : The Standard Devitation as a Ruler and the Normal Model | https://www3.amherst.edu/~nhorton/sdm4/Chapter05.Rmd

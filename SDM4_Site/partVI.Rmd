@@ -1,0 +1,29 @@
+<h2>
+<center>
+"Part VI Accessing Associations Between Variables"
+</center>
+</h2>
+
+
+</br>
+<h4><right>.PDF Files</right></h4>
+</br>
+
+Title  | PDF File URL
+------------- | -------------
+Chapter 22 : Comparing Groups | https://www3.amherst.edu/~nhorton/sdm4/Chapter22.pdf
+Chapter 23 : Paired Samples and Blocks | https://www3.amherst.edu/~nhorton/sdm4/Chapter23.pdf
+Chapter 24 : Comparing Counts | https://www3.amherst.edu/~nhorton/sdm4/Chapter24.pdf
+Chapter 25 : Inferences for Regression | https://www3.amherst.edu/~nhorton/sdm4/Chapter25.pdf
+
+
+</br>
+<h4><right>.Rmd Files</right></h4>
+</br>
+
+Title  | Rmd File URL
+------------- | -------------
+Chapter 22 : Comparing Groups | https://www3.amherst.edu/~nhorton/sdm4/Chapter22.Rmd
+Chapter 23 : Paired Samples and Blocks | https://www3.amherst.edu/~nhorton/sdm4/Chapter23.Rmd
+Chapter 24 : Comparing Counts | https://www3.amherst.edu/~nhorton/sdm4/Chapter24.Rmd
+Chapter 25 : Inferences for Regression | https://www3.amherst.edu/~nhorton/sdm4/Chapter25.Rmd

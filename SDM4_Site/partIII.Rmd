@@ -1,0 +1,26 @@
+<h2>
+<center>
+"Part III Gathering Data"
+</center>
+</h2>
+
+
+</br>
+<h4><right>.PDF Files</right></h4>
+</br>
+
+Title  | PDF File URL
+------------- | -------------
+Chapter 10 : Understanding Randomness | https://www3.amherst.edu/~nhorton/sdm4/Chapter10.pdf
+Chapter 11 : Sample Surveys | https://www3.amherst.edu/~nhorton/sdm4/Chapter11.pdf
+Chapter 12 : Experiments and Observational Studies | https://www3.amherst.edu/~nhorton/sdm4/Chapter12.pdf
+
+</br>
+<h4><right>.Rmd Files</right></h4>
+</br>
+
+Title  | Rmd File URL
+------------- | -------------
+Chapter 10 : Understanding Randomness | https://www3.amherst.edu/~nhorton/sdm4/Chapter10.Rmd
+Chapter 11 : Sample Surveys | https://www3.amherst.edu/~nhorton/sdm4/Chapter11.Rmd
+Chapter 12 : Experiments and Observational Studies | https://www3.amherst.edu/~nhorton/sdm4/Chapter12.Rmd

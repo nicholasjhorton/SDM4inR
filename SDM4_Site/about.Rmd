@@ -1,0 +1,9 @@
+---
+title: "SDM4 in R"
+---
+
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+<br>
+<br>
+<br>
+<p>Nicholas J Horton & Patrick S Frenett 2016</p>
