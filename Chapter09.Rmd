@@ -1,0 +1,61 @@
+---
+title: "SDM4 in R: Understanding Randomness (Chapter 9)"
+author: "Patrick Frenett (pfrenett19@amherst.edu)"
+date: "June 21, 2016"
+output: 
+  pdf_document:
+    fig_height: 3
+    fig_width: 6
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 4
+    fig_width: 6
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r, include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+```
+
+## Introduction and background 
+
+This document is intended to help describe how to undertake analyses introduced 
+as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+
+## Chapter 10: Understanding Randomness
+
+### Section 10.1: What is Randomness? 
+
+### Section 10.2: Simulating by Hand
+
+Bwplot from page 284.
+
+```{r}
+library(mosaic); library(readr)
+data <- c(5,4,7,5,18,6,5,4,6) 
+data$ID <- seq.int(nrow(data))
+
+bwplot(~data, data=data)
+```
