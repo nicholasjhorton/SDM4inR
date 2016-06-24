@@ -11,10 +11,10 @@
 
 Title  | PDF File URL
 ------------- | -------------
-Chapter 13 : From Randomness to Probability | https://www3.amherst.edu/~nhorton/sdm4/Chapter13.pdf
-Chapter 14 : Probability Rules! | https://www3.amherst.edu/~nhorton/sdm4/Chapter14.pdf
-Chapter 15 : Random Variables | https://www3.amherst.edu/~nhorton/sdm4/Chapter15.pdf
-Chapter 16 : Probability Models | https://www3.amherst.edu/~nhorton/sdm4/Chapter16.pdf
+Chapter 13 : From Randomness to Probability | https://www.amherst.edu/~nhorton/sdm4/Chapter13.pdf
+Chapter 14 : Probability Rules! | https://www.amherst.edu/~nhorton/sdm4/Chapter14.pdf
+Chapter 15 : Random Variables | https://www.amherst.edu/~nhorton/sdm4/Chapter15.pdf
+Chapter 16 : Probability Models | https://www.amherst.edu/~nhorton/sdm4/Chapter16.pdf
 
 </br>
 <h4><right>.Rmd Files</right></h4>
@@ -22,7 +22,7 @@ Chapter 16 : Probability Models | https://www3.amherst.edu/~nhorton/sdm4/Chapter
 
 Title  | Rmd File URL
 ------------- | -------------
-Chapter 13 : From Randomness to Probability | https://www3.amherst.edu/~nhorton/sdm4/Chapter13.Rmd
-Chapter 14 : Probability Rules! | https://www3.amherst.edu/~nhorton/sdm4/Chapter14.Rmd
-Chapter 15 : Random Variables | https://www3.amherst.edu/~nhorton/sdm4/Chapter15.Rmd
-Chapter 16 : Probability Models | https://www3.amherst.edu/~nhorton/sdm4/Chapter16.Rmd
+Chapter 13 : From Randomness to Probability | https://www.amherst.edu/~nhorton/sdm4/Chapter13.Rmd
+Chapter 14 : Probability Rules! | https://www.amherst.edu/~nhorton/sdm4/Chapter14.Rmd
+Chapter 15 : Random Variables | https://www.amherst.edu/~nhorton/sdm4/Chapter15.Rmd
+Chapter 16 : Probability Models | https://www.amherst.edu/~nhorton/sdm4/Chapter16.Rmd

@@ -11,9 +11,9 @@
 
 Title  | PDF File URL
 ------------- | -------------
-Chapter 10 : Understanding Randomness | https://www3.amherst.edu/~nhorton/sdm4/Chapter10.pdf
-Chapter 11 : Sample Surveys | https://www3.amherst.edu/~nhorton/sdm4/Chapter11.pdf
-Chapter 12 : Experiments and Observational Studies | https://www3.amherst.edu/~nhorton/sdm4/Chapter12.pdf
+Chapter 10 : Understanding Randomness | https://www.amherst.edu/~nhorton/sdm4/Chapter10.pdf
+Chapter 11 : Sample Surveys | https://www.amherst.edu/~nhorton/sdm4/Chapter11.pdf
+Chapter 12 : Experiments and Observational Studies | https://www.amherst.edu/~nhorton/sdm4/Chapter12.pdf
 
 </br>
 <h4><right>.Rmd Files</right></h4>
@@ -21,6 +21,6 @@ Chapter 12 : Experiments and Observational Studies | https://www3.amherst.edu/~n
 
 Title  | Rmd File URL
 ------------- | -------------
-Chapter 10 : Understanding Randomness | https://www3.amherst.edu/~nhorton/sdm4/Chapter10.Rmd
-Chapter 11 : Sample Surveys | https://www3.amherst.edu/~nhorton/sdm4/Chapter11.Rmd
-Chapter 12 : Experiments and Observational Studies | https://www3.amherst.edu/~nhorton/sdm4/Chapter12.Rmd
+Chapter 10 : Understanding Randomness | https://www.amherst.edu/~nhorton/sdm4/Chapter10.Rmd
+Chapter 11 : Sample Surveys | https://www.amherst.edu/~nhorton/sdm4/Chapter11.Rmd
+Chapter 12 : Experiments and Observational Studies | https://www.amherst.edu/~nhorton/sdm4/Chapter12.Rmd

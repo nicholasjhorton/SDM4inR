@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multifactor Analysis of Variance (Chapter 27)"
-author: "Patrick Frenett (pfrenett19@amherst.edu)"
-date: "June 8, 2016"
+author: "Nicholas Horton (nhorton@amherst.edu) and Patrick Frenett"
+date: "June 24, 2016"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -47,7 +47,7 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 
 ## Chapter 27: Multifactor Analysis of Variance
 
-Figure 27.1 on page 782 gives two boxplots.
+`bwplot` gives the two boxplots from figure 27.1 seen on page 782.
 
 ```{r}
 Darts <- read.csv("http://www.amherst.edu/~nhorton/SDM3/Chapter_29/Ch29_Darts.csv")
@@ -57,7 +57,7 @@ bwplot(Accuracy~Hand,data=Darts)
 
 ### Section 27.1: A Two-Factor ANOVA Model
 
-The summary of the table on page 784
+The `summary` function gives a numerical summary of the linear model seen on page 784.
 
 ```{r}
 lmDarts <- lm(Accuracy ~ Distance + Hand, data=Darts)
@@ -66,7 +66,7 @@ summary(aov(lmDarts))
 
 ### Section 27.2: Assumptions and Conditions
 
-Figures 27.2 and 27.3 showing hand and distance against accuracy (as well as adjusted hand and adjusted distance)
+Figures 27.2 and 27.3 showing hand and distance against accuracy (as well as adjusted hand and adjusted distance).
 
 ```{r}
 lmHand <- lm(Accuracy ~ Hand, data=Darts)
@@ -83,7 +83,7 @@ with(Darts,interaction.plot(Distance,Hand, Accuracy))
 
 ### Section 27.3: Interactions
 
-Interaction plot and ANOVA summary on page 797.
+Shown below is the interaction plot (figure 27.9) and ANOVA summary on page 797.
 
 ```{r}
 with(Darts,interaction.plot(Hand,Distance, Accuracy))

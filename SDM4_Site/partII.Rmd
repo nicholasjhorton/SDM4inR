@@ -11,10 +11,10 @@
 
 Title  | PDF File URL
 ------------- | -------------
-Chapter 06 : Scatterplots, Association, and Correlation | https://www3.amherst.edu/~nhorton/sdm4/Chapter06.pdf
-Chapter 07 : Linear Regression | https://www3.amherst.edu/~nhorton/sdm4/Chapter07.pdf
-Chapter 08 : Regression Wisdom | https://www3.amherst.edu/~nhorton/sdm4/Chapter08.pdf
-Chapter 09 : Re-expressing Data: Get it Straight! | https://www3.amherst.edu/~nhorton/sdm4/Chapter09.pdf
+Chapter 06 : Scatterplots, Association, and Correlation | https://www.amherst.edu/~nhorton/sdm4/Chapter06.pdf
+Chapter 07 : Linear Regression | https://www.amherst.edu/~nhorton/sdm4/Chapter07.pdf
+Chapter 08 : Regression Wisdom | https://www.amherst.edu/~nhorton/sdm4/Chapter08.pdf
+Chapter 09 : Re-expressing Data: Get it Straight! | https://www.amherst.edu/~nhorton/sdm4/Chapter09.pdf
 
 </br>
 <h4><right>.Rmd Files</right></h4>
@@ -22,7 +22,7 @@ Chapter 09 : Re-expressing Data: Get it Straight! | https://www3.amherst.edu/~nh
 
 Title  | Rmd File URL
 ------------- | -------------
-Chapter 06 : Scatterplots, Association, and Correlation | https://www3.amherst.edu/~nhorton/sdm4/Chapter06.Rmd
-Chapter 07 : Linear Regression | https://www3.amherst.edu/~nhorton/sdm4/Chapter07.Rmd
-Chapter 08 : Regression Wisdom | https://www3.amherst.edu/~nhorton/sdm4/Chapter08.Rmd
-Chapter 09 : Re-expressing Data: Get it Straight! | https://www3.amherst.edu/~nhorton/sdm4/Chapter09.Rmd
+Chapter 06 : Scatterplots, Association, and Correlation | https://www.amherst.edu/~nhorton/sdm4/Chapter06.Rmd
+Chapter 07 : Linear Regression | https://www.amherst.edu/~nhorton/sdm4/Chapter07.Rmd
+Chapter 08 : Regression Wisdom | https://www.amherst.edu/~nhorton/sdm4/Chapter08.Rmd
+Chapter 09 : Re-expressing Data: Get it Straight! | https://www.amherst.edu/~nhorton/sdm4/Chapter09.Rmd

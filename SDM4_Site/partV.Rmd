@@ -11,11 +11,11 @@
 
 Title  | PDF File URL
 ------------- | -------------
-Chapter 17 : Sampling Distribution Models | https://www3.amherst.edu/~nhorton/sdm4/Chapter17.pdf
-Chapter 18 : Confidence Intervals for Proportions | https://www3.amherst.edu/~nhorton/sdm4/Chapter18.pdf
-Chapter 19 : Testing Hypotheses about Proportions | https://www3.amherst.edu/~nhorton/sdm4/Chapter19.pdf
-Chapter 20 : Inferences about Means | https://www3.amherst.edu/~nhorton/sdm4/Chapter20.pdf
-Chapter 21 : More about Tests and Intervals | https://www3.amherst.edu/~nhorton/sdm4/Chapter21.pdf
+Chapter 17 : Sampling Distribution Models | https://www.amherst.edu/~nhorton/sdm4/Chapter17.pdf
+Chapter 18 : Confidence Intervals for Proportions | https://www.amherst.edu/~nhorton/sdm4/Chapter18.pdf
+Chapter 19 : Testing Hypotheses about Proportions | https://www.amherst.edu/~nhorton/sdm4/Chapter19.pdf
+Chapter 20 : Inferences about Means | https://www.amherst.edu/~nhorton/sdm4/Chapter20.pdf
+Chapter 21 : More about Tests and Intervals | https://www.amherst.edu/~nhorton/sdm4/Chapter21.pdf
 
 </br>
 <h4><right>.Rmd Files</right></h4>
@@ -23,8 +23,8 @@ Chapter 21 : More about Tests and Intervals | https://www3.amherst.edu/~nhorton/
 
 Title  | Rmd File URL
 ------------- | -------------
-Chapter 17 : Sampling Distribution Models | https://www3.amherst.edu/~nhorton/sdm4/Chapter17.Rmd
-Chapter 18 : Confidence Intervals for Proportions | https://www3.amherst.edu/~nhorton/sdm4/Chapter18.Rmd
-Chapter 19 : Testing Hypotheses about Proportions | https://www3.amherst.edu/~nhorton/sdm4/Chapter19.Rmd
-Chapter 20 : Inferences about Means | https://www3.amherst.edu/~nhorton/sdm4/Chapter20.Rmd
-Chapter 21 : More about Tests and Intervals | https://www3.amherst.edu/~nhorton/sdm4/Chapter21.Rmd
+Chapter 17 : Sampling Distribution Models | https://www.amherst.edu/~nhorton/sdm4/Chapter17.Rmd
+Chapter 18 : Confidence Intervals for Proportions | https://www.amherst.edu/~nhorton/sdm4/Chapter18.Rmd
+Chapter 19 : Testing Hypotheses about Proportions | https://www.amherst.edu/~nhorton/sdm4/Chapter19.Rmd
+Chapter 20 : Inferences about Means | https://www.amherst.edu/~nhorton/sdm4/Chapter20.Rmd
+Chapter 21 : More about Tests and Intervals | https://www.amherst.edu/~nhorton/sdm4/Chapter21.Rmd
