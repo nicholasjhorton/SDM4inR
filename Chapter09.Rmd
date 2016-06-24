@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Re-expressing Data: Get it Straight! (Chapter 9)"
-author: "Patrick Frenett (pfrenett19@amherst.edu)"
-date: "June 23, 2016"
+author: "Nicholas Horton (nhorton@amherst.edu) and Patrick Frenett"
+date: "June 24, 2016"
 output: 
   pdf_document:
     fig_height: 3

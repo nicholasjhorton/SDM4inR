@@ -51,8 +51,8 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 
 ```{r}
 Darts <- read.csv("http://www.amherst.edu/~nhorton/SDM3/Chapter_29/Ch29_Darts.csv")
-bwplot(Accuracy~Distance,data=Darts)
-bwplot(Accuracy~Hand,data=Darts)
+bwplot(Accuracy ~ Distance, data=Darts)
+bwplot(Accuracy ~ Hand, data=Darts)
 ```
 
 ### Section 27.1: A Two-Factor ANOVA Model
@@ -72,13 +72,13 @@ Figures 27.2 and 27.3 showing hand and distance against accuracy (as well as adj
 lmHand <- lm(Accuracy ~ Hand, data=Darts)
 lmDistance <- lm(Accuracy ~ Distance, data=Darts)
 
-bwplot(Accuracy~Hand,data=Darts)
-bwplot(resid(lmDistance)~Hand,data=Darts)
+bwplot(Accuracy ~ Hand, data=Darts)
+bwplot(resid(lmDistance) ~ Hand, data=Darts)
 
-bwplot(Accuracy~Distance,data=Darts)
-bwplot(resid(lmHand)~Distance,data=Darts)
+bwplot(Accuracy ~ Distance, data=Darts)
+bwplot(resid(lmHand) ~ Distance, data=Darts)
 
-with(Darts,interaction.plot(Distance,Hand, Accuracy))
+with(Darts, interaction.plot(Distance, Hand, Accuracy))
 ```
 
 ### Section 27.3: Interactions
@@ -86,7 +86,7 @@ with(Darts,interaction.plot(Distance,Hand, Accuracy))
 Shown below is the interaction plot (figure 27.9) and ANOVA summary on page 797.
 
 ```{r}
-with(Darts,interaction.plot(Hand,Distance, Accuracy))
+with(Darts, interaction.plot(Hand, Distance, Accuracy))
 lmDarts <- lm(Accuracy ~ Distance*Hand, data=Darts)
 summary(aov(lmDarts))
 ```

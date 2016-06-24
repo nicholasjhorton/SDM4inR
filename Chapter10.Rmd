@@ -1,6 +1,6 @@
 ---
 title: "SDM4 in R: Understanding Randomness (Chapter 10)"
-author: "Patrick Frenett (pfrenett19@amherst.edu)"
+author: "Nicholas Horton (nhorton@amherst.edu) and Patrick Frenett"
 date: "June 21, 2016"
 output: 
   pdf_document:
