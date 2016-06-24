@@ -50,7 +50,7 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 
 ### Section 10.2: Simulating by Hand
 
-Bwplot from page 284.
+Shown below is the box and whisker plot from page 284.
 
 ```{r}
 library(mosaic); library(readr)
