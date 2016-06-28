@@ -66,7 +66,7 @@ summary(aov(lmDarts))
 
 ### Section 27.2: Assumptions and Conditions
 
-Figures 27.2 and 27.3 showing hand and distance against accuracy (as well as adjusted hand and adjusted distance).
+Figures 27.2 and 27.3 showing hand and distance against accuracy (as well as adjusted hand and adjusted distance). Note that the scales on the adjusted plots are centered around 0 rather than the mean as we are working with residuals.
 
 ```{r}
 lmHand <- lm(Accuracy ~ Hand, data=Darts)

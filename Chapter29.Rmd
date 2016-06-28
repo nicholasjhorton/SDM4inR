@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression Wisdom (Chapter 29)"
-author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "April 9, 2016"
+author: "Nicholas Horton (nhorton@amherst.edu) and Patrick Frenett"
+date: "June 27, 2016"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -137,7 +137,9 @@ BKfun(Carbs.g=53, Meat="Y")
 BKfun(Carbs.g=43, Meat="N")
 ```
 
-### Section 29.2: Diagnosing multiple regression models
+### Section 29.2: Diagnosing Multiple Regression Models
+
+Below are 6 plots made using the `mplot` function. These all work to better inform decisions when interpreting extreme values / the appropriateness of the model. Whilst the normal quantile and residual plots test the assumptions of the multiple regression model, the plots involving Cook's Distance and leverage help us identify possible outliers. 
 
 ```{r}
 BK <- mutate(BK, resid = resid(BKmod), fitted=fitted(BKmod),
@@ -151,3 +153,31 @@ BK[11,]   # or filter(BK, Carbs.g. > 0.486)
 mplot(BKmod, which=5)
 mplot(BKmod, which=6)
 ```
+
+### Section 29.3: Building Multiple Regression Models
+
+Using the Infant Mortality data used in the step by step example on page 874, we can create a linear model of all the variables exept `State`. To do this we can use `.` to specify adding all the variables to the model and then `-State` to remove `State` from the model.
+
+```{r}
+InfantMortality <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Infant_Mortality.csv")
+
+lmInfant <- lm(Infantmort ~ . -State, data = InfantMortality)
+summary(lmInfant)
+xyplot(rstudent(lmInfant) ~ fitted(lmInfant))
+histogram(~ rstudent(lmInfant), width = 0.5, center = 0.25)
+```
+
+The `summary` output shows that only two of the variables are significant at the 5% level. This could be due to multicollinearity. A correlation matrix will help identify variables that are strongly correlated to one and other.
+
+```{r}
+cor(InfantMortality[,-1])
+```
+
+From this we see that `HSdrop`, `TeenBirths` and `TeenDeaths` are correlated. They are also the 3 least significant variables in the full model so it would be wise to remove them from the model.
+
+```{r}
+lmInfant2 <- lm(Infantmort ~ . -State -TeenDeaths -TeenBirths -HSdrop, data = InfantMortality)
+summary(lmInfant2)
+```
+
+Notice that the r^2 of this model is 0.689 which is different to that in the book. This illustrates how there are a number of approaches when choosing the 'best' model and that different models may be better or worse given the constraints/specifications of the problem.
