@@ -3,8 +3,7 @@ title: Resources Related to the mosaic Package
 ---
 </br>
 </br>
-- Introduction to the Practice of Statistics in R (NJ Horton and BS Baumer) describes how to undertake analyses in R that are introduced as examples in the first chapters of the Sixth Edition of Introduction to the Practice of Statistics (2007), the excellent text by David Moore, George McCabe, and Bruce Craig. IPS in R can be found <a href="http://www.amherst.edu/~nhorton/ips6e">here</a>
-</br>
-</br>
-- The Statistical Sleuth in R (NJ Horton) describes how to undertake analyses in R for the examples in the first 13 chapters of the Third Edition of the Statistical Sleuth: A Course in Methods of Data Analysis (2013), the excellent text by Fred Ramsey and Dan Schafer. SS in R can be found <a href="http://www3.amherst.edu/~nhorton/sleuth/">here</a>
-</br>
+
+- Intro Stats in R (Frenett and Horton) describes how to undertake analyses in De Veaux, Velleman, and Bock's *Intro Stats* (4th edition).  These materials can be found at http://www.amherst.edu/~nhorton/is4.
+- Introduction to the Practice of Statistics in R (NJ Horton and BS Baumer) describes how to undertake analyses in R that are introduced as examples in the first chapters of *Introduction to the Practice of Statistics* (6th edition), the excellent text by David Moore, George McCabe, and Bruce Craig. IPS in R can be found <a href="http://www.amherst.edu/~nhorton/ips6e">here</a>
+- The Statistical Sleuth in R (NJ Horton) describes how to undertake analyses in R for the examples in the first 13 chapters of the Third Edition of the *Statistical Sleuth: A Course in Methods of Data Analysis* (2013), by Fred Ramsey and Dan Schafer. The materials can be found <a href="http://www3.amherst.edu/~nhorton/sleuth/">here</a>
