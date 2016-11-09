@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Scatterplots, Association, and Correlation (Chapter 6)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "February 6, 2016"
+date: "September 15, 2016"
 output: 
   pdf_document:
     fig_height: 3
@@ -40,7 +40,7 @@ opts_chunk$set(
 This document is intended to help describe how to undertake analyses introduced 
 as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
-file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
@@ -50,11 +50,11 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 
 Figure 6.1 (page 152) displays the scatterplot of the average tracking error over time.
 
-```{r}
+```{r message=FALSE}
 library(mosaic); library(readr)
 options(digits=3)
 Hurricanes <- 
-  read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Tracking_hurricanes_2012.csv")
+  read_csv("http://nhorton.people.amherst.edu/sdm4/data/Tracking_hurricanes_2012.csv")
 xyplot(Error72h ~ Year, ylab="Prediction error (nautical miles)", data=Hurricanes)
 ```
 
@@ -64,7 +64,7 @@ xyplot(Error72h ~ Year, ylab="Prediction error (nautical miles)", data=Hurricane
 Figure 6.2 (page 155) displays the scatterplot of weight vs. height for a sample of students from statistics classes.
 
 ```{r}
-HtWt <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Heights_and_Weights.csv")
+HtWt <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Heights_and_Weights.csv")
 xyplot(Weight ~ Height, ylab="Weight (lbs)", xlab="Height (in)", data=HtWt)
 cor(Weight ~ Height, data=HtWt)
 ```
