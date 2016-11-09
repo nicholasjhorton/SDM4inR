@@ -1,0 +1,133 @@
+---
+title: "SDM4 in R: Inferences for Regression (Chapter 25)"
+author: "Nicholas Horton (nhorton@amherst.edu)"
+date: "April 3, 2016"
+output: 
+  pdf_document:
+    fig_height: 2.8
+    fig_width: 7
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 4
+    fig_width: 6
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+options(digits=3)
+```
+
+```{r, include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+```
+
+## Introduction and background 
+
+This document is intended to help describe how to undertake analyses introduced 
+as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+
+## Chapter 25: Inferences for Regression
+
+### Section 25.1: The population and the sample
+
+```{r}
+library(mosaic); library(readr)
+BodyFat <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Body_fat_complete.csv")
+dim(BodyFat)
+glimpse(BodyFat)
+```
+
+We can confirm the coefficients from the model on page 690.
+```{r}
+BodyFatmod <- lm(PctBF ~ waist, data=BodyFat)
+coef(BodyFatmod)
+```
+
+### Section 25.2: Assumptions and conditions
+
+We can regenerate the output and figures for the example on pages 692-696.
+
+```{r}
+msummary(BodyFatmod)
+rsquared(BodyFatmod)
+confint(BodyFatmod)    # see page 700
+```
+
+```{r}
+# Figure 25.4 
+xyplot(PctBF ~ waist, xlab="Waist (in.)", 
+       type=c("p", "r", "smooth"), data=BodyFat)   # see smoothers on p.92-93
+# Figure 25.5
+xyplot(resid(BodyFatmod) ~ waist, xlab="Waist (in.)", 
+       type=c("p", "r", "smooth"), data=BodyFat)   
+# equiv of Figure 25.6   note that Figure 25.6 refers to the diamonds dataset
+xyplot(resid(BodyFatmod) ~ fitted(BodyFatmod), xlab="Predicted values", 
+       ylab="Residuals",
+       type=c("p", "r", "smooth"), data=BodyFat)
+# Figure on bottom of page 695
+xqqmath(~ resid(BodyFatmod))
+```
+
+
+#### Section 25.6: Confidence intervals for predicted values
+
+We can reproduce Figure 25.12 (page 707) using the `panel.lmbands()` function.
+
+```{r}
+xyplot(PctBF ~ waist, xlab="Waist (in.)", 
+       panel=panel.lmbands, lwd=2, cex=0.2, data=BodyFat)
+```
+
+```{r}
+Craters <- read.csv("http://www.amherst.edu/~nhorton/sdm4/data/Craters.csv")
+dim(Craters)
+Craters <- mutate(Craters,
+                  logDiam = log(Diam.km.),
+                  logAge = log(age..Ma.))
+Cratermod <- lm(logDiam ~ logAge, data=Craters)
+favstats(~ logAge, data=Craters)   # note example in book has n=39
+```
+
+```{r}
+confpred <- predict(Cratermod, interval="confidence")
+intpred <- predict(Cratermod, interval="prediction")
+select(Craters, -Name) %>% head(., 3)
+head(confpred, 3)
+head(intpred, 3)
+```
+
+#### Section 25.7: Logistic regression
+
+The Pima Indian dataset example is given on pages 708-712.
+```{r}
+Pima <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Pima_Indians_Diabetes.csv")
+Diabetes <- filter(Pima, BMI>0)  # get rid of missing values for BMI
+bwplot(BMI ~ as.factor(Diabetes), data=Pima)
+```
+
+```{r fig.keep="last"}
+pimamod <- glm(Diabetes ~ BMI, family="binomial", data=Pima)
+f2 <- makeFun(pimamod)
+xyplot(Diabetes ~ BMI, data=Pima)
+plotFun(f2, add=TRUE)
+msummary(pimamod)
+```

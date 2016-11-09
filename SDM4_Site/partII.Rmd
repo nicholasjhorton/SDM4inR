@@ -6,23 +6,12 @@
 
 
 </br>
-<h4><right>.PDF Files</right></h4>
+<h4><right>Chapters: 06-09</right></h4>
 </br>
 
-Title  | PDF File URL
+Title  | Links to Rmd and PDF files
 ------------- | -------------
-Chapter 06 : Scatterplots, Association, and Correlation | https://www.amherst.edu/~nhorton/sdm4/Chapter06.pdf
-Chapter 07 : Linear Regression | https://www.amherst.edu/~nhorton/sdm4/Chapter07.pdf
-Chapter 08 : Regression Wisdom | https://www.amherst.edu/~nhorton/sdm4/Chapter08.pdf
-Chapter 09 : Re-expressing Data: Get it Straight! | https://www.amherst.edu/~nhorton/sdm4/Chapter09.pdf
-
-</br>
-<h4><right>.Rmd Files</right></h4>
-</br>
-
-Title  | Rmd File URL
-------------- | -------------
-Chapter 06 : Scatterplots, Association, and Correlation | https://www.amherst.edu/~nhorton/sdm4/Chapter06.Rmd
-Chapter 07 : Linear Regression | https://www.amherst.edu/~nhorton/sdm4/Chapter07.Rmd
-Chapter 08 : Regression Wisdom | https://www.amherst.edu/~nhorton/sdm4/Chapter08.Rmd
-Chapter 09 : Re-expressing Data: Get it Straight! | https://www.amherst.edu/~nhorton/sdm4/Chapter09.Rmd
+Chapter 06 : Scatterplots, Association, and Correlation | <a href='files/Chapter06.Rmd'>.Rmd File</a> <a href='files/Chapter06.pdf'>(pdf)</a>
+Chapter 07 : Linear Regression | <a href='files/Chapter07.Rmd'>.Rmd File</a> <a href='files/Chapter07.pdf'>(pdf)</a>
+Chapter 08 : Regression Wisdom | <a href='files/Chapter08.Rmd'>.Rmd File</a> <a href='files/Chapter08.pdf'>(pdf)</a>
+Chapter 09 : Re-expressing Data: Get it Straight! | <a href='files/Chapter09.Rmd'>.Rmd File</a> <a href='files/Chapter09.pdf'>(pdf)</a>

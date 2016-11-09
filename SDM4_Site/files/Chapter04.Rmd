@@ -1,0 +1,123 @@
+---
+title: "SDM4 in R: Understanding and Comparing Distributions (Chapter 4)"
+author: "Nicholas Horton (nhorton@amherst.edu)"
+date: "February 5, 2016"
+output: 
+  pdf_document:
+    fig_height: 3.3
+    fig_width: 6
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 4
+    fig_width: 6
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r, include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+```
+
+## Introduction and background 
+
+This document is intended to help describe how to undertake analyses introduced 
+as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+
+## Chapter 4: Understanding and comparing distributions
+
+### Section 4.1: Comparing groups with histograms
+
+See Figure 4.1 on page 85
+
+```{r}
+library(mosaic); library(readr)
+options(digits=3)
+Hopkins <- 
+read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Hopkins_Forest_2011.txt", delim="\t")
+names(Hopkins)   
+histogram(~ AvgWindSpeed, width=0.5, center=0.24, 
+          xlab="Average wind speed (mph)", data=Hopkins)
+```
+
+Here we reproduce Figure 4.2 on page 85
+
+```{r}
+Hopkins <- mutate(Hopkins,
+  Summer = Month >= 4 & Month <= 9,
+  Winter = !Summer
+)
+histogram(~ AvgWindSpeed, width=0.5, center=0.24, 
+          xlab="Average summer wind speed (mph)", data=filter(Hopkins, Summer==TRUE))
+favstats(~ AvgWindSpeed, data=filter(Hopkins, Summer==TRUE))
+histogram(~ AvgWindSpeed, width=0.5, center=0.24, 
+          xlab="Average winter wind speed (mph)", data=filter(Hopkins, Winter==TRUE))
+favstats(~ AvgWindSpeed, data=filter(Hopkins, Winter==TRUE))
+
+```
+
+### Section 4.2: Comparing groups with boxplots
+
+Here we reproduce Figure 4.3 on page 87
+
+```{r}
+bwplot(AvgWindSpeed ~ as.factor(Month), data=Hopkins)
+```
+
+### Section 4.3: Outliers
+
+```{r}
+filter(Hopkins, Month==2, AvgWindSpeed > 6)   # in February
+filter(Hopkins, Month==6, AvgWindSpeed > 3.9) # in June
+```
+
+### Section 4.4: Timeplots: Order, please!
+
+See Figures 4.4 through 4.6 starting on page 92
+```{r}
+xyplot(AvgWindSpeed ~ DayofYear, data=Hopkins)
+xyplot(AvgWindSpeed ~ DayofYear, type="l", data=Hopkins)
+xyplot(AvgWindSpeed ~ DayofYear, type=c("p", "smooth"), lwd=3, data=Hopkins)
+```
+
+
+### Section 4.5: Re-expressing data: A first look
+
+See Figure 4.7 on page 94
+```{r}
+CEO <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/CEO_Salary_2012.txt", delim="\t")
+favstats(~ One_Year_Pay, data=CEO)
+histogram(~ One_Year_Pay, width=2.5, center=1.24, data=CEO)
+```
+
+Figure 4.8 on page 95
+```{r}
+nrow(CEO)   # let's get rid of the CEO's with 0 salaries...
+CEO <- filter(CEO, One_Year_Pay > 0)
+nrow(CEO)
+CEO <- mutate(CEO, log10salary = log10(One_Year_Pay*1000000))
+histogram(~ log10salary, width=.25, center=.124, data=CEO)
+```
+
+On the log 10 scale, we can roughly interpret the values as the number
+of digits in the CEO salary.

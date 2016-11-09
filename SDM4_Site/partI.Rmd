@@ -4,27 +4,20 @@
 </center>
 </h2>
 
-
 </br>
-<h4><right>.PDF Files</right></h4>
+<h4><right>Chapters: 01-05</right></h4>
 </br>
 
-Title  | PDF File URL
+
+
+
+Title  | Links to Rmd and PDF files
 ------------- | -------------
-Chapter 01 : Stats Starts Here | https://www.amherst.edu/~nhorton/sdm4/Chapter01.pdf
-Chapter 02 : Displaying and Describing Categorical Data | https://www.amherst.edu/~nhorton/sdm4/Chapter02.pdf
-Chapter 03 : Displaying and Summarizing Quantitative Data | https://www.amherst.edu/~nhorton/sdm4/Chapter03.pdf
-Chapter 04 : Understanding and Comparing Distributions | https://www.amherst.edu/~nhorton/sdm4/Chapter04.pdf
-Chapter 05 : The Standard Devitation as a Ruler and the Normal Model | https://www.amherst.edu/~nhorton/sdm4/Chapter05.pdf
+Chapter 01 : Stats Starts Here | <a href='files/Chapter01.Rmd'>.Rmd File</a> <a href='files/Chapter01.pdf'>(pdf)</a>
+Chapter 02 : Displaying and Describing Categorical Data | <a href='files/Chapter02.Rmd'>.Rmd File</a> <a href='files/Chapter02.pdf'>(pdf)</a>
+Chapter 03 : Displaying and Summarizing Quantitative Data | <a href='files/Chapter03.Rmd'>.Rmd File</a> <a href='files/Chapter03.pdf'>(pdf)</a>
+Chapter 04 : Understanding and Comparing Distributions | <a href='files/Chapter04.Rmd'>.Rmd File</a> <a href='files/Chapter04.pdf'>(pdf)</a>
+Chapter 05 : The Standard Devitation as a Ruler and the Normal Model | <a href='files/Chapter05.Rmd'>.Rmd File</a> <a href='files/Chapter05.pdf'>(pdf)</a>
 
-</br>
-<h4><right>.Rmd Files</right></h4>
-</br>
 
-Title  | Rmd File URL
-------------- | -------------
-Chapter 01 : Stats Starts Here | https://www.amherst.edu/~nhorton/sdm4/Chapter01.Rmd
-Chapter 02 : Displaying and Describing Categorical Data | https://www.amherst.edu/~nhorton/sdm4/Chapter02.Rmd
-Chapter 03 : Displaying and Summarizing Quantitative Data | https://www.amherst.edu/~nhorton/sdm4/Chapter03.Rmd
-Chapter 04 : Understanding and Comparing Distributions | https://www.amherst.edu/~nhorton/sdm4/Chapter04.Rmd
-Chapter 05 : The Standard Devitation as a Ruler and the Normal Model | https://www.amherst.edu/~nhorton/sdm4/Chapter05.Rmd
+

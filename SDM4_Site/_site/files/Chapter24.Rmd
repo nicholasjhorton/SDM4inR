@@ -1,0 +1,106 @@
+---
+title: "SDM4 in R: Comparing Counts (Chapter 24)"
+author: "Nicholas Horton (nhorton@amherst.edu)"
+date: "April 12, 2016"
+output: 
+  pdf_document:
+    fig_height: 2.8
+    fig_width: 7
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 4
+    fig_width: 6
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+options(digits=5)
+```
+
+```{r, include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+```
+
+## Introduction and background 
+
+This document is intended to help describe how to undertake analyses introduced 
+as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+
+## Chapter 24: Comparing Counts
+
+### Section 24.1: Goodness-of-fit tests
+
+
+Here we verify the calculations of expected counts for
+ballplayers by month (page 656).
+```{r}
+ballplayer <- c(137, 121, 116, 121, 126, 114, 
+                102, 165, 134, 115, 105, 122)
+national <- c(0.08, 0.07, 0.08, 0.08, 0.08, 0.08,
+              0.09, 0.09, 0.09, 0.09, 0.08, 0.09)
+n <- sum(~ ballplayer); n
+sum(~ national)
+expect <- n*national
+cbind(ballplayer, expect)
+```
+
+The chi-square quantile values in the table on the bottom of page 658 can be verified using the `xqt()` function.
+```{r}
+xqchisq(c(.90, .95, .975, .99, .995), df=1)
+```
+These results match the first row: other values can be calculated by changing the
+`df` argument.
+
+The goodness of fit test on page 659 can be verified by calculating the
+chi-square statistic.
+
+```{r}
+chisq <- sum((ballplayer-expect)^2/expect); chisq
+1-xpchisq(chisq, df=11)
+```
+
+### Section 24.2: Chi-square test of homogeneity
+
+Data from one university regarding
+the association between postgraduation activity and area of study
+is displayed in Table 24.1 (page 663).  
+
+```{r fig.height=5}
+area <- c(rep("agriculture", 209), rep("arts/science", 198), 
+          rep("engineering", 177), rep("ILR", 101),
+	  rep("agriculture", 104), rep("arts/science", 171), 
+          rep("engineering", 158), rep("ILR", 33),
+	  rep("agriculture", 135), rep("arts/science", 115), 
+          rep("engineering", 39), rep("ILR", 16))
+activity <- c(rep("Employed", 685), rep("Grad school", 466), 
+              rep("Other", 305))
+tally(~ activity + area, margins=TRUE)
+mosaicplot(tally(~ activity + area), main="mosaicplot of activity by area",
+  color=TRUE)
+xchisq.test(tally(~ activity + area))
+```
+
+### Section 24.3: Examining the residuals
+
+Note that the `xchisq.test()` function displays the standardized
+residuals as the last item in each cell of the table (and these
+match the results in Table 24.4 (page 668).  

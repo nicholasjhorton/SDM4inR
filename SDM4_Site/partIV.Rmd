@@ -6,23 +6,12 @@
 
 
 </br>
-<h4><right>.PDF Files</right></h4>
+<h4><right>Chapters: 13-16</right></h4>
 </br>
 
-Title  | PDF File URL
+Title  | Links to Rmd and PDF files
 ------------- | -------------
 Chapter 13 : From Randomness to Probability | There was not a significant use of R in chapter 13
 Chapter 14 : Probability Rules! | There was not a significant use of R in chapter 14
-Chapter 15 : Random Variables | https://www.amherst.edu/~nhorton/sdm4/Chapter15.pdf
-Chapter 16 : Probability Models | https://www.amherst.edu/~nhorton/sdm4/Chapter16.pdf
-
-</br>
-<h4><right>.Rmd Files</right></h4>
-</br>
-
-Title  | Rmd File URL
-------------- | -------------
-Chapter 13 : From Randomness to Probability | There was not a significant use of R in chapter 13
-Chapter 14 : Probability Rules! | There was not a significant use of R in chapter 14
-Chapter 15 : Random Variables | https://www.amherst.edu/~nhorton/sdm4/Chapter15.Rmd
-Chapter 16 : Probability Models | https://www.amherst.edu/~nhorton/sdm4/Chapter16.Rmd
+Chapter 15 : Random Variables | <a href='files/Chapter15.Rmd'>.Rmd File</a> <a href='files/Chapter15.pdf'>(pdf)</a>
+Chapter 16 : Probability Models | <a href='files/Chapter16.Rmd'>.Rmd File</a> <a href='files/Chapter16.pdf'>(pdf)</a>

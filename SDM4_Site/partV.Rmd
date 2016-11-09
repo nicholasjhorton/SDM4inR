@@ -6,25 +6,13 @@
 
 
 </br>
-<h4><right>.PDF Files</right></h4>
+<h4><right>Chapters: 17-21</right></h4>
 </br>
 
-Title  | PDF File URL
+Title  | Links to Rmd and PDF files
 ------------- | -------------
-Chapter 17 : Sampling Distribution Models | https://www.amherst.edu/~nhorton/sdm4/Chapter17.pdf
-Chapter 18 : Confidence Intervals for Proportions | https://www.amherst.edu/~nhorton/sdm4/Chapter18.pdf
-Chapter 19 : Testing Hypotheses about Proportions | https://www.amherst.edu/~nhorton/sdm4/Chapter19.pdf
-Chapter 20 : Inferences about Means | https://www.amherst.edu/~nhorton/sdm4/Chapter20.pdf
-Chapter 21 : More about Tests and Intervals | https://www.amherst.edu/~nhorton/sdm4/Chapter21.pdf
-
-</br>
-<h4><right>.Rmd Files</right></h4>
-</br>
-
-Title  | Rmd File URL
-------------- | -------------
-Chapter 17 : Sampling Distribution Models | https://www.amherst.edu/~nhorton/sdm4/Chapter17.Rmd
-Chapter 18 : Confidence Intervals for Proportions | https://www.amherst.edu/~nhorton/sdm4/Chapter18.Rmd
-Chapter 19 : Testing Hypotheses about Proportions | https://www.amherst.edu/~nhorton/sdm4/Chapter19.Rmd
-Chapter 20 : Inferences about Means | https://www.amherst.edu/~nhorton/sdm4/Chapter20.Rmd
-Chapter 21 : More about Tests and Intervals | https://www.amherst.edu/~nhorton/sdm4/Chapter21.Rmd
+Chapter 17 : Sampling Distribution Models | <a href='files/Chapter17.Rmd'>.Rmd File</a> <a href='files/Chapter17.pdf'>(pdf)</a>
+Chapter 18 : Confidence Intervals for Proportions | <a href='files/Chapter18.Rmd'>.Rmd File</a> <a href='files/Chapter18.pdf'>(pdf)</a>
+Chapter 19 : Testing Hypotheses about Proportions | <a href='files/Chapter19.Rmd'>.Rmd File</a> <a href='files/Chapter19.pdf'>(pdf)</a>
+Chapter 20 : Inferences about Means | <a href='files/Chapter20.Rmd'>.Rmd File</a> <a href='files/Chapter20.pdf'>(pdf)</a>
+Chapter 21 : More about Tests and Intervals | There was not a significant use of R in chapter 21.

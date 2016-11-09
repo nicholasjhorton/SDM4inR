@@ -1,0 +1,81 @@
+---
+title: "SDM4 in R: Paired Samples and Blocks (Chapter 23)"
+author: "Nicholas Horton (nhorton@amherst.edu)"
+date: "April 12, 2016"
+output: 
+  pdf_document:
+    fig_height: 2.4
+    fig_width: 7
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 4
+    fig_width: 6
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+options(digits=5)
+```
+
+```{r, include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+```
+
+## Introduction and background 
+
+This document is intended to help describe how to undertake analyses introduced 
+as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+
+## Chapter 23: Paired samples and blocks
+
+### Section 23.1: Paired data
+
+The example on page 631 compares the mileage of 11 field workers using
+either a 5 day or 4 day schedule.
+```{r}
+fiveday <- c(2798, 7724, 7505, 838, 4592, 8107, 1228, 8718, 1097, 8089, 3807)
+fourday <- c(2914, 6112, 6177, 1102, 3281, 4997, 1695, 6606, 1063, 6392, 3362)
+ds <- data.frame(fiveday, fourday)
+ds <- mutate(ds, diff = fiveday - fourday); ds
+```
+
+### Section 23.2: Assumptions and conditions
+
+```{r}
+histogram(~ diff, width=500, center=500/2, data=ds)   # page 634
+t.test(~ diff, data=ds)
+```
+
+### Section 23.3: Confidence intervals for matched pairs
+
+The same result is seen as on page 640 for the confidence interval
+for the population difference in mileage using the (results not shown).
+```{r eval=FALSE}
+t.test(~ diff, data=ds)$conf.int
+```
+
+### Section 23.4: Blocking
+
+The sign test on page 642 can be calculated using the `binom.test()` function.
+```{r}
+binom.test(119, 151)
+```

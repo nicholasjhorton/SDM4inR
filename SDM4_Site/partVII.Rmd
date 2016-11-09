@@ -6,23 +6,13 @@
 
 
 </br>
-<h4><right>.PDF Files</right></h4>
+<h4><right>Chapters: 25-29</right></h4>
 </br>
 
-Title  | PDF File URL
+Title  | Links to Rmd and PDF files
 ------------- | -------------
-Chapter 26* : Analysis of Variance | https://www.amherst.edu/~nhorton/sdm4/Chapter26.pdf
-Chapter 27 : Multifactor Analysis of Variance | https://www.amherst.edu/~nhorton/sdm4/Chapter27.pdf
-Chapter 28 : Multiple Regression | https://www.amherst.edu/~nhorton/sdm4/Chapter28.pdf
-Chapter 29 : Multiple Regression Wisdom | https://www.amherst.edu/~nhorton/sdm4/Chapter29.pdf
+Chapter 26* : Analysis of Variance | <a href='files/Chapter26.Rmd'>.Rmd File</a> <a href='files/Chapter26.pdf'>(pdf)</a>
+Chapter 27 : Multifactor Analysis of Variance | <a href='files/Chapter27.Rmd'>.Rmd File</a> <a href='files/Chapter27.pdf'>(pdf)</a>
+Chapter 28 : Multiple Regression | <a href='files/Chapter28.Rmd'>.Rmd File</a> <a href='files/Chapter28.pdf'>(pdf)</a>
+Chapter 29 : Multiple Regression Wisdom | <a href='files/Chapter29.Rmd'>.Rmd File</a> <a href='files/Chapter29.pdf'>(pdf)</a>
 
-</br>
-<h4><right>.Rmd Files</right></h4>
-</br>
-
-Title  | Rmd File URL
-------------- | -------------
-Chapter 26* : Analysis of Variance | https://www.amherst.edu/~nhorton/sdm4/Chapter26.Rmd
-Chapter 27 : Multifactor Analysis of Variance | https://www.amherst.edu/~nhorton/sdm4/Chapter27.Rmd
-Chapter 28 : Multiple Regression | https://www.amherst.edu/~nhorton/sdm4/Chapter28.Rmd
-Chapter 29 : Multiple Regression Wisdom | https://www.amherst.edu/~nhorton/sdm4/Chapter29.Rmd
