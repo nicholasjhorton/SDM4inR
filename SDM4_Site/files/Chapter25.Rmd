@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Inferences for Regression (Chapter 25)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "April 3, 2016"
+date: "January 2, 2017"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -41,7 +41,7 @@ opts_chunk$set(
 This document is intended to help describe how to undertake analyses introduced 
 as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
-file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
@@ -49,9 +49,9 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 
 ### Section 25.1: The population and the sample
 
-```{r}
+```{r message=FALSE}
 library(mosaic); library(readr)
-BodyFat <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Body_fat_complete.csv")
+BodyFat <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Body_fat_complete.csv")
 dim(BodyFat)
 glimpse(BodyFat)
 ```
@@ -98,7 +98,7 @@ xyplot(PctBF ~ waist, xlab="Waist (in.)",
 ```
 
 ```{r}
-Craters <- read.csv("http://www.amherst.edu/~nhorton/sdm4/data/Craters.csv")
+Craters <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Craters.csv")
 dim(Craters)
 Craters <- mutate(Craters,
                   logDiam = log(Diam.km.),
@@ -118,8 +118,8 @@ head(intpred, 3)
 #### Section 25.7: Logistic regression
 
 The Pima Indian dataset example is given on pages 708-712.
-```{r}
-Pima <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Pima_Indians_Diabetes.csv")
+```{r message=FALSE}
+Pima <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Pima_Indians_Diabetes.csv")
 Diabetes <- filter(Pima, BMI>0)  # get rid of missing values for BMI
 bwplot(BMI ~ as.factor(Diabetes), data=Pima)
 ```

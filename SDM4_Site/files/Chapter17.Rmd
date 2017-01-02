@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Sampling Distribution Models (Chapter 17)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "March 3, 2016"
+date: "January 2, 2017"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -40,7 +40,7 @@ opts_chunk$set(
 This document is intended to help describe how to undertake analyses introduced 
 as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
-file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
@@ -77,7 +77,7 @@ pbinom(31, size=n, prob=p)    # exact value
 Let's replicate the display on page 451:
 
 ```{r}
-BodyFat <- read.csv("http://www.amherst.edu/~nhorton/sdm4/data/Body_fat_complete.csv")
+BodyFat <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Body_fat_complete.csv")
 medians <- do(2000)*median(~ Weight, data=sample(BodyFat, 10, replace=FALSE))
 histogram(~ median, xlab="Sampling distribution of medians", 
           width=5, center=5/2, data=medians)
@@ -95,9 +95,9 @@ Neither of the sampling distributions of the variance or the minimums are normal
 
 Let's replicate the displays on pages 453-454:
 
-```{r}
+```{r message=FALSE}
 require(readr)
-CEO <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/CEO_Salary_2012.txt", delim="\t")
+CEO <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/CEO_Salary_2012.txt", delim="\t")
 CEO <- mutate(CEO, Pay = One_Year_Pay*1000)
 favstats(~ Pay, data=CEO)
 ```
