@@ -1,6 +1,6 @@
 <h2>
 <center>
-"Part V From the Data at Hand to the World at Large"
+"Part V: From the Data at Hand to the World at Large"
 </center>
 </h2>
 

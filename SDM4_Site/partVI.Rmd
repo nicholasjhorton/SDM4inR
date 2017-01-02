@@ -1,6 +1,6 @@
 <h2>
 <center>
-"Part VI Accessing Associations Between Variables"
+"Part VI: Accessing Associations Between Variables"
 </center>
 </h2>
 

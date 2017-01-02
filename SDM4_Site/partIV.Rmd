@@ -1,6 +1,6 @@
 <h2>
 <center>
-"Part IV Randomness and Probability"
+"Part IV: Randomness and Probability"
 </center>
 </h2>
 
