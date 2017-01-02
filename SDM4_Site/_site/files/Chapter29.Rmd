@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression Wisdom (Chapter 29)"
 author: "Nicholas Horton (nhorton@amherst.edu) and Patrick Frenett"
-date: "June 27, 2016"
+date: "January 2, 2017"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -41,17 +41,16 @@ opts_chunk$set(
 This document is intended to help describe how to undertake analyses introduced 
 as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
-file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
 ## Chapter 29: Multiple Regression Wisdom
 
 
-```{r}
+```{r message=FALSE}
 library(mosaic); library(readr)
-Coasters <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Roller_coasters_2014.csv")
-# Name,Park,Track,Speed,Height,Drop,Length,Duration,Inversions,Opened
+Coasters <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Roller_coasters_2014.csv")
 glimpse(Coasters)
 tally(~ Speed, data=Coasters)
 filter(Coasters, Speed=="*100" | Speed=="*56")
@@ -124,7 +123,7 @@ mod4fun(Speed=60.3, Inversions=1)  # Hangman
 On page 864 the Burger King example is introduced with a subset of items from
 the menu.
 ```{r}
-BK <- read.csv("http://www.amherst.edu/~nhorton/sdm4/data/BK_items.csv", 
+BK <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/BK_items.csv", 
                stringsAsFactors = FALSE)
 BKmod <- lm(Calories ~ Carbs.g. + Meat. + Carbs.g.*Meat., data=BK)
 msummary(BKmod)
@@ -158,11 +157,11 @@ mplot(BKmod, which=6)
 
 Using the Infant Mortality data used in the step by step example on page 874, we can create a linear model of all the variables exept `State`. To do this we can use `.` to specify adding all the variables to the model and then `-State` to remove `State` from the model.
 
-```{r}
-InfantMortality <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Infant_Mortality.csv")
+```{r message=FALSE}
+InfantMortality <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Infant_Mortality.csv")
 
 lmInfant <- lm(Infantmort ~ . -State, data = InfantMortality)
-summary(lmInfant)
+msummary(lmInfant)
 xyplot(rstudent(lmInfant) ~ fitted(lmInfant))
 histogram(~ rstudent(lmInfant), width = 0.5, center = 0.25)
 ```
@@ -173,11 +172,11 @@ The `summary` output shows that only two of the variables are significant at the
 cor(InfantMortality[,-1])
 ```
 
-From this we see that `HSdrop`, `TeenBirths` and `TeenDeaths` are correlated. They are also the 3 least significant variables in the full model so it would be wise to remove them from the model.
+From this we see that `HSdrop`, `TeenBirths` and `TeenDeaths` are correlated. They are also the 3 least significant variables in the full model so it might not be unreasonable to remove them from the model.
 
 ```{r}
 lmInfant2 <- lm(Infantmort ~ . -State -TeenDeaths -TeenBirths -HSdrop, data = InfantMortality)
 summary(lmInfant2)
 ```
 
-Notice that the r^2 of this model is 0.689 which is different to that in the book. This illustrates how there are a number of approaches when choosing the 'best' model and that different models may be better or worse given the constraints/specifications of the problem.
+Notice that the $R^2$ of this final model is 0.689: this is different that in the book. This illustrates how there are a number of approaches when choosing the 'best' model and that different models may be better or worse given the constraints/specifications of the problem.

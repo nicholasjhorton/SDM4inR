@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Regression Wisdom (Chapter 8)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "February 6, 2016"
+date: "January 2, 2017"
 output: 
   pdf_document:
     fig_height: 3
@@ -40,7 +40,7 @@ opts_chunk$set(
 This document is intended to help describe how to undertake analyses introduced 
 as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
-file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
@@ -51,10 +51,10 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 
 Figure 8.1 (page 220) displays the scatterplot of heart rate vs duration for the Penguins dataset (along with a superimposed regression line and a smoother).
 
-```{r}
+```{r message=FALSE}
 library(mosaic); library(readr)
 options(digits=3)
-Penguins <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Penguins.csv")
+Penguins <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Penguins.csv")
 xyplot(DiveHeartRate ~ Duration, ylab="Dive Heart Rate (bpm)", 
        xlab="Duration (mins)", type=c("p", "r", "smooth"), data=Penguins)
 ```
@@ -68,8 +68,8 @@ xyplot(resid(Penguinmod) ~ Duration, type=c("p", "r", "smooth"), data=Penguins)
 
 Figure 8.3 (page 221) displays the histogram of residuals for the cereal data from Chapter 7.
 
-```{r}
-Cereals <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Cereals.csv")
+```{r message=FALSE}
+Cereals <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Cereals.csv")
 Cerealmod <- lm(calories ~ sugars, data=Cereals)
 histogram(~ resid(Cerealmod), width=7.5, center=3.75)
 ```

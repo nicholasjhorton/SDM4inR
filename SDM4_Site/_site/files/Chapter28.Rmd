@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression (Chapter 28)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "March 15, 2016"
+date: "January 2, 2017"
 output: 
   pdf_document:
     fig_height: 3
@@ -40,7 +40,7 @@ opts_chunk$set(
 This document is intended to help describe how to undertake analyses introduced 
 as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
-file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
@@ -51,10 +51,10 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 
 The table on page 818 displays the results from the multiple regression model.
 
-```{r}
+```{r message=FALSE}
 library(mosaic); library(readr)
 options(digits=3)
-BodyFat <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Body_fat_complete.csv")
+BodyFat <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Body_fat_complete.csv")
 BodyFatmod <- lm(PctBF ~ waist + Height, data=BodyFat)
 msummary(BodyFatmod)
 ```
@@ -104,8 +104,8 @@ qqmath(~ resid(BodyFatmod))
 
 Figure 28.6 (page 829) displays the scatterplot matrix infant mortality data.  
 
-```{r, fig.height=6}
-InfantMortality <- read_csv("http://www.amherst.edu/~nhorton/sdm4/data/Infant_Mortality.csv")
+```{r, fig.height=6,message=FALSE}
+InfantMortality <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Infant_Mortality.csv")
 splom(select(InfantMortality, -State))
 ```
 

@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: The Standard Deviation as a Ruler and the Normal Model (Chapter 5)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "January 31, 2016"
+date: "January 2, 2017"
 output: 
   pdf_document:
     fig_height: 3
@@ -40,7 +40,7 @@ opts_chunk$set(
 This document is intended to help describe how to undertake analyses introduced 
 as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
-file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
@@ -56,9 +56,9 @@ options(digits=3)
 (6.54 - 5.91)/0.56  # should be 1.1 sd better, see page 112
 ```
 
-```{r}
+```{r message=FALSE}
 Heptathlon <- 
-read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Womens_Heptathlon_2012.txt",
+read_delim("http://nhorton.people.amherst.edu/sdm4/data/Womens_Heptathlon_2012.txt",
   delim="\t")
 nrow(Heptathlon)  
 filter(Heptathlon, LJ >= max(LJ, na.rm=TRUE)) %>% data.frame()
@@ -111,9 +111,9 @@ qnorm(.9, mean=0, sd=1)   # or as a Z-score
 
 See Figure 5.8 on page 129
 
-```{r}
+```{r message=FALSE}
 Nissan <- 
-read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Nissan.txt",
+read_delim("http://nhorton.people.amherst.edu/sdm4/data/Nissan.txt",
   delim="\t")
 histogram(~ mpg, width=1, center=0.5, data=Nissan)
 qqmath(~ mpg, data=Nissan)

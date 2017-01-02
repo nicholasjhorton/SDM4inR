@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Understanding and Comparing Distributions (Chapter 4)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "February 5, 2016"
+date: "January 2, 2017"
 output: 
   pdf_document:
     fig_height: 3.3
@@ -40,7 +40,7 @@ opts_chunk$set(
 This document is intended to help describe how to undertake analyses introduced 
 as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
-file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
@@ -50,11 +50,11 @@ This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-
 
 See Figure 4.1 on page 85
 
-```{r}
+```{r message=FALSE}
 library(mosaic); library(readr)
 options(digits=3)
 Hopkins <- 
-read_delim("http://www.amherst.edu/~nhorton/sdm4/data/Hopkins_Forest_2011.txt", delim="\t")
+read_delim("http://nhorton.people.amherst.edu/sdm4/data/Hopkins_Forest_2011.txt", delim="\t")
 names(Hopkins)   
 histogram(~ AvgWindSpeed, width=0.5, center=0.24, 
           xlab="Average wind speed (mph)", data=Hopkins)
@@ -104,8 +104,8 @@ xyplot(AvgWindSpeed ~ DayofYear, type=c("p", "smooth"), lwd=3, data=Hopkins)
 ### Section 4.5: Re-expressing data: A first look
 
 See Figure 4.7 on page 94
-```{r}
-CEO <- read_delim("http://www.amherst.edu/~nhorton/sdm4/data/CEO_Salary_2012.txt", delim="\t")
+```{r message=FALSE}
+CEO <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/CEO_Salary_2012.txt", delim="\t")
 favstats(~ One_Year_Pay, data=CEO)
 histogram(~ One_Year_Pay, width=2.5, center=1.24, data=CEO)
 ```

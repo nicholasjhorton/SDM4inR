@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Re-expressing Data: Get it Straight! (Chapter 9)"
 author: "Nicholas Horton (nhorton@amherst.edu) and Patrick Frenett"
-date: "June 24, 2016"
+date: "January 2, 2017"
 output: 
   pdf_document:
     fig_height: 3
@@ -40,7 +40,7 @@ opts_chunk$set(
 This document is intended to help describe how to undertake analyses introduced 
 as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
-file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
 
@@ -53,7 +53,7 @@ The `histogram` function will generate the histograms shown by figure 9.4 on pag
 ```{r}
 library(mosaic); library(readr)
 options(digits=3)
-Forbes <- read.csv("http://www3.amherst.edu/~nhorton/sdm4/data/Forbes_Global_2000.csv")
+Forbes <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Forbes_Global_2000.csv")
 
 histogram(~ Assets..B., data = Forbes, 
           center = 100, width = 200, type = "count",
@@ -91,7 +91,7 @@ histogram( ~ (log(Assets..B., 10)), data = Forbes,
 Looking at the penguins example mentioned on page 251 we can see how different log transformations affect the `xyplot` of the two variables:
 
 ```{r}
-Penguins <- read.csv("http://www3.amherst.edu/~nhorton/sdm4/data/Penguins.csv")
+Penguins <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Penguins.csv")
 
 xyplot(DiveHeartRate ~ Duration, data = Penguins, type = c("p", "r"),
        main = "No Transformation", xlab = "Dive Duration (min)", ylab = "# of Dives")
