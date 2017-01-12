@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"SDM4 in R: Inferences about Means (Chapter 20)\"\nauthor: \"Nicholas Horton (nhorton@amherst.edu)\"\ndate: \"March 14, 2016\"\noutput: \n  pdf_document:\n    fig_height: 2.8\n    fig_width: 7\n  html_document:\n    fig_height: 3\n    fig_width: 5\n  word_document:\n    fig_height: 4\n    fig_width: 6\n---\n\n\n```{r, include=FALSE}\n# Don't delete this chunk if you are using the mosaic package\n# This loads the mosaic and dplyr packages\nrequire(mosaic)\noptions(digits=3)\n```\n\n```{r, include=FALSE}\n# Some customization.  You can alter or delete as desired (if you know what you are doing).\n\n# This changes the default colors in lattice plots.\ntrellis.par.set(theme=theme.mosaic())  \n\n# knitr settings to control how R chunks work.\nrequire(knitr)\nopts_chunk$set(\n  tidy=FALSE,     # display code as typed\n  size=\"small\"    # slightly smaller font for code\n)\n```\n\n## Introduction and background \n\nThis document is intended to help describe how to undertake analyses introduced \nas examples in the Fourth Edition of \\emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.\nMore information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This\nfile as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.\n\nThis work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).\n\n## Chapter 20: Inferences about Means\n\n### Section 20.1: The Central Limit Theorem\n\nLet's begin by reproducing the figure on the bottom of page 519.\n\n```{r}\nmu <- 1309\nsd <- 15.7\nxpnorm(c(mu-3*sd, mu-2*sd, mu-sd, mu+sd, mu+2*sd, mu+3*sd), mean=mu, sd=sd)\n```\n\n### Section 20.2: Gosset's t\n\nFigure 20.1 (page 521) displays a normal curve (dashed green curve) and a t-model with 2 degrees of freedom (solid blue curve).\n\n```{r fig.keep=\"last\"}\nplotDist(\"norm\", lty=2, col=\"green\", lwd=2)\nplotDist(\"t\", params=2, lty=1, lwd=2, col=\"blue\", add=TRUE)\n```\n\nWe can reproduce the calculations for the Farmed salmon example (pages 523-524) using summary statistics:\n\n```{r}\nn <- 150; ybar <- 0.0913; s = 0.0495\ntstar <- qt(0.975, df=n-1); tstar\nybar + c(-tstar, tstar)*s/sqrt(n)\n```\n\nor directly:\n\n```{r}\nSalmon <- read.csv(\"http://www.amherst.edu/~nhorton/sdm4/data/Farmed_Salmon.csv\")\nfavstats(~ Mirex, data=Salmon)\nhistogram(~ Mirex, width=0.01, center=0.01/2, data=Salmon)\nt.test(~ Mirex, data=Salmon)\n```\n\nWe note that the distribution of measurements is not particularly normal.\n\n#### Section 20.4: A hypothesis test for the mean\n\nWe can carry out the one-sided test outlined on page 530:\n\n```{r}\ntval <- (.0913-0.08)/0.0040; tval\n1-xpt(tval, df=149)\n```\n\n\n",
+    "created" : 1466542137654.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1120599085",
+    "id" : "C995D6C5",
+    "lastKnownWriteTime" : 1466108146,
+    "last_content_update" : 1466108146,
+    "path" : "~/SDM4inR/Chapter20.Rmd",
+    "project_path" : "Chapter20.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -13,5 +13,5 @@ Title  | Links to Rmd and PDF files
 ------------- | -------------
 Chapter 13 : From Randomness to Probability | There was not a significant use of R in chapter 13
 Chapter 14 : Probability Rules! | There was not a significant use of R in chapter 14
-Chapter 15 : Random Variables | <a href='files/Chapter15.Rmd'>.Rmd File</a> <a href='files/Chapter15.pdf'>(pdf)</a>
-Chapter 16 : Probability Models | <a href='files/Chapter16.Rmd'>.Rmd File</a> <a href='files/Chapter16.pdf'>(pdf)</a>
+Chapter 15 : Random Variables | <a href='chapterfiles/Chapter15.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter15.pdf'>(pdf)</a>
+Chapter 16 : Probability Models | <a href='chapterfiles/Chapter16.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter16.pdf'>(pdf)</a>
