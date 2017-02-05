@@ -11,8 +11,8 @@
 
 Title  | Links to Rmd and PDF files
 ------------- | -------------
-Chapter 22 : Comparing Groups | <a href='files/Chapter22.Rmd'>.Rmd File</a> <a href='files/Chapter22.pdf'>(pdf)</a>
-Chapter 23 : Paired Samples and Blocks | <a href='files/Chapter23.Rmd'>.Rmd File</a> <a href='files/Chapter23.pdf'>(pdf)</a>
-Chapter 24 : Comparing Counts | <a href='files/Chapter24.Rmd'>.Rmd File</a> <a href='files/Chapter24.pdf'>(pdf)</a>
-Chapter 25 : Inferences for Regression | <a href='files/Chapter25.Rmd'>.Rmd File</a> <a href='files/Chapter25.pdf'>(pdf)</a>
+Chapter 22 : Comparing Groups | <a href='chapterfiles/Chapter22.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter22.pdf'>(pdf)</a>
+Chapter 23 : Paired Samples and Blocks | <a href='chapterfiles/Chapter23.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter23.pdf'>(pdf)</a>
+Chapter 24 : Comparing Counts | <a href='chapterfiles/Chapter24.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter24.pdf'>(pdf)</a>
+Chapter 25 : Inferences for Regression | <a href='chapterfiles/Chapter25.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter25.pdf'>(pdf)</a>
 

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "##################################\n## Makefile for RMarkdown sites ##\n##################################\n\n.PHONY : foo\n\nall: SDM4_Site/_site/index.html\n\nSDM4_Site/_site/index.html: SDM4_Site/_site.yml $(wildcard SDM4_Site/*.Rmd) $(wildcard SDM4_Site/chapterfiles/*.pdf) $(wildcard data/*.csv)\n\tRscript -e \"rmarkdown::render_site('SDM4_Site')\"\n\n## produce pdf, html, docx from .Rmd files\n*.pdf: ${@:.pdf=.Rmd}\n*.html: ${@:.html=.Rmd}\n*.docx: ${@:.docx=.Rmd}\n\ninclude r-rules.mk",
+    "created" : 1484246624395.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1205735110",
+    "id" : "BA260B1F",
+    "lastKnownWriteTime" : 1484246764,
+    "last_content_update" : 1484246764469,
+    "path" : "~/SDM4inR/Makefile",
+    "project_path" : "Makefile",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "makefile"
+}

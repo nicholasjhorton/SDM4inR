@@ -13,11 +13,11 @@
 
 Title  | Links to Rmd and PDF files
 ------------- | -------------
-Chapter 01 : Stats Starts Here | <a href='files/Chapter01.Rmd'>.Rmd File</a> <a href='files/Chapter01.pdf'>(pdf)</a>
-Chapter 02 : Displaying and Describing Categorical Data | <a href='files/Chapter02.Rmd'>.Rmd File</a> <a href='files/Chapter02.pdf'>(pdf)</a>
-Chapter 03 : Displaying and Summarizing Quantitative Data | <a href='files/Chapter03.Rmd'>.Rmd File</a> <a href='files/Chapter03.pdf'>(pdf)</a>
-Chapter 04 : Understanding and Comparing Distributions | <a href='files/Chapter04.Rmd'>.Rmd File</a> <a href='files/Chapter04.pdf'>(pdf)</a>
-Chapter 05 : The Standard Devitation as a Ruler and the Normal Model | <a href='files/Chapter05.Rmd'>.Rmd File</a> <a href='files/Chapter05.pdf'>(pdf)</a>
+Chapter 01 : Stats Starts Here | <a href='chapterfiles/Chapter01.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter01.pdf'>(pdf)</a>
+Chapter 02 : Displaying and Describing Categorical Data | <a href='chapterfiles/Chapter02.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter02.pdf'>(pdf)</a>
+Chapter 03 : Displaying and Summarizing Quantitative Data | <a href='chapterfiles/Chapter03.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter03.pdf'>(pdf)</a>
+Chapter 04 : Understanding and Comparing Distributions | <a href='chapterfiles/Chapter04.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter04.pdf'>(pdf)</a>
+Chapter 05 : The Standard Devitation as a Ruler and the Normal Model | <a href='chapterfiles/Chapter05.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter05.pdf'>(pdf)</a>
 
 
 

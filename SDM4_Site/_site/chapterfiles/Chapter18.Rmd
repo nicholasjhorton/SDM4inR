@@ -1,0 +1,106 @@
+---
+title: "SDM4 in R: Confidence Intervals for Proportions (Chapter 18)"
+author: "Nicholas Horton (nhorton@amherst.edu)"
+date: "January 3, 2017"
+output: 
+  pdf_document:
+    fig_height: 2.8
+    fig_width: 6
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 4
+    fig_width: 6
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+options(digits=3)
+```
+
+```{r, include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+```
+
+## Introduction and background 
+
+This document is intended to help describe how to undertake analyses introduced 
+as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
+file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
+
+This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+
+## Chapter 18: Confidence intervals for proportions
+
+### Section 18.1: A confidence interval
+
+The Facebook survey of 156 respondents yielded 48 who updated their status every day (or more often).
+
+```{r}
+n <- 156
+binom.test(48, n)    # exact binomial
+```
+
+Calculation on page 473
+```{r}
+phat <- 48/n; phat
+sep <- sqrt(phat*(1-phat)/n); sep    # matches value on page 473
+interval <- phat + c(-2, 2)*sep; interval
+```
+
+### Section 18.2: Interpreting confidence intervals
+
+```{r warning=FALSE}
+set.seed(1988)
+CIsim(n=100, samples=20)
+```
+
+We would expect 19 out of 20 of the intervals to cover the true (population) value, but here only 18 out of 20 actually covered that value (see Figure at top of page 476).
+
+### Section 18.3: Margin of error
+
+We can replicate the calculation for the "For Example: Finding the margin of error Take 1" (page 478)
+
+```{r}
+sdp <- sqrt(.5*.5/1010); sdp   # worst case margin of error (based on p=0.5)
+me <- 2*sdp; me
+```
+
+We can replicate the calculation for the "For Example: Finding the margin of error Take 1" (pages 478-479)
+
+```{r}
+qnorm(.95, mean=0, sd=1)   # z-star for 90% confidence interval
+sep <- sqrt(.4*.6/1010); sep
+me <- 1.6445*sep; me
+```
+
+### Section 18.4: Assumptions
+
+We can replicate the calculation for the "For Example: choosing a sample size" (page 482)
+
+```{r}
+zstar <- qnorm(.975, mean=0, sd=1); zstar
+me <- 0.02 # desired margin of error
+p <- 0.40
+n <- (zstar*sqrt(p*(1-p))/me)^2; n
+```
+
+We will need about 2305 subjects to yield a margin of error of 2% under these assumptions.
+
+
+

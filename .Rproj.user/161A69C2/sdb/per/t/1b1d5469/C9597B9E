@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"SDM4 in R: Understanding Randomness (Chapter 10)\"\nauthor: \"Patrick Frenett (pfrenett19@amherst.edu)\"\ndate: \"June 21, 2016\"\noutput: \n  pdf_document:\n    fig_height: 3\n    fig_width: 6\n  html_document:\n    fig_height: 3\n    fig_width: 5\n  word_document:\n    fig_height: 4\n    fig_width: 6\n---\n\n\n```{r, include=FALSE}\n# Don't delete this chunk if you are using the mosaic package\n# This loads the mosaic and dplyr packages\nrequire(mosaic)\n```\n\n```{r, include=FALSE}\n# Some customization.  You can alter or delete as desired (if you know what you are doing).\n\n# This changes the default colors in lattice plots.\ntrellis.par.set(theme=theme.mosaic())  \n\n# knitr settings to control how R chunks work.\nrequire(knitr)\nopts_chunk$set(\n  tidy=FALSE,     # display code as typed\n  size=\"small\"    # slightly smaller font for code\n)\n```\n\n## Introduction and background \n\nThis document is intended to help describe how to undertake analyses introduced \nas examples in the Fourth Edition of \\emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.\nMore information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This\nfile as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://www.amherst.edu/~nhorton/sdm4.\n\nThis work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).\n\n## Chapter 10: Understanding Randomness\n\n### Section 10.1: What is Randomness? \n\n### Section 10.2: Simulating by Hand\n\nShown below is the box and whisker plot from page 284.\n\n```{r}\nlibrary(mosaic); library(readr)\ndata <- c(5,4,7,5,18,6,5,4,6) \ndata$ID <- seq.int(nrow(data))\n\nbwplot(~data, data=data)\n```\n",
+    "created" : 1466797149264.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2348647918",
+    "id" : "C9597B9E",
+    "lastKnownWriteTime" : 1466797181,
+    "last_content_update" : 1466797181871,
+    "path" : "~/SDM4inR/Chapter10.Rmd",
+    "project_path" : "Chapter10.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

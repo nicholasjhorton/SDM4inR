@@ -11,8 +11,8 @@
 
 Title  | Links to Rmd and PDF files
 ------------- | -------------
-Chapter 17 : Sampling Distribution Models | <a href='files/Chapter17.Rmd'>.Rmd File</a> <a href='files/Chapter17.pdf'>(pdf)</a>
-Chapter 18 : Confidence Intervals for Proportions | <a href='files/Chapter18.Rmd'>.Rmd File</a> <a href='files/Chapter18.pdf'>(pdf)</a>
-Chapter 19 : Testing Hypotheses about Proportions | <a href='files/Chapter19.Rmd'>.Rmd File</a> <a href='files/Chapter19.pdf'>(pdf)</a>
-Chapter 20 : Inferences about Means | <a href='files/Chapter20.Rmd'>.Rmd File</a> <a href='files/Chapter20.pdf'>(pdf)</a>
+Chapter 17 : Sampling Distribution Models | <a href='chapterfiles/Chapter17.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter17.pdf'>(pdf)</a>
+Chapter 18 : Confidence Intervals for Proportions | <a href='chapterfiles/Chapter18.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter18.pdf'>(pdf)</a>
+Chapter 19 : Testing Hypotheses about Proportions | <a href='chapterfiles/Chapter19.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter19.pdf'>(pdf)</a>
+Chapter 20 : Inferences about Means | <a href='chapterfiles/Chapter20.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter20.pdf'>(pdf)</a>
 Chapter 21 : More about Tests and Intervals | There was not a significant use of R in chapter 21.

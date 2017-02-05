@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "RDIR = .\nDATA_DIR = $(RDIR)/data\n\nCHAPFILES_DIR = $(RDIR)/chapter_files\nCHAPFILES_SOURCE = $(wildcard $(CHAPFILES_DIR)/*.Rmd)\nCHAPFILES_OUT = $(CHAPFILES_SOURCE:.Rmd=.docx)\n\nKNIT = Rscript -e \"require(rmarkdown); render('$<')\"\nFOUR = Rscript -e \"2+2\"\n\nall: $(CHAPFILES_OUT)\n\n#########################\n# Analyze \n$(CHAPFILES_DIR)/%.docx:$(CHAPFILES_DIR)/%.Rmd $(PROCESS_OUT)\n\t$(KNIT) \n\t$(FOUR)\n#########################\n\nclean:\n\t#rm -fv $(CHAPFILES_OUT)\n\trm -fv $(CHAPFILES_DIR)/*.pdf\n\t\n\t\n\t\n\t",
+    "created" : 1484089596555.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3489877023",
+    "id" : "1785775F",
+    "lastKnownWriteTime" : 1484145710,
+    "last_content_update" : 1484145710260,
+    "path" : "~/SDM4inR/Makefile",
+    "project_path" : "Makefile",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "makefile"
+}
