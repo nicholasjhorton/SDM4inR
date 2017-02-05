@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression (Chapter 28)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "January 2, 2017"
+date: "February 5, 2017"
 output: 
   pdf_document:
     fig_height: 3
@@ -58,6 +58,16 @@ BodyFat <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Body_fat_comple
 BodyFatmod <- lm(PctBF ~ waist + Height, data=BodyFat)
 msummary(BodyFatmod)
 ```
+
+We can use this model to generate predicted values.
+
+```{r}
+BodyFatfun <- makeFun(BodyFatmod)
+BodyFatfun(waist=0, Height=0)  # returns intercept
+BodyFatfun(waist=30, Height=70)  
+-3.101 + 1.773*30 -0.602*70
+```
+
 
 ### Section 28.2: Interpreting multiple regression coefficients
 
