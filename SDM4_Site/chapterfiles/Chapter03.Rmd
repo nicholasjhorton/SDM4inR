@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Displaying and Describing Quantitative Data (Chapter 3)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "January 2, 2017"
+date: "July 17, 2017"
 output: 
   pdf_document:
     fig_height: 4
@@ -43,6 +43,7 @@ More information about the book can be found at http://wps.aw.com/aw_deveaux_sta
 file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+A paper describing the mosaic approach was published in the *R Journal*: https://journal.r-project.org/archive/2017/RJ-2017-024.
 
 ## Chapter 3: Displaying and describing quantitative data
 
@@ -55,12 +56,13 @@ options(digits=3)
 Tsunami <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/Tsunami_Earthquakes.txt", 
   delim="\t")
 nrow(Tsunami)   
-histogram(~ Magnitude, width=0.5, center=0.5/2, type="count", data=Tsunami)
-histogram(~ Magnitude, width=0.5, center=0.5/2, type="percent", data=Tsunami)
-histogram(~ Magnitude, width=0.5, center=0.5/2, data=Tsunami)
+gf_histogram(~ Magnitude, binwidth=0.5, center=0.5/2+0.001, 
+  data=Tsunami)
+gf_histogram(..density.. ~ Magnitude, binwidth=0.5, center=0.5/2+0.001, 
+  data=Tsunami)
 ```
 
-Note that Figure 3.3 on page 45 displays the second of these histograms (with the y-axis measured by percent in each bar).  The first histogram displays the count and the last the density (where the total area of the bars adds up to 1).
+Note that Figure 3.3 on page 47 displays a histogram with the y-axis measured by percent in each bar.  The first histogram displays the count and the last the density (where the total area of the bars adds up to 1).
 
 ```{r message=FALSE}
 Pulse_rates <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/Pulse_rates.txt",
@@ -86,7 +88,7 @@ See calculation and Figure 3.11 on page 53.
 recent <- filter(Tsunami, Year >= 1989, Year <= 2013)
 nrow(recent)   
 median(~ Magnitude, data=recent)
-histogram(~Magnitude, width=0.2, data=recent)
+gf_histogram(~ Magnitude, binwidth=0.2, data=recent)
 ```
 
 ### Section 3.4: Spread
@@ -104,7 +106,7 @@ IQR(~ Magnitude, data=recent)
 
 See display on page 57.
 ```{r}
-bwplot(~ Magnitude, data=recent)
+gf_boxplot(Magnitude ~ 1, data=recent)
 ```
 
 Note that boxplots of a single distribution aren't usually very interesting (more useful displays will be seen in Chapter 4 when we start comparing groups).
