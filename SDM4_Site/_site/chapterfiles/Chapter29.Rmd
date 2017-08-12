@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression Wisdom (Chapter 29)"
 author: "Nicholas Horton (nhorton@amherst.edu) and Patrick Frenett"
-date: "January 2, 2017"
+date: "August 12, 2017"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -44,6 +44,7 @@ More information about the book can be found at http://wps.aw.com/aw_deveaux_sta
 file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
 This work leverages initiatives undertaken by Project MOSAIC (http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses. A short summary of the R needed to teach introductory statistics can be found in the mosaic package vignettes (http://cran.r-project.org/web/packages/mosaic).
+A paper describing the mosaic approach was published in the *R Journal*: https://journal.r-project.org/archive/2017/RJ-2017-024.
 
 ## Chapter 29: Multiple Regression Wisdom
 
@@ -58,8 +59,8 @@ filter(Coasters, Speed=="*100" | Speed=="*56")
 Note that two of the observations for speed have special characters in them.
 We first need to address these data irregularities:
 ```{r}
-library(tidyr)
-Coasters <- mutate(Coasters, Speed = extract_numeric(Speed))
+library(readr)
+Coasters <- mutate(Coasters, Speed = parse_number(Speed))
 ```
 To match the output we need to remove these two coasters.
 
@@ -176,7 +177,7 @@ From this we see that `HSdrop`, `TeenBirths` and `TeenDeaths` are correlated. Th
 
 ```{r}
 lmInfant2 <- lm(Infantmort ~ . -State -TeenDeaths -TeenBirths -HSdrop, data = InfantMortality)
-summary(lmInfant2)
+msummary(lmInfant2)
 ```
 
 Notice that the $R^2$ of this final model is 0.689: this is different that in the book. This illustrates how there are a number of approaches when choosing the 'best' model and that different models may be better or worse given the constraints/specifications of the problem.
