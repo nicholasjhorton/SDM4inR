@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: The Standard Deviation as a Ruler and the Normal Model (Chapter 5)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "April 23, 2018"
 output: 
   pdf_document:
     fig_height: 3
@@ -110,12 +110,14 @@ qnorm(.9, mean=0, sd=1)   # or as a Z-score
 
 ### Section 5.5: Normal probability plots
 
-See Figure 5.8 on page 129
+See (sideways) Figure 5.8 on page 129
 
 ```{r message=FALSE}
 Nissan <- 
 read_delim("http://nhorton.people.amherst.edu/sdm4/data/Nissan.txt",
   delim="\t")
-histogram(~ mpg, width=1, center=0.5, data=Nissan)
-qqmath(~ mpg, data=Nissan)
+gf_histogram(~ mpg, binwidth=1, center=0.5, data=Nissan)
+```
+```{r}
+gf_qq(~ mpg, data=Nissan)
 ```
