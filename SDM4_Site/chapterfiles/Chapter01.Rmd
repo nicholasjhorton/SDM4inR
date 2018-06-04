@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Stats Starts Here (Chapter 1)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "July 17, 2017"
+date: "June 4th, 2018"
 output: 
   pdf_document:
     fig_height: 4
