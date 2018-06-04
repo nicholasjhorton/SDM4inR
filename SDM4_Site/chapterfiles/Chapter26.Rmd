@@ -15,24 +15,19 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
-options(digits=5)
+options(digits = 5)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -54,20 +49,20 @@ The graph in Figure 26.1 (page 747) can be generated using the `bwplot()` functi
 
 ```{r}
 Soap <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Bacterial_Soap.csv")
-bwplot(Bacterial.Counts ~ Method, data=Soap)
+gf_boxplot(Bacterial.Counts ~ Method, data = Soap)
 ```
 
 The example on page 750 considers the outcomes in hand volumes for three treatments
 post surgery.
-```{r}
+```{r warning = FALSE}
 Contrast <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Contrast_baths.csv")
-bwplot(Hand.Vol.Chg ~ Treatment, data=Contrast)
+gf_boxplot(Hand.Vol.Chg ~ Treatment, data = Contrast)
 ```
 
 The summary statistics at the bottom of page 751 can be calculated using `favstats()`.
 
 ```{r}
-favstats(Bacterial.Counts ~ Method, data=Soap)
+favstats(Bacterial.Counts ~ Method, data = Soap)
 ```
 
 ### Section 26.2: The ANOVA table
@@ -75,7 +70,7 @@ favstats(Bacterial.Counts ~ Method, data=Soap)
 The `aov()` function can be used to fit an analysis of variance model.
 
 ```{r}
-aovmod <- aov(Bacterial.Counts ~ Method, data=Soap)
+aovmod <- aov(Bacterial.Counts ~ Method, data = Soap)
 summary(aovmod)
 ```
 
@@ -83,7 +78,7 @@ This model has 3 degrees of freedom for the model (numerator) and 28 degrees of
 freedom for the error (denominator).  The `xpf()` function can replicate the calculation of the exact p-value (and generate Figure 26.4, page 754).
 
 ```{r}
-xpf(7.0636, df1=3, df2=28)
+xpf(7.0636, df1 = 3, df2 = 28)
 ```
 
 
@@ -96,8 +91,10 @@ model.tables(aovmod)
 The residual standard deviation can be calculated (page 759).
 
 ```{r}
-n <- 32; k <- 4
-sp <- sqrt(sum(resid(aovmod)^2/(n-k))); sp
+n <- 32
+k <- 4
+sp <- sqrt(sum(resid(aovmod)^2/(n-k)))
+sp
 sqrt(1410)
 ```
 
@@ -105,6 +102,6 @@ We can also see how the results are equivalent when fitting a regression model
 with indicators.
 
 ```{r}
-lmmod <- lm(Bacterial.Counts ~ Method, data=Soap)
+lmmod <- lm(Bacterial.Counts ~ Method, data = Soap)
 msummary(lmmod)
 ```
