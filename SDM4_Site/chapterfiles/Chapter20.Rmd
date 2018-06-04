@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Inferences about Means (Chapter 20)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "June 4, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -15,24 +15,19 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
-options(digits=3)
+options(digits = 3)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -55,33 +50,36 @@ Let's begin by reproducing the figure on the bottom of page 519.
 ```{r}
 mu <- 1309
 sd <- 15.7
-xpnorm(c(mu-3*sd, mu-2*sd, mu-sd, mu+sd, mu+2*sd, mu+3*sd), mean=mu, sd=sd)
+xpnorm(c(mu-3*sd, mu-2*sd, mu-sd, mu+sd, mu+2*sd, mu+3*sd), mean = mu, sd = sd)
 ```
 
 ### Section 20.2: Gosset's t
 
 Figure 20.1 (page 521) displays a normal curve (dashed green curve) and a t-model with 2 degrees of freedom (solid blue curve).
 
-```{r fig.keep="last"}
-plotDist("norm", lty=2, col="green", lwd=2)
-plotDist("t", params=2, lty=1, lwd=2, col="blue", add=TRUE)
+```{r fig.keep = "last"}
+plotDist("norm", lty = 2, col = "green", lwd = 2)
+plotDist("t", params = 2, lty = 1, lwd = 2, col = "blue", add = TRUE)
 ```
 
 We can reproduce the calculations for the Farmed salmon example (pages 523-524) using summary statistics:
 
 ```{r}
-n <- 150; ybar <- 0.0913; s = 0.0495
-tstar <- qt(0.975, df=n-1); tstar
+n <- 150 
+ybar <- 0.0913
+s = 0.0495
+tstar <- qt(0.975, df = n-1)
+tstar
 ybar + c(-tstar, tstar)*s/sqrt(n)
 ```
 
 or directly:
 
-```{r}
+```{r warning = FALSE}
 Salmon <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Farmed_Salmon.csv")
-favstats(~ Mirex, data=Salmon)
-histogram(~ Mirex, width=0.01, center=0.01/2, data=Salmon)
-t.test(~ Mirex, data=Salmon)
+favstats(~ Mirex, data = Salmon)
+gf_histogram(~ Mirex, binwidth = 0.01, center = 0.01/2, data = Salmon)
+t.test(~ Mirex, data = Salmon)
 ```
 
 We note that the distribution of measurements is not particularly normal.
@@ -91,8 +89,9 @@ We note that the distribution of measurements is not particularly normal.
 We can carry out the one-sided test outlined on page 530:
 
 ```{r}
-tval <- (.0913-0.08)/0.0040; tval
-1-xpt(tval, df=149)
+tval <- (.0913-0.08)/0.0040
+tval
+1-xpt(tval, df = 149)
 ```
 
 
