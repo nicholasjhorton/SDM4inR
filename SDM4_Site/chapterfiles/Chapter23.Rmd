@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Paired Samples and Blocks (Chapter 23)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "June 4, 2018"
 output: 
   pdf_document:
     fig_height: 2.4
@@ -15,24 +15,19 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
-options(digits=5)
+options(digits = 5)
 ```
 
 ```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -56,22 +51,23 @@ either a 5 day or 4 day schedule.
 fiveday <- c(2798, 7724, 7505, 838, 4592, 8107, 1228, 8718, 1097, 8089, 3807)
 fourday <- c(2914, 6112, 6177, 1102, 3281, 4997, 1695, 6606, 1063, 6392, 3362)
 ds <- data.frame(fiveday, fourday)
-ds <- mutate(ds, diff = fiveday - fourday); ds
+ds <- mutate(ds, diff = fiveday - fourday)
+ds
 ```
 
 ### Section 23.2: Assumptions and conditions
 
 ```{r}
-histogram(~ diff, width=500, center=500/2, data=ds)   # page 634
-t.test(~ diff, data=ds)
+gf_histogram(~ diff, binwidth = 500, center = 500/2, data = ds)   # page 634
+t.test(~ diff, data = ds)
 ```
 
 ### Section 23.3: Confidence intervals for matched pairs
 
 The same result is seen as on page 640 for the confidence interval
 for the population difference in mileage using the (results not shown).
-```{r eval=FALSE}
-t.test(~ diff, data=ds)$conf.int
+```{r eval = FALSE}
+t.test(~ diff, data = ds)$conf.int
 ```
 
 ### Section 23.4: Blocking
