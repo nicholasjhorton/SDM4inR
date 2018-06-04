@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Comparing Groups (Chapter 22)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "June 4, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -15,24 +15,19 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
-options(digits=3)
+options(digits = 3)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -53,9 +48,12 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 We can replicate the calculations in the example on the bottom of page 587.
 
 ```{r}
-n1 <- 248; p1 <- 0.57
-n2 <- 256; p2 <- 0.70
-sediff <- sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2); sediff
+n1 <- 248 
+p1 <- 0.57
+n2 <- 256
+p2 <- 0.70
+sediff <- sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
+sediff
 ```
 
 ### Section 22.3: Confidence interval for a difference
@@ -70,23 +68,35 @@ We can replicate the values from the example on page 590.
 We can replicate the values from the example on pages 594-595.
 
 ```{r}
-n1 <- 293; y1 <- 205
-n2 <- 469; y2 <- 235
-ppooled <- (y1+y2)/(n1+n2); ppooled
-sepooled <- sqrt(ppooled*(1-ppooled)/n1 + ppooled*(1-ppooled)/n2); sepooled
-z <- (y1/n1 - y2/n2)/sepooled; z
-pval <- 2*pnorm(z, lower.tail = FALSE); pval
+n1 <- 293
+y1 <- 205
+n2 <- 469
+y2 <- 235
+ppooled <- (y1+y2)/(n1+n2)
+ppooled
+sepooled <- sqrt(ppooled*(1-ppooled)/n1 + ppooled*(1-ppooled)/n2)
+sepooled
+z <- (y1/n1 - y2/n2)/sepooled
+z
+pval <- 2*pnorm(z, lower.tail = FALSE)
+pval
 ```
 
 ### Section 22.6: Testing for a difference in means
 
 ```{r}
-n1 <- 8; n2 <- 7
-ybar1 <- 281.88; ybar2 <- 211.43
-s1 <- 18.31; s2 <- 46.43
-sediff <- sqrt(s1^2/n1 + s2^2/n2); sediff
-t <- (ybar1 - ybar2)/sediff; t
-pval <- 2*pt(t, df=7.62); pval
+n1 <- 8
+n2 <- 7
+ybar1 <- 281.88
+ybar2 <- 211.43
+s1 <- 18.31
+s2 <- 46.43
+sediff <- sqrt(s1^2/n1 + s2^2/n2)
+sediff
+t <- (ybar1 - ybar2)/sediff
+t
+pval <- 2*pt(t, df = 7.62)
+pval
 ```
 
 ```{r}
@@ -95,13 +105,14 @@ prices
 with(prices, t.test(Buying.from.a.Friend, Buying.from.a.Stranger))
 ```
 
-Let's turn this dataset in a lattice friendlier version.
-```{r}
+Let's turn this dataset in a ggformula friendlier version.
+```{r warning = FALSE}
 ds <- with(prices, 
-  data.frame(price=c(Buying.from.a.Friend, Buying.from.a.Stranger),
-             group=c(rep("Friend", nrow(prices)), rep("Stranger", nrow(prices)))))
+  data.frame(price = c(Buying.from.a.Friend, Buying.from.a.Stranger),
+             group = c(rep("Friend", nrow(prices)), rep("Stranger", nrow(prices)))))
 ds
-t.test(price ~ group, data=ds)   # Unpooled
-t.test(price ~ group, var.equal=TRUE, data=ds)   # Pooled
-bwplot(group ~ price, data=ds)
+t.test(price ~ group, data = ds)   # Unpooled
+t.test(price ~ group, var.equal = TRUE, data = ds)   # Pooled
+gf_boxplot(price ~ group, data = ds) %>%
+gf_refine(coord_flip())
 ```
