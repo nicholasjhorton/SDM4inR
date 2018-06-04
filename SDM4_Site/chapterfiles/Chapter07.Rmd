@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Linear Regression (Chapter 7)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "June 4th, 2018"
 output: 
   pdf_document:
     fig_height: 3
@@ -15,23 +15,18 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -52,17 +47,19 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 Figure 7.2 (page 183) displays a scatterplot of the Burger King data with a superimposed regression line.
 
 ```{r message=FALSE}
-library(mosaic); library(readr)
-options(digits=3)
+library(mosaic)
+library(readr)
+options(digits = 3)
 BK <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Burger_King_Items.csv")
 names(BK)  
-xyplot(Fat ~ Protein, ylab="Fat (gm)", xlab="Protein (gm)", type=c("p", "r"), data=BK)
+gf_point(Fat ~ Protein, ylab = "Fat (gm)", xlab = "Protein (gm)", data = BK) %>%
+  gf_lm()
 ```
 
 We can calculate the residual for a particular value with 31 grams of protein.
 
 ```{r}
-BKmod <- lm(Fat ~ Protein, data=BK)
+BKmod <- lm(Fat ~ Protein, data = BK)
 BKfun <- makeFun(BKmod)
 BKfun(31)    # predicted value for a item with 31 grams of protein
 ```
@@ -73,13 +70,17 @@ BKfun(31)    # predicted value for a item with 31 grams of protein
 coef(BKmod)
 BKfun(0)
 BKfun(32) - BKfun(31)
+```
 
 ### Section 7.3 Finding the least squares line
 
 ```{r}
-sx <- sd(~ Protein, data=BK); sx
-sy <- sd(~ Fat, data=BK); sy
-r <- cor(Protein ~ Fat, data=BK); r   # same as cor(Fat ~ Protein)!
+sx <- sd(~ Protein, data = BK)
+sx
+sy <- sd(~ Fat, data = BK)
+sy
+r <- cor(Protein ~ Fat, data = BK)
+r   # same as cor(Fat ~ Protein)!
 r*sy/sx
 coef(BKmod)[2]
 ```
@@ -93,7 +94,8 @@ Figure 7.5 (page 193) displays the scatterplot of residuals as a function of the
 
 The `msummary()` function generates a lot of output (much of which won't be familiar).
 ```{r}
-xyplot(resid(BKmod) ~ Protein, type=c("p", "r"), data=BK)
+gf_point(resid(BKmod) ~ Protein, type = c("p", "r"), data = BK) %>%
+  gf_lm()
 msummary(BKmod)
 ```
 
