@@ -22,16 +22,11 @@ require(mosaic)
 ```
 
 ```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -51,20 +46,22 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 
 
 ```{r}
-library(mosaic); library(readr)
-options(na.rm=TRUE)
-options(digits=3)
+library(mosaic)
+library(readr)
+options(na.rm = TRUE)
+options(digits = 3)
 (6.54 - 5.91)/0.56  # should be 1.1 sd better, see page 112
 ```
 
-```{r message=FALSE}
+```{r message = FALSE}
 Heptathlon <- 
 read_delim("http://nhorton.people.amherst.edu/sdm4/data/Womens_Heptathlon_2012.txt",
-  delim="\t")
+  delim = "\t")
 nrow(Heptathlon)  
-filter(Heptathlon, LJ >= max(LJ, na.rm=TRUE)) %>% data.frame()
-favstats(~ LJ, data=Heptathlon)
-(6.54 - mean(~ LJ, data=Heptathlon))/sd(~ LJ, data=Heptathlon)
+filter(Heptathlon, LJ >= max(LJ, na.rm = TRUE)) %>% 
+  data.frame()
+favstats(~ LJ, data = Heptathlon)
+(6.54 - mean(~ LJ, data = Heptathlon))/sd(~ LJ, data = Heptathlon)
 ```
 
 ### Section 5.2: Shifting and scaling
@@ -73,16 +70,16 @@ favstats(~ LJ, data=Heptathlon)
 
 The 68-95-99.7 rule
 
-```{r, message=FALSE, warning=FALSE}
-xpnorm(c(-3, -1.96, -1, 1, 1.96, 3), mean=0, sd=1, verbose=FALSE)
-xpnorm(c(-3, -1.96, 1.96, 3), mean=0, sd=1, verbose=FALSE)
-xpnorm(c(-3, 3), mean=0, sd=1, verbose=FALSE)
+```{r, message = FALSE, warning = FALSE}
+xpnorm(c(-3, -1.96, -1, 1, 1.96, 3), mean = 0, sd = 1, verbose = FALSE)
+xpnorm(c(-3, -1.96, 1.96, 3), mean = 0, sd = 1, verbose = FALSE)
+xpnorm(c(-3, 3), mean = 0, sd = 1, verbose = FALSE)
 ```
 
 Step-by-step (page 122)
 
 ```{r}
-xpnorm(600, mean=500, sd=100)
+xpnorm(600, mean = 500, sd = 100)
 ```
 
 ### Section 5.4: Finding normal percentiles
@@ -90,34 +87,34 @@ xpnorm(600, mean=500, sd=100)
 as on page 123
 
 ```{r}
-xpnorm(680, mean=500, sd=100)
-qnorm(0.964, mean=500, sd=100)   # inverse of pnorm()
-qnorm(0.964, mean=0, sd=1)   # what is the z-score?
+xpnorm(680, mean = 500, sd = 100)
+qnorm(0.964, mean = 500, sd = 100)   # inverse of pnorm()
+qnorm(0.964, mean = 0, sd = 1)   # what is the z-score?
 ```
 
 or on page 124
 
 ```{r}
-xpnorm(450, mean=500, sd=100)
+xpnorm(450, mean = 500, sd = 100)
 ```
 
 and page 125
 
 ```{r}
-qnorm(.9, mean=500, sd=100)
-qnorm(.9, mean=0, sd=1)   # or as a Z-score
+qnorm(.9, mean = 500, sd = 100)
+qnorm(.9, mean = 0, sd = 1)   # or as a Z-score
 ```
 
 ### Section 5.5: Normal probability plots
 
 See (sideways) Figure 5.8 on page 129
 
-```{r message=FALSE}
+```{r message = FALSE}
 Nissan <- 
 read_delim("http://nhorton.people.amherst.edu/sdm4/data/Nissan.txt",
-  delim="\t")
-gf_histogram(~ mpg, binwidth=1, center=0.5, data=Nissan)
+  delim = "\t")
+gf_histogram(~ mpg, binwidth = 1, center = 0.5, data = Nissan)
 ```
 ```{r}
-gf_qq(~ mpg, data=Nissan)
+gf_qq(~ mpg, data = Nissan)
 ```
