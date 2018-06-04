@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Sampling Distribution Models (Chapter 17)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "June 4, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -15,23 +15,18 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -52,14 +47,15 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 Let's regenerate Figure 17.1 (page 444).
 
 ```{r}
-library(mosaic); options(digits=3)
+library(mosaic)
+options(digits = 3)
 numsim <- 2000
 n <- 1022
 p <- 0.57
-samples <- rbinom(numsim, size=n, prob=p)/n
-histogram(~ samples, xlab="Distribution of sample proportions", 
-          width=0.01, center=0.01/2, type="count")
-plotDist("norm", params=list(p, sqrt(p*(1-p)/n)), xlab="p", ylab="f(p)")
+samples <- rbinom(numsim, size = n, prob = p)/n
+gf_histogram(~ samples, xlab = "Distribution of sample proportions", 
+          binwidth = 0.01, center = 0.01/2, type = "count")
+plotDist("norm", params = list(p, sqrt(p*(1-p)/n)), xlab = "p", ylab = "f(p)")
 ```
 
 ### Section 17.2: When does the normal model work?
@@ -67,9 +63,10 @@ plotDist("norm", params=list(p, sqrt(p*(1-p)/n)), xlab="p", ylab="f(p)")
 We can replicate the example from page 449:
 
 ```{r}
-p <- 0.22; n <- 200
-pnorm(.155, mean=p, sd=sqrt(p*(1-p)/n))   # normal approximation
-pbinom(31, size=n, prob=p)    # exact value
+p <- 0.22
+n <- 200
+pnorm(.155, mean = p, sd = sqrt(p*(1-p)/n))   # normal approximation
+pbinom(31, size = n, prob = p)    # exact value
 ```
 
 
@@ -79,15 +76,15 @@ Let's replicate the display on page 451:
 
 ```{r}
 BodyFat <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Body_fat_complete.csv")
-medians <- do(2000)*median(~ Weight, data=sample(BodyFat, 10, replace=FALSE))
-histogram(~ median, xlab="Sampling distribution of medians", 
-          width=5, center=5/2, data=medians)
-variances <- do(2000)*var(~ Weight, data=sample(BodyFat, 10, replace=FALSE))
-histogram(~ var, xlab="Sampling distribution of variances", 
-          width=100, center=100/2, data=variances)
-minimums <- do(2000)*min(~ Weight, data=sample(BodyFat, 10, replace=FALSE))
-histogram(~ min, xlab="Sampling distribution of minimums", 
-          width=2, center=2/2, data=minimums)
+medians <- do(2000)*median(~ Weight, data = sample(BodyFat, 10, replace = FALSE))
+gf_histogram(~ median, xlab = "Sampling distribution of medians", 
+          binwidth = 5, center = 5/2, data = medians)
+variances <- do(2000)*var(~ Weight, data = sample(BodyFat, 10, replace = FALSE))
+gf_histogram(~ var, xlab = "Sampling distribution of variances", 
+          binwidth = 100, center = 100/2, data = variances)
+minimums <- do(2000)*min(~ Weight, data = sample(BodyFat, 10, replace = FALSE))
+gf_histogram(~ min, xlab = "Sampling distribution of minimums", 
+          binwidth = 2, center = 2/2, data = minimums)
 ```
 
 Neither of the sampling distributions of the variance or the minimums are normally distributed.
@@ -98,56 +95,57 @@ Let's replicate the displays on pages 453-454:
 
 ```{r message=FALSE}
 require(readr)
-CEO <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/CEO_Salary_2012.txt", delim="\t")
+CEO <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/CEO_Salary_2012.txt", delim = "\t")
 CEO <- mutate(CEO, Pay = One_Year_Pay*1000)
-favstats(~ Pay, data=CEO)
+favstats(~ Pay, data = CEO)
 ```
 
 Note that Figure 17.11 seems to be off by a factor of 10!
 ```{r}
-histogram(~ Pay, xlab="CEO Compensation in $1000", width=10000, center=10000/2-.01, data=CEO)
+gf_histogram(~ Pay, xlab ="CEO Compensation in $1000", binwidth = 10000, center = 10000/2-.01, data = CEO)
 ```
 
 
 ```{r}
-samp10 <- do(2000)*mean(~ Pay, data=sample(CEO, 10))
-histogram(~ mean, xlab="means of CEO Compensation (samples of size n=10)", 
-  width=2000, center=2000/2, data=samp10)
+samp10 <- do(2000)*mean(~ Pay, data = sample(CEO, 10))
+gf_histogram(~ mean, xlab = "means of CEO Compensation (samples of size n = 10)", 
+  binwidth = 2000, center = 2000/2, data = samp10)
 ```
 
 
 ```{r}
-samp50 <- do(2000)*mean(~ Pay, data=sample(CEO, 50))
-histogram(~ mean, xlab="means of CEO Compensation (samples of size n=50)", 
-  width=1000, center=1000/2, data=samp50)
+samp50 <- do(2000)*mean(~ Pay, data = sample(CEO, 50))
+gf_histogram(~ mean, xlab = "means of CEO Compensation (samples of size n = 50)", 
+  binwidth = 1000, center = 1000/2, data = samp50)
 ```
 
 ```{r}
-samp100 <- do(2000)*mean(~ Pay, data=sample(CEO, 100))
-histogram(~ mean, xlab="means of CEO Compensation (samples of size n=100)", 
-  width=500, center=500/2, data=samp100)
+samp100 <- do(2000)*mean(~ Pay, data = sample(CEO, 100))
+gf_histogram(~ mean, xlab = "means of CEO Compensation (samples of size n = 100)", 
+  binwidth = 500, center = 500/2, data = samp100)
 ```
 
 ```{r}
-samp200<- do(2000)*mean(~ Pay, data=sample(CEO, 200))
-histogram(~ mean, xlab="means of CEO Compensation (samples of size n=200)", 
-  width=500, center=500/2, data=samp200)
+samp200<- do(2000)*mean(~ Pay, data = sample(CEO, 200))
+gf_histogram(~ mean, xlab = "means of CEO Compensation (samples of size n = 200)", 
+  binwidth = 500, center = 500/2, data = samp200)
 ```
 
 Note how the axis limits get narrower as the sample size increases (since the means are less variable when the sample size increases:
 
 ```{r}
-mysd <- sd(~ Pay, data=CEO); mysd
-sd(~ mean, data=samp10)  # what we observed
+mysd <- sd(~ Pay, data = CEO) 
+mysd
+sd(~ mean, data = samp10)  # what we observed
 mysd/sqrt(10)   # what we would expect
 ```
 
 We can repeat this comparison for each of the sets of samples.
 
 ```{r}
-sd(~ mean, data=samp50)
-sd(~ mean, data=samp100)
-sd(~ mean, data=samp200)
+sd(~ mean, data = samp50)
+sd(~ mean, data = samp100)
+sd(~ mean, data = samp200)
 ```
 
 
