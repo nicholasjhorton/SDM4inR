@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Regression Wisdom (Chapter 8)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "June 4, 2018"
 output: 
   pdf_document:
     fig_height: 3
@@ -22,11 +22,6 @@ require(mosaic)
 ```
 
 ```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
@@ -54,52 +49,60 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 Figure 8.1 (page 220) displays the scatterplot of heart rate vs duration for the Penguins dataset (along with a superimposed regression line and a smoother).
 
 ```{r message=FALSE}
-library(mosaic); library(readr)
-options(digits=3)
+library(mosaic)
+library(readr)
+options(digits = 3)
 Penguins <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Penguins.csv")
-xyplot(DiveHeartRate ~ Duration, ylab="Dive Heart Rate (bpm)", 
-       xlab="Duration (mins)", type=c("p", "r", "smooth"), data=Penguins)
+gf_point(DiveHeartRate ~ Duration, ylab = "Dive Heart Rate (bpm)", 
+         xlab="Duration (mins)", data = Penguins) %>%
+  gf_lm() %>%
+  gf_smooth(se = FALSE)
 ```
 
 Figure 8.2 (page 220) displays the residuals from a linear regression model as a function of duration.
 
-```{r}
-Penguinmod <- lm(DiveHeartRate ~ Duration, data=Penguins)
-xyplot(resid(Penguinmod) ~ Duration, type=c("p", "r", "smooth"), data=Penguins)
+```{r message=FALSE}
+Penguinmod <- lm(DiveHeartRate ~ Duration, data = Penguins)
+gf_point(resid(Penguinmod) ~ Duration, data = Penguins) %>%
+  gf_lm() %>%
+  gf_smooth(se = FALSE)
 ```
 
 Figure 8.3 (page 221) displays the histogram of residuals for the cereal data from Chapter 7.
 
 ```{r message=FALSE}
 Cereals <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Cereals.csv")
-Cerealmod <- lm(calories ~ sugars, data=Cereals)
-histogram(~ resid(Cerealmod), width=7.5, center=3.75)
+Cerealmod <- lm(calories ~ sugars, data = Cereals)
+gf_histogram(~ resid(Cerealmod), binwidth = 7.5)
 ```
 
 Figure 8.4 (page 221) displays a scatterplot of the residuals vs predicted values.  Without jittering, the display has an odd pattern.
 
 ```{r}
-xyplot(resid(Cerealmod) ~ fitted(Cerealmod))
+gf_point(resid(Cerealmod) ~ fitted(Cerealmod))
 ```
 
 By adding some random noise we can more easily observe values that are shared by more than one cereal.
 
 ```{r}
-xyplot(jitter(resid(Cerealmod)) ~ jitter(fitted(Cerealmod)))
+gf_point(jitter(resid(Cerealmod)) ~ jitter(fitted(Cerealmod)))
 ```
 
 Figure 8.5 (page 222) displays the scatterplot stratified by what shelf it is displayed on at the store.
 
 ```{r}
 tally(~ shelf, data=Cereals)
-Cereals <- mutate(Cereals, shelfgrp = derivedFactor(
-  bottomshelf = shelf==1,
-  middleshelf = shelf==2,
-  topshelf = shelf==3
-))
-tally(~ shelfgrp, data=Cereals)
-xyplot(calories ~ sugars, group=shelfgrp, auto.key=TRUE, 
-  lwd=2, type=c("p", "r"), data=Cereals)
+Cereals <- mutate(Cereals, shelfgrp = 
+  derivedFactor(
+    bottomshelf = shelf == 1,
+    middleshelf = shelf == 2,
+    topshelf = shelf == 3
+  )
+)
+tally(~ shelfgrp, data = Cereals)
+gf_point(calories ~ sugars, color = ~ shelfgrp, 
+  lwd=2, data = Cereals) %>%
+  gf_lm()
 ```
 
 
