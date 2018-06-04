@@ -15,23 +15,18 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -54,10 +49,11 @@ he *R Journal*: https://journal.r-project.org/archive/2017/RJ-2017-024.
 See table on page 7.
 
 ```{r}
-library(mosaic); library(readr)
-options(digits=3)
+library(mosaic)
+library(readr)
+options(digits = 3)
 Tour <- read.delim("http://nhorton.people.amherst.edu/sdm4/data/Tour_de_France_2014.txt", 
-    sep="\t", stringsAsFactors=FALSE)
+    sep = "\t", stringsAsFactors = FALSE)
 names(Tour)
 dim(Tour)
 head(Tour, 3)
@@ -67,20 +63,20 @@ tail(Tour, 8)
 #### Let's find who was the winner in 1998
 
 ```{r}
-filter(Tour, Year==1998)
+filter(Tour, Year == 1998)
 ```
 
 #### How many stages did Alberto Contador win in the years when he won the Tour?
 
 ```{r}
-filter(Tour, Winner=="Contador Alberto")
+filter(Tour, Winner == "Contador Alberto")
 ```
 
 Note that the following commands generate the same output.
 
 ```{r}
 Tour %>%
-  filter(Winner=="Contador Alberto")
+  filter(Winner == "Contador Alberto")
 ```
 
 The pipe operator (`%>%`) can be used to connect one dataframe or command to 
@@ -88,12 +84,12 @@ another.
 
 #### What was the slowest average speed of any tour?  Fastest?
 ```{r}
-filter(Tour, Average.Speed==min(Average.Speed))
-filter(Tour, Average.Speed==max(Average.Speed))
+filter(Tour, Average.Speed == min(Average.Speed))
+filter(Tour, Average.Speed == max(Average.Speed))
 ```
 
 #### What can we say about the Average Speeds?
 
 ```{r}
-favstats(~ Average.Speed, data=Tour)
+favstats(~ Average.Speed, data = Tour)
 ```
