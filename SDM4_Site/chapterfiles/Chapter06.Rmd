@@ -1,6 +1,6 @@
 ---
 title: "SDM4 in R: Scatterplots, Association, and Correlation (Chapter 6)"
-author: "Nicholas Horton (nhorton@amherst.edu)"
+author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
 date: "June 4th, 2018"
 output: 
   pdf_document:
