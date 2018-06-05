@@ -132,7 +132,7 @@ gf_boxplot(BMI ~ as.factor(Diabetes), data = Pima)
 ```{r fig.keep = "last"}
 pimamod <- glm(Diabetes ~ BMI, family = "binomial", data = Pima)
 f2 <- makeFun(pimamod)
-xyplot(Diabetes ~ BMI, data = Pima)
-plotFun(f2, add = TRUE)
+gf_point(Diabetes ~ BMI, data = Pima) %>%
+gf_function(f2, add = TRUE)
 msummary(pimamod)
 ```
