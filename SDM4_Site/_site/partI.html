@@ -20,8 +20,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -31,10 +31,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -255,30 +257,30 @@ $(document).ready(function () {
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">Title</th>
-<th align="left">Links to Rmd and PDF files</th>
+<th>Title</th>
+<th>Links to Rmd and PDF files</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Chapter 01 : Stats Starts Here</td>
-<td align="left"><a href='chapterfiles/Chapter01.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter01.pdf'>(pdf)</a></td>
+<td>Chapter 01 : Stats Starts Here</td>
+<td><a href='chapterfiles/Chapter01.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter01.pdf'>(pdf)</a></td>
 </tr>
 <tr class="even">
-<td align="left">Chapter 02 : Displaying and Describing Categorical Data</td>
-<td align="left"><a href='chapterfiles/Chapter02.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter02.pdf'>(pdf)</a></td>
+<td>Chapter 02 : Displaying and Describing Categorical Data</td>
+<td><a href='chapterfiles/Chapter02.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter02.pdf'>(pdf)</a></td>
 </tr>
 <tr class="odd">
-<td align="left">Chapter 03 : Displaying and Summarizing Quantitative Data</td>
-<td align="left"><a href='chapterfiles/Chapter03.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter03.pdf'>(pdf)</a></td>
+<td>Chapter 03 : Displaying and Summarizing Quantitative Data</td>
+<td><a href='chapterfiles/Chapter03.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter03.pdf'>(pdf)</a></td>
 </tr>
 <tr class="even">
-<td align="left">Chapter 04 : Understanding and Comparing Distributions</td>
-<td align="left"><a href='chapterfiles/Chapter04.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter04.pdf'>(pdf)</a></td>
+<td>Chapter 04 : Understanding and Comparing Distributions</td>
+<td><a href='chapterfiles/Chapter04.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter04.pdf'>(pdf)</a></td>
 </tr>
 <tr class="odd">
-<td align="left">Chapter 05 : The Standard Devitation as a Ruler and the Normal Model</td>
-<td align="left"><a href='chapterfiles/Chapter05.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter05.pdf'>(pdf)</a></td>
+<td>Chapter 05 : The Standard Devitation as a Ruler and the Normal Model</td>
+<td><a href='chapterfiles/Chapter05.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter05.pdf'>(pdf)</a></td>
 </tr>
 </tbody>
 </table>

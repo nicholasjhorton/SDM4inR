@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Randomness and Probability (Chapter 15)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "June 4, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -15,23 +15,18 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -52,11 +47,14 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 We can replicate the calculation on page 390:
 
 ```{r}
-library(mosaic); library(readr); options(digits=3)
+library(mosaic)
+library(readr)
+options(digits = 3)
 x <- c(10000, 5000, 0)
 prob <- c(1/1000, 2/1000, 997/1000)
 sum(prob)   # sums to 1
-expect <- sum(x*prob); expect  # expected value
+expect <- sum(x*prob)
+expect  # expected value
 ```
 
 ### Section 15.2: Spread (The Standard Deviation)
@@ -64,9 +62,12 @@ expect <- sum(x*prob); expect  # expected value
 We can continue with the example from page 392:
 
 ```{r}
-xminmu <- x - expect; xminmu
-myvar <- sum(xminmu^2*prob); myvar
-sd <- sqrt(myvar); sd
+xminmu <- x - expect
+xminmu
+myvar <- sum(xminmu^2*prob) 
+myvar
+sd <- sqrt(myvar)
+sd
 ```
 
 ### Section 15.3: Shifting and Combining Random Variables
@@ -74,9 +75,12 @@ sd <- sqrt(myvar); sd
 Let's replicate the values from the example on page 394:
 
 ```{r}
-ex <- 5.83; varx <- 8.62^2
-ed <- ex+5; ed
-vard <- varx; vard
+ex <- 5.83 
+varx <- 8.62^2
+ed <- ex+5 
+ed
+vard <- varx
+vard
 sqrt(vard)
 ```
 
@@ -85,16 +89,18 @@ sqrt(vard)
 Let's replicate Figure 15.1 (page 400):
 
 ```{r}
-xpnorm(c(-1, 1), mean=0, sd=1)
+xpnorm(c(-1, 1), mean=0, sd = 1)
 ```
 
 and the Think/Show/Tell/Think on pages 402 and 403:
 
 ```{r}
-sdval <- sqrt(4.50); sdval
-plotDist("norm", params=list(18, sdval), xlab="x", ylab="f(x)")
-xpnorm(20, mean=18, sd=sdval)  # note how exact value is different from the table!
-zval <- (20-18)/sdval; zval
-xpnorm(zval, mean=0, sd=1)    
+sdval <- sqrt(4.50) 
+sdval
+plotDist("norm", params = list(18, sdval), xlab = "x", ylab = "f(x)")
+xpnorm(20, mean = 18, sd = sdval)  # note how exact value is different from the table!
+zval <- (20-18)/sdval
+zval
+xpnorm(zval, mean = 0, sd = 1)    
 ```
 

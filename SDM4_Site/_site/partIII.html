@@ -20,8 +20,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -31,10 +31,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -255,22 +257,22 @@ $(document).ready(function () {
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">Title</th>
-<th align="left">Links to Rmd and PDF files</th>
+<th>Title</th>
+<th>Links to Rmd and PDF files</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Chapter 10 : Understanding Randomness</td>
-<td align="left"><a href='chapterfiles/Chapter10.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter10.pdf'>(pdf)</a></td>
+<td>Chapter 10 : Understanding Randomness</td>
+<td><a href='chapterfiles/Chapter10.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter10.pdf'>(pdf)</a></td>
 </tr>
 <tr class="even">
-<td align="left">Chapter 11 : Sample Surveys</td>
-<td align="left">There was not a significant use of R in chapter 11</td>
+<td>Chapter 11 : Sample Surveys</td>
+<td>There was not a significant use of R in chapter 11</td>
 </tr>
 <tr class="odd">
-<td align="left">Chapter 12 : Experiments and Observational Studies</td>
-<td align="left">There was not a significant use of R in chapter 12</td>
+<td>Chapter 12 : Experiments and Observational Studies</td>
+<td>There was not a significant use of R in chapter 12</td>
 </tr>
 </tbody>
 </table>

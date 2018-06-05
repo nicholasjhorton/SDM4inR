@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Probability Models (Chapter 16)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "June 4, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -52,33 +52,34 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 We can replicate the calculation on page 413:
 
 ```{r}
-library(mosaic); library(readr); options(digits=3)
-dbinom(0, size=1, prob=0.2)  # Probability that you don't get Hope's picture
-dbinom(1, size=1, prob=0.2)  # Probability that you do
-dgeom(1, prob=0.2)  # Probability that you get it on the second try P(X=1)
+library(mosaic)
+library(readr)
+options(digits = 3)
+dbinom(0, size = 1, prob = 0.2)  # Probability that you don't get Hope's picture
+dbinom(1, size = 1, prob = 0.2)  # Probability that you do
+dgeom(1, prob = 0.2)  # Probability that you get it on the second try P(X=1)
 # Note that the geometric in R doesn't include the final success!
 ```
 
 ### Section 16.2: The Geometric model
 
-We can replicatethe example from page 414:
+We can replicate the example from page 414:
 
 ```{r}
-p <- 0.09; p
-plotDist("geom", p, xlim=c(-1, 40), xlab="x", ylab="P(X=x)", main="Geometric distribution")
+p <- 0.09
+plotDist("geom", p, xlim = c(-1, 40), 
+         ylim = c(0, 0.095), xlab = "x", ylab = "P(X=x)", 
+         main = "Geometric distribution")
 1/p   # true expected value
-mean(~ rgeom(20000, prob=p)) #  simulation to check
+mean(~ rgeom(20000, prob = p)) #  simulation to check
 ```
 
 and the Think/Show/Tell on pages 415-416:
 
 ```{r}
 p <- 0.06
-dgeom(0, prob=p)
-dgeom(1, prob=p)
-dgeom(2, prob=p)
-dgeom(3, prob=p)
-pgeom(3, prob=p)
+dgeom(0:3, prob = p)
+pgeom(3, prob = p)
 ```
 
 ### Section 16.3: The Binomial model
@@ -86,23 +87,23 @@ pgeom(3, prob=p)
 Let's replicate the example on page 417:
 
 ```{r}
-p <- 0.2; p    # back to Hope Solo example
+p <- 0.2    # back to Hope Solo example
 n <- 5
-plotDist("binom", params=c(size=n, prob=p), xlim=c(-0.2, 5.2), 
-         xlab="x", ylab="P(X=x)", main="Binomial distribution")
+plotDist("binom", params = c(size = n, prob = p), xlim = c(-0.2, 5.2), 
+         xlab = "x", ylab = "P(X=x)", main = "Binomial distribution")
 n*p   # true expected value
 n*p*(1-p)  # true variance
-mysamp <- rbinom(20000, size=n, prob=p) #  simulation to check
+mysamp <- rbinom(20000, size = n, prob = p) #  simulation to check
 mean(~ mysamp)
 var(~ mysamp)
-dbinom(2, size=5, prob=p)
+dbinom(2, size = 5, prob = p)
 ```
 
 or the SPAM example on page 418:
-```
-dbinom(1, size=25, prob=0.09)
-dbinom(2, size=25, prob=0.09)
-sum(dbinom(1:2, size=25, prob=0.09))
+```{r}
+dbinom(1, size = 25, prob=0.09)
+dbinom(2, size = 25, prob = 0.09)
+sum(dbinom(1:2, size = 25, prob = 0.09))
 ```
 
 ### Section 16.4: Normal approximation to the binomial
@@ -111,23 +112,26 @@ Let's replicate the example on page 419:
 
 ```{r}
 p <- 0.06; n <- 32000
-plotDist("binom", params=list(n, p), xlab="x", ylab="P(X=x)")
-ex <- n*p; varx <- n*p*(1-p)
-plotDist("norm", params=list(ex, sqrt(varx)), xlab="x", ylab="f(x)")
+plotDist("binom", params = list(n, p), xlab = "x", ylab = "P(X=x)")
+ex <- n*p
+varx <- n*p*(1-p)
+plotDist("norm", params = list(ex, sqrt(varx)), xlab = "x", ylab = "f(x)")
 pbinom(1849, n, p)
 pnorm(1849, ex, sqrt(varx))
 ```
 
-Your parents had to use the normal approximation.  The good news is that you don't have to if you use R.
+Your parents had to use the normal approximation. :-) The good news is that you don't have to if you use R (or other modern software).
 
 ### Section 16.5: The continuity correction
 
-Let's replicate the example on page 421 to demonstrate that we don't need the continuity correction if we calculate the exact distribution of the binomial.
+Let's repeat the example on page 421 to demonstrate that we don't need the continuity correction if we calculate the exact distribution of the binomial.
 
 ```{r}
-p <- 0.2; n <- 50
+p <- 0.2
+n <- 50
 dbinom(10, n, p)
-pnorm(10.5, n*p, sqrt(n*p*(1-p))) - pnorm(9.5, n*p, sqrt(n*p*(1-p)))  # continuity correction
+pnorm(10.5, n * p, sqrt(n * p * (1 - p))) - 
+  pnorm(9.5, n * p, sqrt(n * p *(1 - p)))  # continuity correction
 ```
 
 ### Section 16.6: The Poisson model
@@ -135,8 +139,8 @@ pnorm(10.5, n*p, sqrt(n*p*(1-p))) - pnorm(9.5, n*p, sqrt(n*p*(1-p)))  # continui
 Let's replicate the example on page 424:
 
 ```{r}
-lambda <- 35000*0.00011
-plotDist("pois", lambda, xlab="x", ylab="P(X=x)")
+lambda <- 35000 * 0.00011
+plotDist("pois", lambda, xlab = "x", ylab = "P(X=x)")
 1 - ppois(7, lambda)
 ```
 
@@ -145,13 +149,13 @@ plotDist("pois", lambda, xlab="x", ylab="P(X=x)")
 Let's replicate the example on page 426 for the uniform distribution:
 
 ```{r}
-x <- runif(20000, min=0, max=20)
+x <- runif(20000, min = 0, max = 20)
 mean(~ x)
 sd(~ x)
 ```
 
 and on page 427 for the exponential distribution:
 ```{r}
-plotDist("exp", 1, xlim=c(0, 5), xlab="x", ylab="f(x)")
-pexp(1/3, rate=4)   # rate is 1/E[X]
+plotDist("exp", 1, xlim = c(0, 5), xlab = "x", ylab = "f(x)")
+pexp(1/3, rate = 4)   # rate is 1/E[X]
 ```

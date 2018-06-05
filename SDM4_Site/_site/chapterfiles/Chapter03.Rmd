@@ -15,23 +15,18 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -50,31 +45,32 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 ### Section 3.1: Displaying quantitative variables
 
 See Figure 3.1 on page 46.
-```{r message=FALSE}
-library(mosaic); library(readr)
-options(digits=3)
+```{r message = FALSE}
+library(mosaic)
+library(readr)
+options(digits = 3)
 Tsunami <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/Tsunami_Earthquakes.txt", 
-  delim="\t")
+  delim = "\t")
 nrow(Tsunami)   
-gf_histogram(~ Magnitude, binwidth=0.5, center=0.5/2+0.001, 
-  data=Tsunami)
-gf_histogram(..density.. ~ Magnitude, binwidth=0.5, center=0.5/2+0.001, 
-  data=Tsunami)
+gf_histogram(~ Magnitude, binwidth = 0.5, center = 0.5/2+0.001, 
+  data = Tsunami)
+gf_histogram(..density.. ~ Magnitude, binwidth = 0.5, center = 0.5/2+0.001, 
+  data = Tsunami)
 ```
 
 Note that Figure 3.3 on page 47 displays a histogram with the y-axis measured by percent in each bar.  The first histogram displays the count and the last the density (where the total area of the bars adds up to 1).
 
-```{r message=FALSE}
+```{r message = FALSE}
 Pulse_rates <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/Pulse_rates.txt",
-  delim="\t")
+  delim = "\t")
 with(Pulse_rates, stem(Pulse))
-dotPlot(~ Pulse, data=Pulse_rates)
+gf_dotplot(~ Pulse, data = Pulse_rates)
 ```
 
 Or on page 49
 
 ```{r}
-with(Pulse_rates, stem(Pulse, scale=2))
+with(Pulse_rates, stem(Pulse, scale = 2))
 ```
 
 ### Section 3.2: Shape
@@ -87,8 +83,8 @@ See calculation and Figure 3.11 on page 53.
 ```{r}
 recent <- filter(Tsunami, Year >= 1989, Year <= 2013)
 nrow(recent)   
-median(~ Magnitude, data=recent)
-gf_histogram(~ Magnitude, binwidth=0.2, data=recent)
+median(~ Magnitude, data = recent)
+gf_histogram(~ Magnitude, binwidth = 0.2, data = recent)
 ```
 
 ### Section 3.4: Spread
@@ -96,17 +92,17 @@ gf_histogram(~ Magnitude, binwidth=0.2, data=recent)
 See statistics reported on pages 54-55.
 
 ```{r}
-favstats(~ Magnitude, data=recent)
-range(~ Magnitude, data=recent)
-diff(range(~ Magnitude, data=recent))
-IQR(~ Magnitude, data=recent)
+favstats(~ Magnitude, data = recent)
+range(~ Magnitude, data = recent)
+diff(range(~ Magnitude, data = recent))
+IQR(~ Magnitude, data = recent)
 ```
 
 ### Section 3.5: Boxplots and 5-Number Summaries
 
 See display on page 57.
 ```{r}
-gf_boxplot(Magnitude ~ 1, data=recent)
+gf_boxplot(Magnitude ~ 1, data = recent)
 ```
 
 Note that boxplots of a single distribution aren't usually very interesting (more useful displays will be seen in Chapter 4 when we start comparing groups).
@@ -116,17 +112,17 @@ Note that boxplots of a single distribution aren't usually very interesting (mor
 See calculation on page 59.
 
 ```{r}
-mean(~ Magnitude, data=recent)
-median(~ Magnitude, data=recent)
+mean(~ Magnitude, data = recent)
+median(~ Magnitude, data = recent)
 ```
 
 ### Section 3.7: The Spread of Symmetric Distributions: The Standard Deviation
 
 
 ```{r}
-sd(~ Magnitude, data=recent)
-var(~ Magnitude, data=recent)
-sqrt(var(~ Magnitude, data=recent))
+sd(~ Magnitude, data = recent)
+var(~ Magnitude, data = recent)
+sqrt(var(~ Magnitude, data = recent))
 0.702^2
 ```
 

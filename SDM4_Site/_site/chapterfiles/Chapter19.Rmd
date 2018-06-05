@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Testing Hypotheses about Proportions (Chapter 19)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "June 4, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -15,24 +15,19 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
-options(digits=3)
+options(digits = 3)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -53,10 +48,12 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 We can reproduce the calculation in Figure 19.1 (page 495).
 
 ```{r}
-sdp <- sqrt(.2*.8/400); sdp
-xpnorm(0.17, mean=0.20, sd=sdp)
-zval <- (0.17 - 0.20)/sdp; zval
-pnorm(zval, mean=0, sd=1)
+sdp <- sqrt(.2*.8/400)
+sdp
+xpnorm(0.17, mean = 0.20, sd = sdp)
+zval <- (0.17 - 0.20)/sdp
+zval
+pnorm(zval, mean = 0, sd = 1)
 ```
 
 ### Section 19.3: Reasoning of hypothesis testing
@@ -64,15 +61,21 @@ pnorm(zval, mean=0, sd=1)
 The "For Example (page 499)" lays out how to find a p-value for the one proportion z-test.
 
 ```{r}
-y <- 61; n <- 90; phat <- y/n; phat
+y <- 61 
+n <- 90 
+phat <- y/n
+phat
 nullp <- 0.8
-sdp <- sqrt(nullp*(1-nullp)/n); sdp
-onesidep <- xpnorm(phat, mean=nullp, sd=sdp); onesidep
-twosidep <- 2*onesidep; twosidep
+sdp <- sqrt(nullp*(1-nullp)/n)
+sdp
+onesidep <- xpnorm(phat, mean = nullp, sd = sdp)
+onesidep
+twosidep <- 2*onesidep
+twosidep
 ```
 
 or we can carry out the exact test (not described by the book):
 
 ```{r}
-binom.test(y, n, p=nullp)
+binom.test(y, n, p = nullp)
 ```

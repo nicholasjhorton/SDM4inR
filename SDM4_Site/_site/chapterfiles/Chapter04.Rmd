@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Understanding and Comparing Distributions (Chapter 4)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+date: "June 4th, 2018"
 output: 
   pdf_document:
     fig_height: 3.3
@@ -15,23 +15,18 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -51,14 +46,15 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 
 See Figure 4.1 on page 85
 
-```{r message=FALSE}
-library(mosaic); library(readr)
-options(digits=3)
+```{r message = FALSE}
+library(mosaic)
+library(readr)
+options(digits = 3)
 Hopkins <- 
-read_delim("http://nhorton.people.amherst.edu/sdm4/data/Hopkins_Forest_2011.txt", delim="\t")
+read_delim("http://nhorton.people.amherst.edu/sdm4/data/Hopkins_Forest_2011.txt", delim = "\t")
 names(Hopkins)   
-histogram(~ AvgWindSpeed, width=0.5, center=0.24, 
-          xlab="Average wind speed (mph)", data=Hopkins)
+gf_histogram(~ AvgWindSpeed, binwidth = 0.5, center = 0.24, 
+          xlab = "Average wind speed (mph)", data = Hopkins)
 ```
 
 Here we reproduce Figure 4.2 on page 85
@@ -68,12 +64,12 @@ Hopkins <- mutate(Hopkins,
   Summer = Month >= 4 & Month <= 9,
   Winter = !Summer
 )
-histogram(~ AvgWindSpeed, width=0.5, center=0.24, 
-          xlab="Average summer wind speed (mph)", data=filter(Hopkins, Summer==TRUE))
-favstats(~ AvgWindSpeed, data=filter(Hopkins, Summer==TRUE))
-histogram(~ AvgWindSpeed, width=0.5, center=0.24, 
-          xlab="Average winter wind speed (mph)", data=filter(Hopkins, Winter==TRUE))
-favstats(~ AvgWindSpeed, data=filter(Hopkins, Winter==TRUE))
+gf_histogram(~ AvgWindSpeed, binwidth = 0.5, center = 0.24, 
+          xlab = "Average summer wind speed (mph)", data = filter(Hopkins, Summer == TRUE))
+favstats(~ AvgWindSpeed, data = filter(Hopkins, Summer == TRUE))
+gf_histogram(~ AvgWindSpeed, binwidth = 0.5, center = 0.24, 
+          xlab = "Average winter wind speed (mph)", data = filter(Hopkins, Winter == TRUE))
+favstats(~ AvgWindSpeed, data = filter(Hopkins, Winter == TRUE))
 
 ```
 
@@ -82,33 +78,36 @@ favstats(~ AvgWindSpeed, data=filter(Hopkins, Winter==TRUE))
 Here we reproduce Figure 4.3 on page 87
 
 ```{r}
-bwplot(AvgWindSpeed ~ as.factor(Month), data=Hopkins)
+gf_boxplot(AvgWindSpeed ~ as.factor(Month), data = Hopkins)
 ```
 
 ### Section 4.3: Outliers
 
 ```{r}
-filter(Hopkins, Month==2, AvgWindSpeed > 6)   # in February
-filter(Hopkins, Month==6, AvgWindSpeed > 3.9) # in June
+filter(Hopkins, Month == 2, AvgWindSpeed > 6)   # in February
+filter(Hopkins, Month == 6, AvgWindSpeed > 3.9) # in June
 ```
 
 ### Section 4.4: Timeplots: Order, please!
 
 See Figures 4.4 through 4.6 starting on page 92
-```{r}
-xyplot(AvgWindSpeed ~ DayofYear, data=Hopkins)
-xyplot(AvgWindSpeed ~ DayofYear, type="l", data=Hopkins)
-xyplot(AvgWindSpeed ~ DayofYear, type=c("p", "smooth"), lwd=3, data=Hopkins)
+```{r message = FALSE}
+gf_point(AvgWindSpeed ~ DayofYear, data = Hopkins)
+gf_point(AvgWindSpeed ~ DayofYear, data = Hopkins) %>%
+  gf_lm()
+gf_point(AvgWindSpeed ~ DayofYear, lwd = 3, data = Hopkins) %>%
+  gf_lm() %>%
+  gf_smooth(se = FALSE)
 ```
 
 
 ### Section 4.5: Re-expressing data: A first look
 
 See Figure 4.7 on page 94
-```{r message=FALSE}
-CEO <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/CEO_Salary_2012.txt", delim="\t")
-favstats(~ One_Year_Pay, data=CEO)
-histogram(~ One_Year_Pay, width=2.5, center=1.24, data=CEO)
+```{r message = FALSE}
+CEO <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/CEO_Salary_2012.txt", delim = "\t")
+favstats(~ One_Year_Pay, data = CEO)
+gf_histogram(~ One_Year_Pay, binwidth = 2.5, center = 1.24, data = CEO)
 ```
 
 Figure 4.8 on page 95
@@ -116,8 +115,8 @@ Figure 4.8 on page 95
 nrow(CEO)   # let's get rid of the CEO's with 0 salaries...
 CEO <- filter(CEO, One_Year_Pay > 0)
 nrow(CEO)
-CEO <- mutate(CEO, log10salary = log10(One_Year_Pay*1000000))
-histogram(~ log10salary, width=.25, center=.124, data=CEO)
+CEO <- mutate(CEO, log10salary = log10(One_Year_Pay * 1000000))
+gf_histogram(~ log10salary, binwidth = .25, center = .124, data = CEO)
 ```
 
 On the log 10 scale, we can roughly interpret the values as the number
