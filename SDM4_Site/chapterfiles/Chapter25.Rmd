@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Inferences for Regression (Chapter 25)"
-author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
+date: "June 5, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -15,24 +15,19 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
 options(digits=3)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -50,8 +45,9 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 
 ### Section 25.1: The population and the sample
 
-```{r message=FALSE}
-library(mosaic); library(readr)
+```{r message = FALSE}
+library(mosaic)
+library(readr)
 BodyFat <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Body_fat_complete.csv")
 dim(BodyFat)
 glimpse(BodyFat)
@@ -59,7 +55,7 @@ glimpse(BodyFat)
 
 We can confirm the coefficients from the model on page 690.
 ```{r}
-BodyFatmod <- lm(PctBF ~ waist, data=BodyFat)
+BodyFatmod <- lm(PctBF ~ waist, data = BodyFat)
 coef(BodyFatmod)
 ```
 
@@ -73,19 +69,26 @@ rsquared(BodyFatmod)
 confint(BodyFatmod)    # see page 700
 ```
 
-```{r}
+```{r message = FALSE}
 # Figure 25.4 
-xyplot(PctBF ~ waist, xlab="Waist (in.)", 
-       type=c("p", "r", "smooth"), data=BodyFat)   # see smoothers on p.92-93
+gf_point(PctBF ~ waist, xlab = "Waist (in.)", 
+      data = BodyFat)  %>%  # see smoothers on p.92-93
+  gf_lm() %>%
+  gf_smooth(se = FALSE)
 # Figure 25.5
-xyplot(resid(BodyFatmod) ~ waist, xlab="Waist (in.)", 
-       type=c("p", "r", "smooth"), data=BodyFat)   
+gf_point(resid(BodyFatmod) ~ waist, xlab = "Waist (in.)", 
+       data = BodyFat) %>%
+  gf_lm() %>%
+  gf_smooth(se = FALSE)
 # equiv of Figure 25.6   note that Figure 25.6 refers to the diamonds dataset
-xyplot(resid(BodyFatmod) ~ fitted(BodyFatmod), xlab="Predicted values", 
-       ylab="Residuals",
-       type=c("p", "r", "smooth"), data=BodyFat)
+gf_point(resid(BodyFatmod) ~ fitted(BodyFatmod), xlab = "Predicted values", 
+       ylab = "Residuals",
+       type = c("p", "r", "smooth"), data = BodyFat) %>%
+  gf_lm() %>%
+  gf_smooth(se = FALSE)
 # Figure on bottom of page 695
-xqqmath(~ resid(BodyFatmod))
+gf_qq(~ resid(BodyFatmod)) %>%
+  gf_qqline()
 ```
 
 
@@ -94,8 +97,8 @@ xqqmath(~ resid(BodyFatmod))
 We can reproduce Figure 25.12 (page 707) using the `panel.lmbands()` function.
 
 ```{r}
-xyplot(PctBF ~ waist, xlab="Waist (in.)", 
-       panel=panel.lmbands, lwd=2, cex=0.2, data=BodyFat)
+gf_point(PctBF ~ waist, xlab = "Waist (in.)", 
+       panel = panel.lmbands, lwd = 2, cex = 0.2, data = BodyFat)
 ```
 
 ```{r}
@@ -104,14 +107,15 @@ dim(Craters)
 Craters <- mutate(Craters,
                   logDiam = log(Diam.km.),
                   logAge = log(age..Ma.))
-Cratermod <- lm(logDiam ~ logAge, data=Craters)
-favstats(~ logAge, data=Craters)   # note example in book has n=39
+Cratermod <- lm(logDiam ~ logAge, data = Craters)
+favstats(~ logAge, data = Craters)   # note example in book has n=39
 ```
 
 ```{r}
-confpred <- predict(Cratermod, interval="confidence")
-intpred <- predict(Cratermod, interval="prediction")
-select(Craters, -Name) %>% head(., 3)
+confpred <- predict(Cratermod, interval = "confidence")
+intpred <- predict(Cratermod, interval = "prediction")
+select(Craters, -Name) %>% 
+  head(., 3)
 head(confpred, 3)
 head(intpred, 3)
 ```
@@ -119,16 +123,16 @@ head(intpred, 3)
 #### Section 25.7: Logistic regression
 
 The Pima Indian dataset example is given on pages 708-712.
-```{r message=FALSE}
+```{r message = FALSE}
 Pima <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Pima_Indians_Diabetes.csv")
 Diabetes <- filter(Pima, BMI>0)  # get rid of missing values for BMI
-bwplot(BMI ~ as.factor(Diabetes), data=Pima)
+gf_boxplot(BMI ~ as.factor(Diabetes), data = Pima)
 ```
 
-```{r fig.keep="last"}
-pimamod <- glm(Diabetes ~ BMI, family="binomial", data=Pima)
+```{r fig.keep = "last"}
+pimamod <- glm(Diabetes ~ BMI, family = "binomial", data = Pima)
 f2 <- makeFun(pimamod)
-xyplot(Diabetes ~ BMI, data=Pima)
-plotFun(f2, add=TRUE)
+xyplot(Diabetes ~ BMI, data = Pima)
+plotFun(f2, add = TRUE)
 msummary(pimamod)
 ```
