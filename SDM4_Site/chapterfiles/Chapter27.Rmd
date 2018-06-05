@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multifactor Analysis of Variance (Chapter 27)"
-author: "Nicholas Horton (nhorton@amherst.edu) and Patrick Frenett"
-date: "August 12, 2017"
+author: "Nicholas Horton (nhorton@amherst.edu), Patrick Frenett, and Sarah McDonald"
+date: "June 5, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -15,24 +15,19 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
-options(digits=5)
+options(digits = 5)
 ```
 
-```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -52,8 +47,8 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 
 ```{r}
 Darts <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Ch29_Darts.csv")
-bwplot(Accuracy ~ Distance, data=Darts)
-bwplot(Accuracy ~ Hand, data=Darts)
+gf_boxplot(Accuracy ~ Distance, data = Darts)
+gf_boxplot(Accuracy ~ Hand, data = Darts)
 ```
 
 ### Section 27.1: A Two-Factor ANOVA Model
@@ -61,7 +56,7 @@ bwplot(Accuracy ~ Hand, data=Darts)
 The `summary` function gives a numerical summary of the linear model seen on page 784.
 
 ```{r}
-lmDarts <- lm(Accuracy ~ Distance + Hand, data=Darts)
+lmDarts <- lm(Accuracy ~ Distance + Hand, data = Darts)
 summary(aov(lmDarts))
 ```
 
@@ -70,16 +65,17 @@ summary(aov(lmDarts))
 Figures 27.2 and 27.3 showing hand and distance against accuracy (as well as adjusted hand and adjusted distance). Note that the scales on the adjusted plots are centered around 0 rather than the mean as we are working with residuals.
 
 ```{r}
-lmHand <- lm(Accuracy ~ Hand, data=Darts)
-lmDistance <- lm(Accuracy ~ Distance, data=Darts)
+lmHand <- lm(Accuracy ~ Hand, data = Darts)
+lmDistance <- lm(Accuracy ~ Distance, data = Darts)
 
-bwplot(Accuracy ~ Hand, data=Darts)
-bwplot(resid(lmDistance) ~ Hand, data=Darts)
+gf_boxplot(Accuracy ~ Hand, data = Darts)
+gf_boxplot(resid(lmDistance) ~ Hand, data = Darts)
 
-bwplot(Accuracy ~ Distance, data=Darts)
-bwplot(resid(lmHand) ~ Distance, data=Darts)
+gf_boxplot(Accuracy ~ Distance, data = Darts)
+gf_boxplot(resid(lmHand) ~ Distance, data = Darts)
 
-with(Darts, interaction.plot(Distance, Hand, Accuracy))
+mod1 <- lm(Accuracy ~ Distance + Hand + Distance*Hand, data = Darts)
+plotModel(mod1)
 ```
 
 ### Section 27.3: Interactions
@@ -87,7 +83,8 @@ with(Darts, interaction.plot(Distance, Hand, Accuracy))
 Shown below is the interaction plot (figure 27.9) and ANOVA summary on page 797.
 
 ```{r}
-with(Darts, interaction.plot(Hand, Distance, Accuracy))
-lmDarts <- lm(Accuracy ~ Distance*Hand, data=Darts)
+mod2 <- lm(Accuracy ~ Hand + Distance + Hand*Distance, data = Darts)
+plotModel(mod2)
+lmDarts <- lm(Accuracy ~ Distance*Hand, data = Darts)
 summary(aov(lmDarts))
 ```
