@@ -4,4 +4,8 @@ title: "Introduction"
 
 These documents are intended to help describe how to undertake analyses introduced 
 as examples in the Fourth Edition of Stats: Data and Models (2014) by De Veaux, Velleman, and Bock.
-More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.
+More information about the book can be found [here](http://wps.aw.com/aw_deveaux_stats_series)
+#http://wps.aw.com/aw_deveaux_stats_series.
+<br>
+This work leverages initiatives undertaken by Project MOSAIC [Project MOSAIC](http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. For more information about the 'mosaic' package, visit the About tab. 
+#(http://www.mosaic-web.org, an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. 
