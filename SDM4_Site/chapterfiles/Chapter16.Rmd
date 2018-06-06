@@ -22,11 +22,6 @@ require(mosaic)
 ```
 
 ```{r, include=FALSE}
-# Some customization.  You can alter or delete as desired (if you know what you are doing).
-
-# This changes the default colors in lattice plots.
-trellis.par.set(theme=theme.mosaic())  
-
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
