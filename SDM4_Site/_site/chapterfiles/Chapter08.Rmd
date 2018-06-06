@@ -15,18 +15,18 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # Don't delete this chunk if you are using the mosaic package
 # This loads the mosaic and dplyr packages
 require(mosaic)
 ```
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 # knitr settings to control how R chunks work.
 require(knitr)
 opts_chunk$set(
-  tidy=FALSE,     # display code as typed
-  size="small"    # slightly smaller font for code
+  tidy = FALSE,     # display code as typed
+  size = "small"    # slightly smaller font for code
 )
 ```
 
@@ -48,7 +48,7 @@ A paper describing the mosaic approach was published in the *R Journal*: https:/
 
 Figure 8.1 (page 220) displays the scatterplot of heart rate vs duration for the Penguins dataset (along with a superimposed regression line and a smoother).
 
-```{r message=FALSE}
+```{r message = FALSE}
 library(mosaic)
 library(readr)
 options(digits = 3)
