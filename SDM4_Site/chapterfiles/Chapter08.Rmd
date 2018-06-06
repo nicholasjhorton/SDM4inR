@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Regression Wisdom (Chapter 8)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "June 4, 2018"
+date: "June 6, 2018"
 output: 
   pdf_document:
     fig_height: 3
@@ -93,11 +93,10 @@ Figure 8.5 (page 222) displays the scatterplot stratified by what shelf it is di
 ```{r}
 tally(~ shelf, data = Cereals)
 Cereals <- mutate(Cereals, shelfgrp = 
-  derivedFactor(
-    bottomshelf = shelf == 1,
-    middleshelf = shelf == 2,
-    topshelf = shelf == 3
-  )
+  recode(shelf,
+    `1` = "bottomshelf",
+    `2` = "middleshelf",
+    `3` = "topshelf")
 )
 tally(~ shelfgrp, data = Cereals)
 gf_point(calories ~ sugars, color = ~ shelfgrp, 
