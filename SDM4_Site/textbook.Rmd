@@ -1,0 +1,18 @@
+<h2>
+#Table of Contents
+</h2>
+
+Chapter Part  | Links to Rmd and PDF Files
+------------- | -------------
+Chapters 01-05 : [Part I Exploring and Understanding Data](https://rstudio.amherst.edu/s/c619dc74daa05ac1ccd02/files/git/SDM4inR/SDM4_Site/_site/partI.html) </br>
+Chapters 06-09 : [Part II Exploring Relationships Between Two Variables](https://rstudio.amherst.edu/s/c619dc74daa05ac1ccd02/files/git/SDM4inR/SDM4_Site/_site/partII.html)
+</br>
+Chapters 10-12 : [Part III Gathering Data](https://rstudio.amherst.edu/s/c619dc74daa05ac1ccd02/files/git/SDM4inR/SDM4_Site/_site/partIII.html)
+</br>
+Chapters 13-16 : [Part IV Randomness and Probability](https://rstudio.amherst.edu/s/c619dc74daa05ac1ccd02/files/git/SDM4inR/SDM4_Site/_site/partIV.html)
+</br>
+Chapters 17-21 : [Part V From the Data at Hand to the World at Large](https://rstudio.amherst.edu/s/c619dc74daa05ac1ccd02/files/git/SDM4inR/SDM4_Site/_site/partV.html)
+</br>
+Chapters 22-25 : [Part VI Accessing Associations Between Variables](https://rstudio.amherst.edu/s/c619dc74daa05ac1ccd02/files/git/SDM4inR/SDM4_Site/_site/partVI.html)
+</br>
+Chapters 26-29 : [Part VII Inference When Variables are Related](https://rstudio.amherst.edu/s/c619dc74daa05ac1ccd02/files/git/SDM4inR/SDM4_Site/_site/partVII.html)
