@@ -93,7 +93,7 @@ area <- c(rep("agriculture", 209), rep("arts/science", 198),
 activity <- c(rep("Employed", 685), rep("Grad school", 466), 
               rep("Other", 305))
 tally(~ activity + area, margins = TRUE)
-#XX mosaicplot changed to color
+#XX mosaic plot changed to color
 vcd :: mosaic(tally(~ activity + area), main = "mosaicplot of activity by area",
   shade = TRUE)
 xchisq.test(tally(~ activity + area))
