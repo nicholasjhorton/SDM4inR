@@ -69,8 +69,8 @@ tally(~ Survived | Class, format = "percent", data = Titanic)
 See display on page 24.
 ```{r}
 barplot(tally(~ Survived + Class, data = Titanic), beside = TRUE)
-mosaicplot(tally(~ Survived + Class, data = Titanic), 
+vcd::mosaic(tally(~ Survived + Class, data = Titanic), 
            main = "Mosaic plot of Class by Survival",
-           color = TRUE)
+           shade = TRUE)
 
 ```
