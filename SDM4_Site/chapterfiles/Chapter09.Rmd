@@ -99,6 +99,7 @@ gf_point(log(DiveHeartRate) ~ Duration, data = Penguins,
   gf_lm()
 
 gf_point(log(DiveHeartRate) ~ log(Duration), data = Penguins,
-       main = "X and Y Transformations", xlab = "log(Dive Duration (min))", ylab = "log(# of Dives)") %>%
+         main = "X and Y Transformations", xlab = "log(Dive Duration (min))", 
+         ylab = "log(# of Dives)") %>%
   gf_lm()
 ```

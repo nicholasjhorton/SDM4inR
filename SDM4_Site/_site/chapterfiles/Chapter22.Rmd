@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Comparing Groups (Chapter 22)"
 author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
-date: "June 5, 2018"
+date: "June 12, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -111,8 +111,8 @@ ds <- with(prices,
   data.frame(price = c(Buying.from.a.Friend, Buying.from.a.Stranger),
              group = c(rep("Friend", nrow(prices)), rep("Stranger", nrow(prices)))))
 ds
-t.test(price ~ group, data = ds)   # Unpooled
-t.test(price ~ group, var.equal = TRUE, data = ds)   # Pooled
+t.test(price ~ group, data = ds)   # Unpooled or unequal variance
+t.test(price ~ group, var.equal = TRUE, data = ds)   # Pooled or equal variance
 gf_boxplot(price ~ group, data = ds) %>%
-gf_refine(coord_flip())
+  gf_refine(coord_flip())
 ```
