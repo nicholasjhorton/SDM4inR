@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Stats Starts Here (Chapter 1)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "June 4th, 2018"
+date: "June 12, 2018"
 output: 
   pdf_document:
     fig_height: 4
@@ -66,7 +66,7 @@ tail(Tour, 8)
 filter(Tour, Year == 1998)
 ```
 
-#### How many stages did Alberto Contador win in the years when he won the Tour?
+#### How many stages were there in the Tour in the years that Alberto Contador won?
 
 ```{r}
 filter(Tour, Winner == "Contador Alberto")

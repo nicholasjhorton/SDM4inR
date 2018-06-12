@@ -8,6 +8,6 @@ More information about the book can be found [here](http://wps.aw.com/aw_deveaux
 
 This work leverages initiatives undertaken by [Project MOSAIC](http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. For more information about the 'mosaic' package, visit the About tab. 
 
-Resources related to the mosaic package can be found under the 'Other Resources' tab. 
+Other resources related to the mosaic package can be found under the 'Other Resources' tab. 
 
-[![STATDataAndModel](STATDataAndModel.jpg)](https://rstudio.amherst.edu/s/c619dc74daa05ac1ccd02/files/git/SDM4inR/SDM4_Site/_site/textbook.html)
+![STATS: Data and Models cover](STATDataAndModel.jpg)]
