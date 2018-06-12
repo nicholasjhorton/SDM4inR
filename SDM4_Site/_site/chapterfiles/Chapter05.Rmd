@@ -1,6 +1,6 @@
 ---
 title: "SDM4 in R: The Standard Deviation as a Ruler and the Normal Model (Chapter 5)"
-author: "Nicholas Horton (nhorton@amherst.edu)"
+author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
 date: "April 23, 2018"
 output: 
   pdf_document:

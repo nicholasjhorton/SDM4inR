@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Paired Samples and Blocks (Chapter 23)"
-author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "June 4, 2018"
+author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
+date: "June 5, 2018"
 output: 
   pdf_document:
     fig_height: 2.4

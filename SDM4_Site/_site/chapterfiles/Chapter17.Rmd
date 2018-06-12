@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Sampling Distribution Models (Chapter 17)"
-author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "June 4, 2018"
+author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
+date: "June 5, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -55,7 +55,7 @@ p <- 0.57
 samples <- rbinom(numsim, size = n, prob = p)/n
 gf_histogram(~ samples, xlab = "Distribution of sample proportions", 
           binwidth = 0.01, center = 0.01/2, type = "count")
-plotDist("norm", params = list(p, sqrt(p*(1-p)/n)), xlab = "p", ylab = "f(p)")
+gf_dist("norm", params = list(p, sqrt(p*(1-p)/n)), xlab = "p", ylab = "f(p)")
 ```
 
 ### Section 17.2: When does the normal model work?

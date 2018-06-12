@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Analysis of Variance (Chapter 26)"
-author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "August 12, 2017"
+author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
+date: "June 5, 2018"
 output: 
   pdf_document:
     fig_height: 2.8

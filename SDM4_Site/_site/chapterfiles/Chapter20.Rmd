@@ -1,6 +1,6 @@
 ---
 title: "SDM4 in R: Inferences about Means (Chapter 20)"
-author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
+author: "Nicholas Horton (nhorton@amherst.edu)"
 date: "June 4, 2018"
 output: 
   pdf_document:
