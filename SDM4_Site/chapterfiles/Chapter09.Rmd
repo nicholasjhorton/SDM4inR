@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Re-expressing Data: Get it Straight! (Chapter 9)"
 author: "Nicholas Horton (nhorton@amherst.edu), Patrick Frenett and Sarah McDonald"
-date: "June 4, 2018"
+date: "June 12, 2018"
 output: 
   pdf_document:
     fig_height: 3
@@ -33,7 +33,7 @@ opts_chunk$set(
 ## Introduction and background 
 
 This document is intended to help describe how to undertake analyses introduced 
-as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+as examples in the Fourth Edition of *Stats: Data and Models* (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
 file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
