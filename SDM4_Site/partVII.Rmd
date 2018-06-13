@@ -14,5 +14,5 @@ Title  | Links to Rmd and PDF files
 Chapter 26* : Analysis of Variance | <a href='chapterfiles/Chapter26.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter26.pdf'>(pdf)</a>
 Chapter 27 : Multifactor Analysis of Variance | <a href='chapterfiles/Chapter27.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter27.pdf'>(pdf)</a>
 Chapter 28 : Multiple Regression | <a href='chapterfiles/Chapter28.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter28.pdf'>(pdf)</a>
-Chapter 29 : Multiple Regression Wisdom | <a href='chapterfiles/Chapter29.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter29.pdf'>(pdf)</a>
+Chapter 29 : Multiple Regression Wisdom | <a href='chapterfiles/Chapter29.Rmd'>.Rmd File</a> <a href='chapterfiles/Chapter29.pdf'>(pdf)</a> <a href="SDM_04_Ch29.pdf">(online pdf of chapter)</a>
 
