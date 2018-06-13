@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Sampling Distribution Models (Chapter 17)"
 author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
-date: "June 12, 2018"
+date: "June 13, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -75,7 +75,6 @@ pbinom(31, size = n, prob = p)    # exact value
 Let's replicate the display on page 451:
 
 ```{r}
-#weblinks not working
 BodyFat <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Body_fat_complete.csv")
 medians <- do(2000)*median(~ Weight, data = sample(BodyFat, 10, replace = FALSE))
 gf_histogram(~ median, xlab = "Sampling distribution of medians", 

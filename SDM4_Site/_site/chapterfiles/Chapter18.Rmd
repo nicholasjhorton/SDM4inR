@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Confidence Intervals for Proportions (Chapter 18)"
 author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "June 4, 2018"
+date: "June 13, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -62,14 +62,15 @@ interval <- phat + c(-2, 2)*sep
 interval
 ```
 
-### Section 18.2: Interpreting confidence intervals
+### Section 18.2: Interpreting confidence intervals for a proportion
 
 ```{r warning = FALSE}
 set.seed(1988)
-CIsim(n = 100, samples = 20)
+CIsim(n = 156, samples = 20, rdist = rbinom, 
+  args=list(size=1, prob=.7), estimand = .7, method = binom.test)
 ```
 
-We would expect 19 out of 20 of the intervals to cover the true (population) value, but here only 18 out of 20 actually covered that value (see Figure at top of page 476).
+We would expect 19 out of 20 of the intervals to cover the true (population) value, but here only 18 out of 20 actually covered that value (see similar Figure at the top of page 476).
 
 ### Section 18.3: Margin of error
 

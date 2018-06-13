@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Scatterplots, Association, and Correlation (Chapter 6)"
 author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
-date: "June 4th, 2018"
+date: "June 13, 2018"
 output: 
   pdf_document:
     fig_height: 3
@@ -33,7 +33,7 @@ opts_chunk$set(
 ## Introduction and background 
 
 This document is intended to help describe how to undertake analyses introduced 
-as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+as examples in the Fourth Edition of *Stats: Data and Models* (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
 file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
@@ -82,11 +82,13 @@ Since the dataset is so small for Figure 6.10 (page 165) we can enter it by hand
 fstop <- c(2.8, 4, 5.6, 8, 11, 16, 22, 32)
 shutter <- c(1/1000, 1/500, 1/250, 1/125, 1/60, 1/30, 1/15, 1/8)
 lenses <- data.frame(fstop, shutter)
-gf_point(fstop ~ shutter, ylab = "f/stop", xlab = "Shutter Speed (sec)", data = lenses)
+gf_point(fstop ~ shutter, ylab = "f/stop", xlab = "Shutter Speed (sec)", 
+         data = lenses)
 ```
 
 A new transformed variable can be added using the `mutate` function.
 ```{r}
 lenses <- mutate(lenses, fstopsq = fstop * fstop)
-gf_point(fstopsq ~ shutter, ylab = "f/stop (squared)", xlab = "Shutter Speed (sec)", data = lenses)
+gf_point(fstopsq ~ shutter, ylab = "f/stop (squared)", xlab = "Shutter Speed (sec)", 
+         data = lenses)
 ```
