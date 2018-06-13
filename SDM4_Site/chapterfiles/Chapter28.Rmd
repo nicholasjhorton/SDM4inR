@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression (Chapter 28)"
 author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
-date: "June 5, 2018"
+date: "June 13, 2018"
 output: 
   pdf_document:
     fig_height: 3
@@ -34,7 +34,7 @@ opts_chunk$set(
 ## Introduction and background 
 
 This document is intended to help describe how to undertake analyses introduced 
-as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+as examples in the Fourth Edition of *Stats: Data and Models* (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
 file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
@@ -63,7 +63,7 @@ We can use this model to generate predicted values.
 BodyFatfun <- makeFun(BodyFatmod)
 BodyFatfun(waist = 0, Height = 0)  # returns intercept
 BodyFatfun(waist = 30, Height = 70)  
--3.101 + 1.773*30 -0.602*70
+-3.101 + 1.773*30 - 0.602*70
 ```
 
 
@@ -120,7 +120,7 @@ Figure 28.6 (page 829) displays the scatterplot matrix infant mortality data.
 
 ```{r, fig.height = 6, message = FALSE}
 InfantMortality <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Infant_Mortality.csv")
-pairs(select(InfantMortality, -State))
+pairs(select(InfantMortality, - State))
 ```
 
 In addition, we display a scatterplot matrix for the motivating example from the chapter (BodyFat) using the `GGally` package.
