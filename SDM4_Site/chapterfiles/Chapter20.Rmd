@@ -62,6 +62,8 @@ Figure 20.1 (page 521) displays a normal curve (dashed green curve) and a t-mode
 gf_dist("norm", lty = 2, col = "green", lwd = 2, xlim = c(-8, 8)) %>%
 gf_dist("t", params = 2, lty = 1, lwd = 2, col = "blue", add = TRUE, 
         xlim = c(-8, 8))
+gf_dist("norm", lty = 2, col = "green", lwd = 2) %>%
+  gf_dist("t", params = 2, lty = 1, lwd = 2, col = "blue", xlim = c(-3, 3))
 ```
 
 We can reproduce the calculations for the Farmed salmon example (pages 523-524) using summary statistics:
