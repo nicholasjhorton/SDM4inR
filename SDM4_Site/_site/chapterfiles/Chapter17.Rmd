@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Sampling Distribution Models (Chapter 17)"
 author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
-date: "June 5, 2018"
+date: "June 12, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -33,7 +33,7 @@ opts_chunk$set(
 ## Introduction and background 
 
 This document is intended to help describe how to undertake analyses introduced 
-as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+as examples in the Fourth Edition of *Stats: Data and Models* (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
 file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
@@ -75,6 +75,7 @@ pbinom(31, size = n, prob = p)    # exact value
 Let's replicate the display on page 451:
 
 ```{r}
+#weblinks not working
 BodyFat <- read.csv("http://nhorton.people.amherst.edu/sdm4/data/Body_fat_complete.csv")
 medians <- do(2000)*median(~ Weight, data = sample(BodyFat, 10, replace = FALSE))
 gf_histogram(~ median, xlab = "Sampling distribution of medians", 
@@ -95,14 +96,16 @@ Let's replicate the displays on pages 453-454:
 
 ```{r message=FALSE}
 require(readr)
-CEO <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/CEO_Salary_2012.txt", delim = "\t")
+CEO <- read_delim("http://nhorton.people.amherst.edu/sdm4/data/CEO_Salary_2012.txt", 
+                  delim = "\t")
 CEO <- mutate(CEO, Pay = One_Year_Pay*1000)
 favstats(~ Pay, data = CEO)
 ```
 
 Note that Figure 17.11 seems to be off by a factor of 10!
 ```{r}
-gf_histogram(~ Pay, xlab ="CEO Compensation in $1000", binwidth = 10000, center = 10000/2-.01, data = CEO)
+gf_histogram(~ Pay, xlab ="CEO Compensation in $1000", 
+             binwidth = 10000, center = 10000/2-.01, data = CEO)
 ```
 
 
