@@ -72,7 +72,7 @@ The goodness of fit test on page 659 can be verified by calculating the
 chi-square statistic.
 
 ```{r}
-chisq <- sum((ballplayer-expect)^2/expect)
+chisq <- sum((ballplayer - expect)^2/expect)
 chisq
 1-xpchisq(chisq, df = 11)
 ```
