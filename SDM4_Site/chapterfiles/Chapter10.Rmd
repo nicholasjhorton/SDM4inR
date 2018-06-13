@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Understanding Randomness (Chapter 10)"
-author: "Nicholas Horton (nhorton@amherst.edu) and Patrick Frenett"
-date: "June 12, 2018"
+author: "Nicholas Horton (nhorton@amherst.edu), Patrick Frenett, and Sarah McDonald"
+date: "June 13, 2018"
 output: 
   pdf_document:
     fig_height: 3
@@ -53,6 +53,5 @@ library(mosaic)
 obs <- c(5,4,7,5,18,6,5,4,6) 
 ID <- 1:length(data)
 data <- data.frame(ID, obs)
-# gf_boxplot(~ age)
-bwplot(~ obs, data = data)
+gf_boxplot(obs ~ 1, data = data) # gf_boxplot(~ age) support is planned for the future
 ```

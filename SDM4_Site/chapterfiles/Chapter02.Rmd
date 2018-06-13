@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Displaying and Describing Categorical Data (Chapter 2)"
-author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "July 17, 2017"
+author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
+date: "June 13, 2018"
 output: 
   pdf_document:
     fig_height: 4
@@ -66,9 +66,11 @@ tally(~ Survived + Class, margin = TRUE, data = Titanic)
 tally(~ Survived | Class, format = "percent", data = Titanic)
 ```
 
-See display on page 24.
+See display on page 24.  (Note that the `mosaic()` plot, also known as Eikosogram, has no connection to the mosaic package.  We use the `::` notation to access this function from the `vcd` package in R.
 ```{r}
 barplot(tally(~ Survived + Class, data = Titanic), beside = TRUE)
+```
+```{r fig.height = 5}
 vcd::mosaic(tally(~ Survived + Class, data = Titanic), 
            main = "Mosaic plot of Class by Survival",
            shade = TRUE)

@@ -1,6 +1,6 @@
 ---
 title: "SDM4 in R: Re-expressing Data: Get it Straight! (Chapter 9)"
-author: "Nicholas Horton (nhorton@amherst.edu), Patrick Frenett and Sarah McDonald"
+author: "Nicholas Horton (nhorton@amherst.edu), Patrick Frenett, and Sarah McDonald"
 date: "June 12, 2018"
 output: 
   pdf_document:

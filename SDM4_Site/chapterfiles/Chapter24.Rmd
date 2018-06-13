@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Comparing Counts (Chapter 24)"
-author: "Nicholas Horton (nhorton@amherst.edu)"
-date: "June 12, 2018"
+author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
+date: "June 13, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -93,9 +93,14 @@ area <- c(rep("agriculture", 209), rep("arts/science", 198),
 activity <- c(rep("Employed", 685), rep("Grad school", 466), 
               rep("Other", 305))
 tally(~ activity + area, margins = TRUE)
-#XX mosaic plot changed to color
-vcd :: mosaic(tally(~ activity + area), main = "mosaicplot of activity by area",
+```
+
+```{r fig.height = 6}
+vcd::mosaic(tally(~ activity + area), main = "mosaicplot of activity by area",
   shade = TRUE)
+```
+
+```{r}
 xchisq.test(tally(~ activity + area))
 ```
 
@@ -103,4 +108,4 @@ xchisq.test(tally(~ activity + area))
 
 Note that the `xchisq.test()` function displays the standardized
 residuals as the last item in each cell of the table (and these
-match the results in Table 24.4 (page 668).  
+match the results in Table 24.4 on page 668).  
