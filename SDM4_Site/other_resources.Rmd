@@ -3,8 +3,12 @@ title: Resources Related to the mosaic Package
 ---
 
 - [Intro Stats in R](http://nhorton.people.amherst.edu/is4) (Frenett and Horton) describes how to undertake analyses in De Veaux, Velleman, and Bock's *Intro Stats* (4th edition).
-<br/>
+</br>
+- [Intro Stats in R](http://nhorton.people.amherst.edu/is5) (Frenett and Horton) describes how to undertake analyses in De Veaux, Velleman, and Bock's *Intro Stats* (5th edition).
+</br>
 - [Introduction to the Practice of Statistics in R](http://nhorton.people.amherst.edu/ips6e) (NJ Horton and BS Baumer) describes how to undertake analyses in R that are introduced as examples in the first chapters of *Introduction to the Practice of Statistics* (6th edition), the excellent text by David Moore, George McCabe, and Bruce Craig.
+</br>
+- [Introduction to the Practice of Statistics in R] (NJ Horton and BS Baumer) describes how to undertake analyses in R that are introduced as examples in the first chapters of *Introduction to the Practice of Statistics* (9th edition), the excellent text by David Moore, George McCabe, and Bruce Craig
 </br>
 - [The Statistical Sleuth in R](http://nhorton.people.amherst.edu/sleuth) (NJ Horton) describes how to undertake analyses in R for the examples in the first 13 chapters of the Third Edition of the *Statistical Sleuth: A Course in Methods of Data Analysis* (2013), by Fred Ramsey and Dan Schafer.
 </br>
