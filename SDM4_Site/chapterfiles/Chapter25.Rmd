@@ -97,8 +97,11 @@ gf_qq(~ resid(BodyFatmod)) %>%
 We can reproduce Figure 25.12 (page 707) using the `panel.lmbands()` function.
 
 ```{r}
+library(broom)
 gf_point(PctBF ~ waist, xlab = "Waist (in.)", 
-       panel = panel.lmbands, lwd = 2, cex = 0.2, data = BodyFat)
+       panel = panel.lmbands, lwd = 2, cex = 0.2, data = BodyFat) %>%
+  gf_lm(interval = "confidence", fill = "red") %>%
+  gf_lm(interval = "prediction", fill = "navy")
 ```
 
 ```{r}
