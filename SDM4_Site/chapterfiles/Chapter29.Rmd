@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression Wisdom (Chapter 29)"
 author: "Nicholas Horton (nhorton@amherst.edu), Patrick Frenett, and Sarah McDonald"
-date: "June 13, 2018"
+date: "June 16, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -154,7 +154,7 @@ mplot(BKmod, which = 6)
 
 ### Section 29.3: Building Multiple Regression Models
 
-Using the Infant Mortality data used in the step by step example on page 874, we can create a linear model of all the variables exept `State`. To do this we can use `.` to specify adding all the variables to the model and then `-State` to remove `State` from the model.
+Using the Infant Mortality data used in the step by step example on page 874, we can create a linear model of all the variables except `State`. To do this we can use `.` to specify adding all the variables to the model and then `-State` to remove `State` from the model.
 
 ```{r message=FALSE}
 InfantMortality <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Infant_Mortality.csv")
