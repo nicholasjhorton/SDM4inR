@@ -171,7 +171,7 @@ The `summary` output shows that only two of the variables are significant at the
 cor(InfantMortality[,-1])
 ```
 
-From this we see that `HSdrop`, `TeenBirths` and `TeenDeaths` are correlated. They are also the 3 least significant variables in the full model so it might not be unreasonable to remove them from the model.
+From this we see that `HSdrop`, `TeenBirths` and `TeenDeaths` are correlated. They are also the three least significant variables in the full model so it might not be unreasonable to remove them from the model.
 
 ```{r}
 lmInfant2 <- lm(Infantmort ~ . -State -TeenDeaths -TeenBirths -HSdrop, data = InfantMortality)
