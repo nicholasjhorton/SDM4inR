@@ -2,10 +2,10 @@
 title: "SDM4 in R"
 ---
 
-This work leverages initiatives undertaken by [Project MOSAIC](http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses (see https://journal.r-project.org/archive/2017/RJ-2017-024 for more details). A short summary of the R needed to teach introductory statistics can be found in the [mosaic package vignettes](http://cran.r-project.org/web/packages/mosaic).
+This work leverages initiatives undertaken by [Project MOSAIC](http://www.mosaic-web.org), an NSF-funded effort to improve the teaching of statistics, calculus, science and computing in the undergraduate curriculum. In particular, we utilize the `mosaic` package, which was written to simplify the use of R for introductory statistics courses (see https://journal.r-project.org/archive/2017/RJ-2017-024 for more details). A short summary of the R needed to teach introductory statistics can be found in the [mosaic package vignettes](http://cran.r-project.org/web/packages/mosaic).  A description of mosaic resources can be found [here](https://cran.r-project.org/web/packages/mosaic/vignettes/mosaic-resources.html).
 
 <br>
 These materials are made available under a creative commons remix with attribution license.
 
 <br>
-<p>[Nicholas J Horton](https://www.amherst.edu/people/facstaff/nhorton), Patrick S Frenett, and Sarah McDonald (last updated June 12, 2018)</p>
+<p>[Nicholas J Horton](https://www.amherst.edu/people/facstaff/nhorton), Patrick S Frenett, and Sarah McDonald (last updated June 20, 2018)</p>
