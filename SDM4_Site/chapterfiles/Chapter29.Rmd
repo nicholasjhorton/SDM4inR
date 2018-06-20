@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression Wisdom (Chapter 29)"
 author: "Nicholas Horton (nhorton@amherst.edu), Patrick Frenett, and Sarah McDonald"
-date: "June 16, 2018"
+date: "June 20, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -147,7 +147,7 @@ mplot(BKmod, which = 2)
 mplot(BKmod, which = 3)
 mplot(BKmod, which = 4)
 favstats(~ CooksD, data = BK)
-BK[11,]   # or filter(BK, Carbs.g. > 0.486)
+filter(BK, Carbs.g. > 66)
 mplot(BKmod, which = 5)
 mplot(BKmod, which = 6)
 ```
@@ -165,10 +165,11 @@ gf_point(rstudent(lmInfant) ~ fitted(lmInfant))
 gf_dhistogram(~ rstudent(lmInfant), binwidth = 0.5, center = 0.25)
 ```
 
-The `summary` output shows that only two of the variables are significant at the 5% level. This could be due to multicollinearity. A correlation matrix will help identify variables that are strongly correlated to one and other.
+The `summary` output shows that only two of the variables are significant at the 5% level. This could be due to multicollinearity. A correlation matrix will help identify variables that are strongly correlated.
 
 ```{r}
-cor(InfantMortality[,-1])
+select(InfantMortality, -State) %>%
+  cor()
 ```
 
 From this we see that `HSdrop`, `TeenBirths` and `TeenDeaths` are correlated. They are also the three least significant variables in the full model so it might not be unreasonable to remove them from the model.
