@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression Wisdom (Chapter 29)"
 author: "Nicholas Horton (nhorton@amherst.edu), Patrick Frenett, and Sarah McDonald"
-date: "June 20, 2018"
+date: "June 21, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -154,7 +154,7 @@ mplot(BKmod, which = 6)
 
 ### Section 29.3: Building Multiple Regression Models
 
-Using the Infant Mortality data used in the step by step example on page 874, we can create a linear model of all the variables except `State`. To do this we can use `.` to specify adding all the variables to the model and then `-State` to remove `State` from the model.
+Using the Infant Mortality data used in the step by step example on page 874, we can create a linear model of all the variables except `State`. To do this we can use `.` to specify adding all the variables to the model and then `-State` to remove `State` from the model.  (Note that the dataset made available with the textbook does not correspond to the analyses in the book, so it is not possible to completely replicate the analyses in this section.)
 
 ```{r message=FALSE}
 InfantMortality <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Infant_Mortality.csv")
@@ -179,4 +179,6 @@ lmInfant2 <- lm(Infantmort ~ . -State -TeenDeaths -TeenBirths -HSdrop, data = In
 msummary(lmInfant2)
 ```
 
-Notice that the $R^2$ of this final model is 0.689: this is different that in the book. This illustrates how there are a number of approaches when choosing the 'best' model and that different models may be better or worse given the constraints/specifications of the problem.
+Notice that the $R^2$ of this final model is 0.689: this is different from that reported in the book. 
+
+There are a number of approaches when choosing the 'best' model and that different models may be better or worse given the constraints/specifications of the problem: much of this is left for more advanced courses.
