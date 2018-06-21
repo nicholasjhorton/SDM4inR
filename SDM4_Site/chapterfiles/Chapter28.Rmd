@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression (Chapter 28)"
 author: "Nicholas Horton (nhorton@amherst.edu) and Sarah McDonald"
-date: "June 13, 2018"
+date: "June 21, 2018"
 output: 
   pdf_document:
     fig_height: 3
@@ -109,7 +109,7 @@ Figure 28.5 (page 823) displays histogram and qq plot of the residuals.
 
 ```{r}
 gf_dhistogram(~ resid(BodyFatmod), data = BodyFat) %>%
-  gf_fitdistr(dist = dnorm)
+  gf_fitdistr(dist = "dnorm")
 gf_qq(~ resid(BodyFatmod))
 ```
 
