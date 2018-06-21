@@ -1,7 +1,7 @@
 ---
 title: "SDM4 in R: Multiple Regression Wisdom (Chapter 29)"
 author: "Nicholas Horton (nhorton@amherst.edu), Patrick Frenett, and Sarah McDonald"
-date: "June 5, 2018"
+date: "June 21, 2018"
 output: 
   pdf_document:
     fig_height: 2.8
@@ -34,7 +34,7 @@ opts_chunk$set(
 ## Introduction and background 
 
 This document is intended to help describe how to undertake analyses introduced 
-as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+as examples in the Fourth Edition of *Stats: Data and Models* (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
 file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
@@ -131,8 +131,8 @@ The same predicted values can be calculated using this model.
 
 ```{r}
 BKfun <- makeFun(BKmod)
-BKfun(Carbs.g=53, Meat = "Y")
-BKfun(Carbs.g=43, Meat = "N")
+BKfun(Carbs.g = 53, Meat = "Y")
+BKfun(Carbs.g = 43, Meat = "N")
 ```
 
 ### Section 29.2: Diagnosing Multiple Regression Models
@@ -147,14 +147,14 @@ mplot(BKmod, which = 2)
 mplot(BKmod, which = 3)
 mplot(BKmod, which = 4)
 favstats(~ CooksD, data = BK)
-BK[11,]   # or filter(BK, Carbs.g. > 0.486)
+filter(BK, Carbs.g. > 66)
 mplot(BKmod, which = 5)
 mplot(BKmod, which = 6)
 ```
 
 ### Section 29.3: Building Multiple Regression Models
 
-Using the Infant Mortality data used in the step by step example on page 874, we can create a linear model of all the variables exept `State`. To do this we can use `.` to specify adding all the variables to the model and then `-State` to remove `State` from the model.
+Using the Infant Mortality data used in the step by step example on page 874, we can create a linear model of all the variables except `State`. To do this we can use `.` to specify adding all the variables to the model and then `-State` to remove `State` from the model.  (Note that the dataset made available with the textbook does not correspond to the analyses in the book, so it is not possible to completely replicate the analyses in this section.)
 
 ```{r message=FALSE}
 InfantMortality <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Infant_Mortality.csv")
@@ -165,17 +165,20 @@ gf_point(rstudent(lmInfant) ~ fitted(lmInfant))
 gf_dhistogram(~ rstudent(lmInfant), binwidth = 0.5, center = 0.25)
 ```
 
-The `summary` output shows that only two of the variables are significant at the 5% level. This could be due to multicollinearity. A correlation matrix will help identify variables that are strongly correlated to one and other.
+The `summary` output shows that only two of the variables are significant at the 5% level. This could be due to multicollinearity. A correlation matrix will help identify variables that are strongly correlated.
 
 ```{r}
-cor(InfantMortality[,-1])
+select(InfantMortality, -State) %>%
+  cor()
 ```
 
-From this we see that `HSdrop`, `TeenBirths` and `TeenDeaths` are correlated. They are also the 3 least significant variables in the full model so it might not be unreasonable to remove them from the model.
+From this we see that `HSdrop`, `TeenBirths` and `TeenDeaths` are correlated. They are also the three least significant variables in the full model so it might not be unreasonable to remove them from the model.
 
 ```{r}
 lmInfant2 <- lm(Infantmort ~ . -State -TeenDeaths -TeenBirths -HSdrop, data = InfantMortality)
 msummary(lmInfant2)
 ```
 
-Notice that the $R^2$ of this final model is 0.689: this is different that in the book. This illustrates how there are a number of approaches when choosing the 'best' model and that different models may be better or worse given the constraints/specifications of the problem.
+Notice that the $R^2$ of this final model is 0.689: this is different from that reported in the book. 
+
+There are a number of approaches when choosing the 'best' model and that different models may be better or worse given the constraints/specifications of the problem: much of this is left for more advanced courses.

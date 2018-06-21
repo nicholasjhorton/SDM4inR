@@ -34,7 +34,7 @@ opts_chunk$set(
 ## Introduction and background 
 
 This document is intended to help describe how to undertake analyses introduced 
-as examples in the Fourth Edition of \emph{Stats: Data and Models} (2014) by De Veaux, Velleman, and Bock.
+as examples in the Fourth Edition of *Stats: Data and Models* (2014) by De Veaux, Velleman, and Bock.
 More information about the book can be found at http://wps.aw.com/aw_deveaux_stats_series.  This
 file as well as the associated R Markdown reproducible analysis source file used to create it can be found at http://nhorton.people.amherst.edu/sdm4.
 
@@ -62,15 +62,14 @@ interval <- phat + c(-2, 2)*sep
 interval
 ```
 
-### Section 18.2: Interpreting confidence intervals for a proportion
+### Section 18.2: Interpreting confidence intervals
 
 ```{r warning = FALSE}
 set.seed(1988)
-CIsim(n = 156, samples = 20, rdist = rbinom, 
-  args=list(size=1, prob=.7), estimand = .7, method = binom.test)
+CIsim(n = 100, samples = 20)
 ```
 
-We would expect 19 out of 20 of the intervals to cover the true (population) value, but here only 18 out of 20 actually covered that value (see similar Figure at the top of page 476).
+We would expect 19 out of 20 of the intervals to cover the true (population) value, but here only 18 out of 20 actually covered that value (see Figure at top of page 476).
 
 ### Section 18.3: Margin of error
 

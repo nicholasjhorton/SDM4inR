@@ -120,7 +120,7 @@ Figure 28.6 (page 829) displays the scatterplot matrix infant mortality data.
 
 ```{r, fig.height = 6, message = FALSE}
 InfantMortality <- read_csv("http://nhorton.people.amherst.edu/sdm4/data/Infant_Mortality.csv")
-pairs(select(InfantMortality, -State))
+pairs(select(InfantMortality, - State))
 ```
 
 In addition, we display a scatterplot matrix for the motivating example from the chapter (BodyFat) using the `GGally` package.
