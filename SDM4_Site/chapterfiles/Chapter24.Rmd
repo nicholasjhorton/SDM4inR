@@ -95,6 +95,26 @@ activity <- c(rep("Employed", 685), rep("Grad school", 466),
 tally(~ activity + area, margins = TRUE)
 ```
 
+```{r}
+area1 <- rbind(
+  do(209) * data.frame(activity = "agriculture", area = "Employed"),
+  do(198) * data.frame(activity = "arts/science", area = "Employed"),
+  do(177) * data.frame(activity = "engineering", area = "Employed"), 
+  do(101) * data.frame(activity = "ILR", area = "Employed"),
+  do(104) * data.frame(activity = "agriculture", area = "Grad school"),
+  do(171) * data.frame(activity = "arts/science", area = "Grad school"),
+  do(158) * data.frame(activity = "engineering", area = "Grad school"), 
+  do(33) * data.frame(activity = "ILR", area = "Grad school"),
+  do(135) * data.frame(activity = "agriculture", area = "Other"),
+  do(115) * data.frame(activity = "arts/science", area = "Other"),
+  do(39) * data.frame(activity = "engineering", area = "Other"), 
+  do(16) * data.frame(activity = "ILR", area = "Other")
+)
+
+tally(~ area + activity, margins = TRUE, data = area1)
+```
+
+
 ```{r fig.height = 6}
 vcd::mosaic(tally(~ activity + area), main = "mosaicplot of activity by area",
   shade = TRUE)
