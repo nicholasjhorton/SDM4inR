@@ -1,6 +1,6 @@
 <h2>
 <center>
-"Part I: Exploring and Understanding Data"
+Part I: Exploring and Understanding Data
 </center>
 </h2>
 

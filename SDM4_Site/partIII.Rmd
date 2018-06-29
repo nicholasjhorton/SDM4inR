@@ -1,6 +1,6 @@
 <h2>
 <center>
-"Part III: Gathering Data"
+Part III: Gathering Data
 </center>
 </h2>
 

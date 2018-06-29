@@ -1,6 +1,6 @@
 <h2>
 <center>
-"Part VII: Inference When Variables are Related"
+Part VII: Inference When Variables are Related
 </center>
 </h2>
 

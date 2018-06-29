@@ -1,6 +1,6 @@
 <h2>
 <center>
-"Part II: Exploring Relationships Between Variables"
+Part II: Exploring Relationships Between Variables
 </center>
 </h2>
 
