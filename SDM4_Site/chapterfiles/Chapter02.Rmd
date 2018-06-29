@@ -70,9 +70,9 @@ See display on page 24.  (Note that the `mosaic()` plot, also known as Eikosogra
 ```{r}
 barplot(tally(~ Survived + Class, data = Titanic), beside = TRUE)
 ```
+
 ```{r fig.height = 5}
 vcd::mosaic(tally(~ Survived + Class, data = Titanic), 
            main = "Mosaic plot of Class by Survival",
            shade = TRUE)
-
 ```
