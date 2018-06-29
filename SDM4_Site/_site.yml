@@ -18,7 +18,7 @@ navbar:
           href: partIV.html
         - text: "Chapters 17-21 : Part V From the Data at Hand to the World at Large"
           href: partV.html
-        - text: "Chapters 22-25 : Part VI Accessing Associations Between Variables"
+        - text: "Chapters 22-25 : Part VI Assessing Associations Between Variables"
           href: partVI.html
         - text: "Chapters 26-29 : Part VII Inference When Variables are Related"
           href: partVII.html
