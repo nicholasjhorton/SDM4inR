@@ -23,6 +23,9 @@ navbar:
         - text: "Chapters 26-29 : Part VII Inference When Variables are Related"
           href: partVII.html
 
+    - text: "Videos"
+      icon: fa-lightbulb-o
+      href: video.html
     - text: "Other Resources"
       icon: fa-lightbulb-o
       href: other_resources.html

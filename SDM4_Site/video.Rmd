@@ -1,0 +1,38 @@
+---
+title: Videos to accompany the chapters
+---
+
+Here are pointers to videos that accompany the chapters.  They provide an overview of key points and discuss how to implement the examples using R.
+
+<p><a href="https://youtu.be/8v-jTjqCNwE">Chapter 1: Introduction</a></p>
+<p><a href="https://youtu.be/dcm2npQKV9c">Chapter 2: Categorical data</a></p>
+<p><a href="https://youtu.bew/3zgq8O1Eks">Chapter 3: Quantitative data</a></p>
+<p><a href="https://youtu.be/TVZ2_yht1ME">Chapter 4: Comparing groups</a></p>
+<p><a href="https://youtu.be/N-Ikv3utUpI">Chapter 5: Standard deviation as a ruler and the normal model</a></p>
+<p><a href="https://youtu.be/L4b8UOvREXw">Chapter 6: Scatterplots, association, and correlation</a></p>
+<p><a href="https://youtu.be/9GzfhYBLH0s">Chapter 7: Linear regression</a></p>
+<p><a href="https://youtu.be/1v3JwpKiO6I">Chapter 8: Regression wisdom</a></p>
+<p><a href="https://youtu.be/NMRPphCDJz0">Chapter 9: Re-expressing data and transformations</a></p>
+<p><a href="https://youtu.be/ZxniOGrvJps">Chapter 10: Randomness</a></p>
+<p><a href="https://youtu.be/MJesdxHtRFU">Chapter 11: Sample surveys</a></p>
+<p><a href="https://youtu.be/7gxPtB7Lt5U">Chapter 12: Experiments and observational studies</a></p>
+<p><a href="https://youtu.be/DuzP05CApdI">Chapter 13: From randomness to probability</a></p>
+<p><a href="https://youtu.be/ii0nsO22FUk">Chapter 14: Probability rules</a></p>
+<p><a href="https://youtu.be/W_q_sGAQChY">Chapter 15: Random variables (part 1 of 2): </a></p>
+<p><a href="https://youtu.be/1rT3cOHrKqI">Chapter 15: Random variables (part 2 of 2): </a></p>
+<p><a href="https://youtu.be/W8R93p99o3s">Chapter 16: Probability models</a></p>
+<p><a href="https://youtu.be/WfYaV92xbDo">Chapter 17: Sampling distribution models</a></p>
+<p><a href="https://youtu.be/s3wsjUtlpaA">Chapter 18: Confidence intervals for proportions</a></p>
+<p><a href="https://youtu.be/vjgpDApHdC0">Chapter 19: Testing hypotheses about proportions</a></p>
+<p><a href="https://youtu.be/4Wj8SO4kXWo">Chapter 20: Inferences about means</a></p>
+<p><a href="https://youtu.be/yzR7zZE_-8k">Chapter 21: More about tests and intervals</a></p>
+<p><a href="https://youtu.be/cvwSvlx3_NA">Chapter 22: Comparing groups</a></p>
+<p><a href="https://youtu.be/vOvxj31WsWk">Chapter 23: Paired samples and blocking</a></p>
+<p><a href="https://youtu.be/bt3qVln7Vow">Chapter 24: Comparing counts</a></p>
+<p><a href="https://youtu.be/ZVK6Jcuz33w">Chapter 25: Inferences for regression</a></p>
+<p><a href="https://youtu.be/Fp0qx2BDwHM">Chapter 26: Analysis of variance (ANOVA)</a></p>
+<p><a href="https://youtu.be/khvfYYGbl_w">Chapter 27: Multifactor analysis of variance</a></p>
+<p><a href="https://youtu.be/aY6_-Rc7vv4">Chapter 28: Multiple regression (part 1 of 2: descriptive models)</a></p>
+<p><a href="https://youtu.be/nq7G_7CPP_U">Chapter 28: Multiple regression (part 2 of 2: inferential models)</a></p>
+<p><a href="https://youtu.be/tkEKe7Nbgv4">Chapter 29: Multiple regression wisdom</a></p>
+
